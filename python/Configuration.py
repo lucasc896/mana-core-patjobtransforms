@@ -488,6 +488,20 @@ AddNTUP_1LHSG2.subSteps=['a2d']
 AddNTUP_1LHSG2.isOutput='root'
 AddToConfigDic('outputNTUP_1LHSG2File',AddNTUP_1LHSG2)
 
+def AddNTUP_2LHSG2(trf,inDic):
+    trf.add( NtupleFileArg(name='outputNTUP_2LHSG2File',tree_names="physics") )
+    return
+AddNTUP_2LHSG2.subSteps=['a2d']
+AddNTUP_2LHSG2.isOutput='root'
+AddToConfigDic('outputNTUP_2LHSG2File',AddNTUP_2LHSG2)
+
+def AddNTUP_HSG2(trf,inDic):
+    trf.add( NtupleFileArg(name='outputNTUP_HSG2File',tree_names="physics") )
+    return
+AddNTUP_HSG2.subSteps=['a2d']
+AddNTUP_HSG2.isOutput='root'
+AddToConfigDic('outputNTUP_HSG2File',AddNTUP_HSG2)
+
 def AddNTUP_WZ(trf,inDic):
     trf.add( NtupleFileArg(name='outputNTUP_WZFile',tree_names="physics") )
     return
@@ -592,6 +606,14 @@ def AddDAOD_2LHSG2File(trf,inDic):
 AddDAOD_2LHSG2File.subSteps=['a2d','e2d']
 AddDAOD_2LHSG2File.isOutput='pool'
 AddToConfigDic('outputDAOD_2LHSG2File',AddDAOD_2LHSG2File)
+
+def AddDAOD_HSG2File(trf,inDic):
+    trf.add( OutputDPDFileArg(name='outputDAOD_HSG2File') )
+    return
+AddDAOD_HSG2File.subSteps=['a2d','e2d']
+AddDAOD_HSG2File.isOutput='pool'
+AddToConfigDic('outputDAOD_HSG2File',AddDAOD_HSG2File)
+
 
 #Dummy outputs for ESD/AOD synonyms. Special case: do not copy this example! 
 def AddOutputDESD_ZEEFile(trf,inDic):
