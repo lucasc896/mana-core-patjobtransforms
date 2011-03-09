@@ -1,3 +1,9 @@
+2011-03-08 Andrea Di Simone <andrea.di.simone@cern.ch>
+	* scripts/Reco_trf.py (ListOfDefaultPositionalKeys): adding outputNTUP_HSG2File outputNTUP_2LHSG2File outputDAOD_HSG2File
+	* Added NTUP_HSG2 NTUP_2LHSG2 DAOD_HSG2 in Configuration.py
+	* Added  NTUP_HSG2 NTUP_2LHSG2 DAOD_HSG2 in share/skeleton.AODtoDPD_trf.py
+ 	* tagging  PATJobTransforms-00-03-17
+
 2011-03-03  David Cote  <david.cote@cern.ch>
 	* Added NTUP_PHOTON to ProdSys ListOfDefaultPositionalKeys in Reco_trf
 	* tagging PATJobTransforms-00-03-16

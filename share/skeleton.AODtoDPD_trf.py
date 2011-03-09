@@ -89,10 +89,21 @@ if hasattr(runArgs,"outputNTUP_SMEWFile"):
 if hasattr(runArgs,"outputDAOD_2LHSG2File"):
     #FIXME: input/outputs should configured via job properties instead of directly using the runArgs object
     from HSG2DPDUtils import HSG2DPDFlags
+if hasattr(runArgs,"outputDAOD_HSG2File"):
+    #FIXME: input/outputs should configured via job properties instead of directly using the runArgs object
+    from HSG2DPDUtils import HSG2DPDFlags
+
 
 if hasattr(runArgs,"outputNTUP_1LHSG2File"):
     #FIXME: input/outputs should configured via job properties instead of directly using the runArgs object
     from HSG2DPDUtils import HSG2DPDFlags
+if hasattr(runArgs,"outputNTUP_2LHSG2File"):
+    #FIXME: input/outputs should configured via job properties instead of directly using the runArgs object
+    from HSG2DPDUtils import HSG2DPDFlags
+if hasattr(runArgs,"outputNTUP_HSG2File"):
+    #FIXME: input/outputs should configured via job properties instead of directly using the runArgs object
+    from HSG2DPDUtils import HSG2DPDFlags
+
 
  
 if hasattr(runArgs,"outputNTUP_SCTFile"):
