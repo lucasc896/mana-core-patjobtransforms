@@ -1,3 +1,7 @@
+2011-03-03  David Cote  <david.cote@cern.ch>
+	* Added NTUP_PHOTON to ProdSys ListOfDefaultPositionalKeys in Reco_trf
+	* tagging PATJobTransforms-00-03-16
+
 2011-03-09 Susumu Oda <Susumu.Oda@cern.ch>
 	* Add 'r2e' to AddOutputNTUP_SCTFile.subSteps of python/Configuration.py
 	  (requested by Yuriy Pylypchenko)
