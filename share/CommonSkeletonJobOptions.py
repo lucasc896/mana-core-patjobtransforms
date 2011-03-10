@@ -23,6 +23,8 @@ rec.doWriteAOD=False
 rec.doWriteTAG=False	
 rec.doWriteTAGCOM=False
 
+rec.AutoConfiguration=['everything']
+
 #production options
 rec.Production=True
 rec.abortOnErrorMessage=False
@@ -47,6 +49,8 @@ if hasattr(runArgs,"triggerConfig"):
 
 ## autoConfiguration keywords triggering pre-defined functions
 if hasattr(runArgs,"autoConfiguration"):
+    #reset auto-configuration to specified list of values
+    rec.AutoConfiguration=[]
     for key in runArgs.autoConfiguration:
         rec.AutoConfiguration.append(key)
 

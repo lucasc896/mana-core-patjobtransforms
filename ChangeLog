@@ -1,3 +1,8 @@
+2011-03-10  David Cote  <david.cote@cern.ch>
+	* Changed rec.AutoConfiguration default to 'everything' in CommonSkeletonJobOptions.py
+	* Moved doESD.lock() below preExec in skeleton.MergePool.py
+ 	* tagging  PATJobTransforms-00-03-18
+
 2011-03-08 Andrea Di Simone <andrea.di.simone@cern.ch>
 	* scripts/Reco_trf.py (ListOfDefaultPositionalKeys): adding outputNTUP_HSG2File outputNTUP_2LHSG2File outputDAOD_HSG2File
 	* Added NTUP_HSG2 NTUP_2LHSG2 DAOD_HSG2 in Configuration.py

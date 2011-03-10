@@ -6,8 +6,8 @@
 
 #Common job options disable most RecExCommon by default. Re-enable below on demand.
 include("PATJobTransforms/CommonSkeletonJobOptions.py")
-rec.doAOD.set_Value_and_Lock(False)
-rec.doESD.set_Value_and_Lock(False)
+rec.doAOD=False
+rec.doESD=False
 
 from AthenaCommon.Logging import logging
 recoLog = logging.getLogger('merge_pool')
@@ -41,6 +41,9 @@ if hasattr(runArgs,"preInclude"):
     for fragment in runArgs.preInclude:
         include(fragment)
 
+#Lock doAOD/ESD before starting RecExCommon, so they are not overwritten by the auto-configuration
+rec.doAOD.lock()
+rec.doESD.lock()
 
 include( "RecExCommon/RecExCommon_topOptions.py" )
 ServiceMgr.EventSelector.SkipBadFiles = True
