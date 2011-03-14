@@ -1,3 +1,7 @@
+2011-03-14 Maaike Limper <maaike.limper@cern.ch>
+	* use CERN replica in case of problems connecting to ami.in2p3.fr
+	* tagging PATJobTransforms-00-03-19
+
 2011-03-10  David Cote  <david.cote@cern.ch>
 	* Changed rec.AutoConfiguration default to 'everything' in CommonSkeletonJobOptions.py
 	* Moved doESD.lock() below preExec in skeleton.MergePool.py
