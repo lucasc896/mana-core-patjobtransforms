@@ -1,3 +1,7 @@
+2011-03-15 Jamie Boyd <Jamie.Boyd@cern.ch>
+        * add in Reco_trf option outputNTUP_BKGDFile
+	* tagging PATJobTransforms-00-03-20
+	
 2011-03-14 Maaike Limper <maaike.limper@cern.ch>
 	* use CERN replica in case of problems connecting to ami.in2p3.fr
 	* tagging PATJobTransforms-00-03-19
