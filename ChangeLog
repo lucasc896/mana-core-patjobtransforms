@@ -1,3 +1,12 @@
+2011-03-18 Attila Krasznahorkay <Attila.Krasznahorkay@cern.ch>
+	* Exchanged outputNTUP_WZFile with outputNTUP_SMWZFile in
+	  Reco_trf. This is the new name of the Standard Model
+	  inclusive D3PD. The special configuration for
+	  outputNTUP_WZFile should be removed later on, but for
+	  now it's not a major concern. (Will have to ask the
+	  main developers about that...)
+	* Tagging as PATJobTransforms-00-03-21
+
 2011-03-15 Jamie Boyd <Jamie.Boyd@cern.ch>
         * add in Reco_trf option outputNTUP_BKGDFile
 	* tagging PATJobTransforms-00-03-20
