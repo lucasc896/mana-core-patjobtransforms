@@ -1,3 +1,11 @@
+2011-03-18 Maarten Boonekamp
+	* cf previous entry : now added 
+	outputNTUP_SMWENUFile,outputNTUP_SMZEEFile,outputNTUP_SMDYEEFile,outputNTUP_SMBKGEFile,
+	outputNTUP_SMWMUNUFile,outputNTUP_SMZMUMUFile,outputNTUP_SMDYMUMUFile,outputNTUP_SMBKGMUFile,
+	outputNTUP_SMDILEPFile 
+	to ListOfDefaultPositionalKeys.
+	* Tagging as PATJobTransforms-00-03-22
+
 2011-03-18 Attila Krasznahorkay <Attila.Krasznahorkay@cern.ch>
 	* Exchanged outputNTUP_WZFile with outputNTUP_SMWZFile in
 	  Reco_trf. This is the new name of the Standard Model
