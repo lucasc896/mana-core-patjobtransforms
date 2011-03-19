@@ -86,6 +86,15 @@ def AddDigijobOptions(aDic):
     return
 
 #-------------------------------
+
+def ChangeGenjobOptions(aDic):
+
+    if aDic.has_key('Input_file_base'):
+        tmp = aDic['Input_file_base']
+        del  aDic['Input_file_base']
+        aDic['inputGeneratorFile'] = tmp
+
+#-------------------------------
 def GetPANDAClient(amitag):
     import cx_Oracle
     #cur = cx_Oracle.connect('atlas_grisli_r/panda_c10@atlas_panda').cursor()
@@ -117,6 +126,8 @@ def GetInfoFromPANDA(amitag):
     trf=trf.split(',')
     
     listDicsPANDA=[]
+    DicSW={}
+    DicSW['Release']=trfv
     
     hasDIGI = 0
     for i in range(0,nbr): # loop that fills for each nbr the dictionary with the physconf information 
@@ -126,6 +137,7 @@ def GetInfoFromPANDA(amitag):
         results={}
         
         results['amiTransform'] = trf[i]
+        llp[i]=llp[i].replace(' ','_')
         llp[i]=llp[i].replace(',',' ')
         tempkey = string.split(llp[i]) # have created an array of keys
         items=len(tempkey)
@@ -162,6 +174,10 @@ def GetInfoFromPANDA(amitag):
                 del PhysDicPANDA['DBRelease']
                 #PhysDicPANDA['DBRelease']='/afs/cern.ch/atlas/www/GROUPS/DATABASE/pacman4/DBRelease/DBRelease-'+PhysDicPANDA['DBRelease']+'.tar.gz'
             hasDIGI = 1
+
+        elif trf[i]=='Evgen_trf.py' : # GEN jobTransform
+            # assuming that there is no input file
+            ChangeGenjobOptions(PhysDicPANDA)
 
         elif trf[i]=='Reco_trf.py':
             if hasDIGI==1:
@@ -202,6 +218,7 @@ def GetInfoFromPANDA(amitag):
         CorrectDict(OutputDicPANDA)   
         results['amiOuputDic']=OutputDicPANDA
         results['amiPhysDic']=PhysDicPANDA            
+        results['amiRelease']=DicSW
         listDicsPANDA.append(results)
 
     return listDicsPANDA

@@ -1,3 +1,10 @@
+2011-03-19 Joao Firmino da Costa <joao.costa@cern.ch>
+	* Added compatibility for e-tags in GetCommand.py
+	 and AthenaRelease of the tag is printed when executing
+	GetCommand.py
+	* tagging PATJobTransforms-00-03-24
+
+	
 2011-03-19 Rolf Seuster <seuster AT cern.ch>
 	* "--drop-and-reload" now default, if no other option to "--athenaopts" specified
 	* tagging PATJobTransforms-00-03-23

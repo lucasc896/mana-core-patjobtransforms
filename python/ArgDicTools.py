@@ -204,7 +204,10 @@ def GetInfoFromAMIXML(amitag):
     results['amiInputDic']={}
     results['amiOuputDic']={}
     results['amiTransform']=amiTransform
-    results['amiRelease']=amiRelease
+    #tweak to facilitate compatibility with ProdSys 
+    ReleaseDic={}
+    ReleaseDic['Release']=amiRelease
+    results['amiRelease']=ReleaseDic
     return results
 
 
@@ -241,7 +244,10 @@ def GetInfoFromAMIPython(amitag):
     results['amiInputDic']=amiInputDic
     results['amiOuputDic']=amiOuputDic
     results['amiTransform']=amiTransform
-    results['amiRelease']=amiRelease
+    #tweak to facilitate compatibility with ProdSys 
+    ReleaseDic={}
+    ReleaseDic['Release']=amiRelease
+    results['amiRelease']=ReleaseDic
     return results
 
 def GetInfoFromAMI(amiTag):
@@ -347,7 +353,7 @@ def PopSynonyms(aDic):
 #-----------------------------------
 def UpdateDicListWithAMI(userDic,amiTag):
     #the list feature is only used by GetCommand
-    if amiTag.startswith('r') or amiTag.startswith('p') or amiTag.startswith('d') or amiTag.startswith('s'):
+    if amiTag.startswith('r') or amiTag.startswith('p') or amiTag.startswith('d') or amiTag.startswith('s')  or amiTag.startswith('e'):
         from PATJobTransforms.ProdSysDicTools import GetInfoFromPANDA
         infoList=GetInfoFromPANDA(amiTag) 
     else:
@@ -359,6 +365,7 @@ def UpdateDicListWithAMI(userDic,amiTag):
         outDic,outInfo=UpdateDicWithAMI(userDic,amiTag,info)
         d['info']=outInfo
         d['outDic']=outDic
+        d['Release']=outInfo['amiRelease']
         outList.append(d)
 
     return outList
@@ -479,6 +486,16 @@ def BuildDicFromCommandLine(sysArgv,returnList=False):
         amiTag=inDic.pop('AMI')
         dicList=UpdateDicListWithAMI(inDic,amiTag)
         inDic=dicList[0]['outDic']
+        releaseDic=dicList[0]['Release']
+        print "INFO release ",releaseDic['Release']
+
+        #        if not releaseDic.has_key('Release') :
+        #            print "INFO release ",dicList[0]['Release']
+        #   print "INFO release ",releaseDic['Release']
+        #else :
+        #    print "INFO release ",releaseDic['Release']
+
+
 ##         print "###############################"
 ##         print "Updated job transform command downloaded from AMI:"
 ##         newCmd=""
