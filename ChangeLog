@@ -1,3 +1,7 @@
+2011-03-19 Rolf Seuster <seuster AT cern.ch>
+	* "--drop-and-reload" now default, if no other option to "--athenaopts" specified
+	* tagging PATJobTransforms-00-03-23
+
 2011-03-18 Maarten Boonekamp
 	* cf previous entry : now added 
 	outputNTUP_SMWENUFile,outputNTUP_SMZEEFile,outputNTUP_SMDYEEFile,outputNTUP_SMBKGEFile,
@@ -18,7 +22,7 @@
 2011-03-15 Jamie Boyd <Jamie.Boyd@cern.ch>
         * add in Reco_trf option outputNTUP_BKGDFile
 	* tagging PATJobTransforms-00-03-20
-	
+
 2011-03-14 Maaike Limper <maaike.limper@cern.ch>
 	* use CERN replica in case of problems connecting to ami.in2p3.fr
 	* tagging PATJobTransforms-00-03-19
@@ -41,10 +45,10 @@
 2011-03-09 Susumu Oda <Susumu.Oda@cern.ch>
 	* Add 'r2e' to AddOutputNTUP_SCTFile.subSteps of python/Configuration.py
 	  (requested by Yuriy Pylypchenko)
-	* tagging PATJobTransforms-00-03-15  
+	* tagging PATJobTransforms-00-03-15
 
 2011-03-04 Walter Lampl <walter.lampl@ cern.ch>
-	* Add new output file: outputNUTP_FASTMONFile for Fast Physics Monitoring 
+	* Add new output file: outputNUTP_FASTMONFile for Fast Physics Monitoring
 	  + necessary modification to AOD->DPD skeleton
 	* tagging PATJobTransforms-00-03-14
 

@@ -41,7 +41,13 @@ class FlexibleRecoTransform( BaseOfCompositeTrf ):
         self.dicESDToDPD=self.AddNewSubStep("e2d",self.runESDtoDPD)
         self.dicAODToDPD=self.AddNewSubStep("a2d",self.runAODtoDPD)
         self.dicAODToTAG=self.AddNewSubStep("a2t",self.runAODtoTAG)
-
+        
+        if not self.inDic.has_key('--athenaopts'):
+            print "--athenaopts empty, so setting to default '--drop-and-reload'"
+            self.inDic['--athenaopts']=  '--drop-and-reload'
+        else:
+            print "user has specified --athenaopts to %s, not touching it",self.inDic['--athenaopts']
+        
         #Internal sub-step configuration (i.e. fill dictionaries)
         self.ConfigureInternalSubSteps()
         self.ConfigureInputOutputs()
