@@ -42,12 +42,16 @@ class FlexibleRecoTransform( BaseOfCompositeTrf ):
         self.dicAODToDPD=self.AddNewSubStep("a2d",self.runAODtoDPD)
         self.dicAODToTAG=self.AddNewSubStep("a2t",self.runAODtoTAG)
         
-        if not self.inDic.has_key('--athenaopts'):
-            print "--athenaopts empty, so setting to default '--drop-and-reload'"
-            self.inDic['--athenaopts']=  '--drop-and-reload'
+        #Add --drop-and-reload unless related options are specified:
+        athena_config_related_opts = ['--config-only','--drop-and-reload','--drop-configuration','--keep-configuration']
+        athena_current_opts=self.inDic.get('--athenaopts','').split()
+        conflict_opts = set(athena_config_related_opts).intersection(set(athena_current_opts))
+        if not conflict_opts:
+            print "Appending '--drop-and-reload' to --athenaopts"
+            self.inDic['--athenaopts']=' '.join(athena_current_opts+['--drop-and-reload'])
         else:
-            print "user has specified --athenaopts to %s, not touching it",self.inDic['--athenaopts']
-        
+            print "User has specified '%s' to '--athenaopts', so not appending '--drop-and-reload'"%(' '.join(conflict_opts))
+            
         #Internal sub-step configuration (i.e. fill dictionaries)
         self.ConfigureInternalSubSteps()
         self.ConfigureInputOutputs()
