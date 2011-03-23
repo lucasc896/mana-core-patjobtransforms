@@ -219,11 +219,11 @@ def GetInfoFromAMIPython(amitag):
 
     try:
         result=amiclient.execute(l)
-    except AMI_Error:
+    except Exception:
         print "WARNING problem in amiclient.execute, try using CERN replica instead"
         amiclient=GetAMIClientReplica()
         result=amiclient.execute(l)
-    except AMI_Error:
+    except Exception:
         print "FATAL could not execute AMI-command, gonna crash now..."
         
     dicOfDico=result.getDict()

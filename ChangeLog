@@ -1,3 +1,7 @@
+2011-03-23 Maaike Limper
+	* Change AMI_Error->Exception to catch error when CERN replica needs to be used
+	* tagging PATJobTransforms-00-03-26
+
 2011-03-20 Rolf Seuster <seuster AT cern.ch>
 	* from ThomasK: new code to specify --drop-and-reload
 	* tagging PATJobTransforms-00-03-25
