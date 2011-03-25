@@ -87,12 +87,12 @@ def AddDigijobOptions(aDic):
 
 #-------------------------------
 
-def ChangeGenjobOptions(aDic):
+#def ChangeGenjobOptions(aDic):
 
-    if aDic.has_key('Input_file_base'):
-        tmp = aDic['Input_file_base']
-        del  aDic['Input_file_base']
-        aDic['inputGeneratorFile'] = tmp
+#    if aDic.has_key('Input_file_base'):
+#        tmp = aDic['Input_file_base']
+#        del  aDic['Input_file_base']
+#        aDic['inputGeneratorFile'] = tmp
 
 #-------------------------------
 def GetPANDAClient(amitag):
@@ -126,8 +126,8 @@ def GetInfoFromPANDA(amitag):
     trf=trf.split(',')
     
     listDicsPANDA=[]
-    DicSW={}
-    DicSW['Release']=trfv
+#    DicSW={}
+#    DicSW['Release']=trfv
     
     hasDIGI = 0
     for i in range(0,nbr): # loop that fills for each nbr the dictionary with the physconf information 
@@ -218,7 +218,7 @@ def GetInfoFromPANDA(amitag):
         CorrectDict(OutputDicPANDA)   
         results['amiOuputDic']=OutputDicPANDA
         results['amiPhysDic']=PhysDicPANDA            
-        results['amiRelease']=DicSW
+#        results['amiRelease']=DicSW
         listDicsPANDA.append(results)
 
     return listDicsPANDA

@@ -204,10 +204,13 @@ def GetInfoFromAMIXML(amitag):
     results['amiInputDic']={}
     results['amiOuputDic']={}
     results['amiTransform']=amiTransform
+    results['amiRelease']=amiRelease
+
     #tweak to facilitate compatibility with ProdSys 
-    ReleaseDic={}
-    ReleaseDic['Release']=amiRelease
-    results['amiRelease']=ReleaseDic
+    #ReleaseDic={}
+    #ReleaseDic['Release']=amiRelease
+    #results['amiRelease']=ReleaseDic
+
     return results
 
 
@@ -244,10 +247,13 @@ def GetInfoFromAMIPython(amitag):
     results['amiInputDic']=amiInputDic
     results['amiOuputDic']=amiOuputDic
     results['amiTransform']=amiTransform
+    results['amiRelease']=amiRelease
+    
     #tweak to facilitate compatibility with ProdSys 
-    ReleaseDic={}
-    ReleaseDic['Release']=amiRelease
-    results['amiRelease']=ReleaseDic
+    #ReleaseDic={}
+    #ReleaseDic['Release']=amiRelease
+    #results['amiRelease']=ReleaseDic
+
     return results
 
 def GetInfoFromAMI(amiTag):
@@ -486,14 +492,15 @@ def BuildDicFromCommandLine(sysArgv,returnList=False):
         amiTag=inDic.pop('AMI')
         dicList=UpdateDicListWithAMI(inDic,amiTag)
         inDic=dicList[0]['outDic']
-        releaseDic=dicList[0]['Release']
-        print "INFO release ",releaseDic['Release']
 
-        #        if not releaseDic.has_key('Release') :
-        #            print "INFO release ",dicList[0]['Release']
-        #   print "INFO release ",releaseDic['Release']
-        #else :
-        #    print "INFO release ",releaseDic['Release']
+        #releaseDic=dicList[0]['Release']
+        #print "INFO release ",releaseDic['Release']
+
+        ##        if not releaseDic.has_key('Release') :
+        ##            print "INFO release ",dicList[0]['Release']
+        ##   print "INFO release ",releaseDic['Release']
+        ##else :
+        ##    print "INFO release ",releaseDic['Release']
 
 
 ##         print "###############################"
