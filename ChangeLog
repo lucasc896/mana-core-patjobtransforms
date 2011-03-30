@@ -1,5 +1,9 @@
 2011-03-30  John Chapman  <John.Chapman@cern.ch>
-
+	* python/ProdSysDicTools.py - comment out one remaining change
+	related to ReleaseVersion propagation
+	* Tagging as PATJobTransforms-00-03-31
+	
+2011-03-30  John Chapman  <John.Chapman@cern.ch>
 	* python/ArgDicTools.py - add import of AMI_Error, changes for
 	q130 digitization test configuration.
 	* python/BaseOfCompositeTrf.py - remove reference to undefined

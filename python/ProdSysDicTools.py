@@ -175,9 +175,9 @@ def GetInfoFromPANDA(amitag):
                 #PhysDicPANDA['DBRelease']='/afs/cern.ch/atlas/www/GROUPS/DATABASE/pacman4/DBRelease/DBRelease-'+PhysDicPANDA['DBRelease']+'.tar.gz'
             hasDIGI = 1
 
-        elif trf[i]=='Evgen_trf.py' : # GEN jobTransform
-            # assuming that there is no input file
-            ChangeGenjobOptions(PhysDicPANDA)
+        #elif trf[i]=='Evgen_trf.py' : # GEN jobTransform
+        #    # assuming that there is no input file
+        #    ChangeGenjobOptions(PhysDicPANDA)
 
         elif trf[i]=='Reco_trf.py':
             if hasDIGI==1:
