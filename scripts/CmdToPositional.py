@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 print "\n * * * CmdToPositional * * *\n"
-def PositionInList(key,list):
+def PositionInList(key,poslist):
     ind=-1
     i=0
-    for item in list:
+    for item in poslist:
         if key==item:
             if ind<0:
                 ind=i

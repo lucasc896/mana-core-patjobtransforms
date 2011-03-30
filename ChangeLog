@@ -1,3 +1,16 @@
+2011-03-30  John Chapman  <John.Chapman@cern.ch>
+
+	* python/ArgDicTools.py - add import of AMI_Error, changes for
+	q130 digitization test configuration.
+	* python/BaseOfCompositeTrf.py - remove reference to undefined
+	variable dicName from runtimeError message.
+	* python/Configuration.py - fix indentation for class
+	InputLogsFileArg.
+	* python/GeoConfig.py - fix indentation.
+	* scripts/CmdToPositional.py - fix use of list keyword as a
+	variable name.
+	* Tagging as PATJobTransforms-00-03-30
+
 2011-03-29 Attila Krasznahorkay <Attila.Krasznahorkay@cern.ch>
 	* Declared outputNTUP_TRIgBJETFile in ListOfDefaultPositionalKeys.
 	* Tagging as PATJobTransforms-00-03-29

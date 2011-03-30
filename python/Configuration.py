@@ -330,33 +330,33 @@ class LogsFile( FileType ):
  
 
 class InputLogsFileArg(InputDataFileArg):
-     """Input file - log tarballs """
-     def __init__(self,help='default',name='default'):
-         InputDataFileArg.__init__(self,help,LogsFile(),name)
+    """Input file - log tarballs """
+    def __init__(self,help='default',name='default'):
+        InputDataFileArg.__init__(self,help,LogsFile(),name)
          
-     def MoveLogs(self):
-         vals = self.value()
-         for val in vals:
-             if not fileutil.exists(val):
-                 found = fileutil.exists_suffix_number(val + '.')
-                 if not found:
-                     code = AtlasErrorCodes.getCode('TRF_INFILE_NOTFOUND')
-                     raise InputFileError( val, 'not found. Argument %s' % (self.name()), code )
-                 if found != val:
-                     self.logger().warning('replacing %s with %s' % (val,found) )
-                     vals[vals.index(val)] = found
-                     val = found
-             newval=val+".merged"
-             os.system('mv -f %s %s' % (val,newval))
+    def MoveLogs(self):
+        vals = self.value()
+        for val in vals:
+            if not fileutil.exists(val):
+                found = fileutil.exists_suffix_number(val + '.')
+                if not found:
+                    code = AtlasErrorCodes.getCode('TRF_INFILE_NOTFOUND')
+                    raise InputFileError( val, 'not found. Argument %s' % (self.name()), code )
+                if found != val:
+                    self.logger().warning('replacing %s with %s' % (val,found) )
+                    vals[vals.index(val)] = found
+                    val = found
+            newval=val+".merged"
+            os.system('mv -f %s %s' % (val,newval))
 
-     def postRunAction(self):
-         if not self: return
-#         InputDataFileArg.postRunAction(self)
-         self.MoveLogs()
+    def postRunAction(self):
+        if not self: return
+        #InputDataFileArg.postRunAction(self)
+        self.MoveLogs()
 
 
-     def isFullArgument(self):
-         return True
+    def isFullArgument(self):
+        return True
 
 def AddInputLogsFile(trf,inDic):    
     trf.add( InputLogsFileArg() )

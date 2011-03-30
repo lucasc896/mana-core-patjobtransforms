@@ -1,18 +1,18 @@
 #!/usr/bin/env python
 
 def SetFieldForHLT():
-   """ setting magnetic field automatically for RAWtoRAWHLT transform, needs athenaCommonFlags.BSRDOInput and globalflags.InputFormat to be set in advance"""
-   # by C.Mora August 2009
-   from RecExConfig.GetCool import cool
-   if cool.toroidCurrent()>100. and cool.solenoidCurrent()>100.:
-       setField='All'
-   elif cool.solenoidCurrent()>100.:
-       setField='Solenoid'
-   elif cool.toroidCurrent()>100.:
-       setField='Toroid'
-   else:
-       setField='None'
-   return setField
+    """ setting magnetic field automatically for RAWtoRAWHLT transform, needs athenaCommonFlags.BSRDOInput and globalflags.InputFormat to be set in advance"""
+    # by C.Mora August 2009
+    from RecExConfig.GetCool import cool
+    if cool.toroidCurrent()>100. and cool.solenoidCurrent()>100.:
+        setField='All'
+    elif cool.solenoidCurrent()>100.:
+        setField='Solenoid'
+    elif cool.toroidCurrent()>100.:
+        setField='Toroid'
+    else:
+        setField='None'
+    return setField
 
 def GetRunNumber(runArgs):
     RunNumber='NONE'

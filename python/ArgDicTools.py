@@ -94,6 +94,7 @@ def DicInputs(aDic):
 
 #-------------------------------
 def GetAMIClient():
+    from pyAMI.pyAMIErrors import AMI_Error
     try:
         from pyAMI.pyAMI import AMI
     except AMI_Error:
@@ -113,6 +114,7 @@ def GetAMIClient():
 
 #-------------------------------
 def GetAMIClientReplica():
+    from pyAMI.pyAMIErrors import AMI_Error
     try:
         from pyAMI.pyAMI import AMI
     except AMI_Error:
@@ -216,6 +218,7 @@ def GetInfoFromAMIXML(amitag):
 
 #-----------------------------------
 def GetInfoFromAMIPython(amitag):
+    from pyAMI.pyAMIErrors import AMI_Error
     #get dics from AMI
     amiclient=GetAMIClient()
     l=['ListConfigurationTag','configTag='+amitag]
@@ -234,6 +237,7 @@ def GetInfoFromAMIPython(amitag):
     strDic=dicOfDico[u'rowset_'+amitag][u''+amitag][u'phconfig']
     exec("amiPhysDic="+strDic)
     strDic=dicOfDico[u'rowset_'+amitag][u''+amitag][u'inputs']
+    if (amitag=='q130'): strDic="{'inputHitsFile': {}, 'NDMinbiasHitsFile': {}, 'cavernHitsFile': {}}"
     exec("amiInputDic="+strDic)
     strDic=dicOfDico[u'rowset_'+amitag][u''+amitag][u'outputs']
     exec("amiOuputDic="+strDic)
@@ -371,7 +375,7 @@ def UpdateDicListWithAMI(userDic,amiTag):
         outDic,outInfo=UpdateDicWithAMI(userDic,amiTag,info)
         d['info']=outInfo
         d['outDic']=outDic
-        d['Release']=outInfo['amiRelease']
+        #d['Release']=outInfo['amiRelease']
         outList.append(d)
 
     return outList
@@ -398,15 +402,16 @@ def UpdateDicWithAMI(userDic,amiTag,info):
     if inputFileValue=="":
         print "\n"
         if len(amiInputDic.keys())>0:
-            inKey=amiInputDic.keys()[0]
             from PATJobTransforms.DefaultInputs import DefaultInputs
-            if DefaultInputs.has_key(inKey):
-                inputFileValue=DefaultInputs[inKey]
-                if amiTag=="q120": inputFileValue=DefaultInputs["cosmicsBS"]                
-                outDic[inKey]=inputFileValue
-                print "INFO Using default input value: %s=%s"%(inKey,outDic[inKey])
-            else:
-                raise RuntimeError("Key %s is not defined in DefaultInputs"%inKey)
+            #inKey=amiInputDic.keys()[0]
+            for inKey in amiInputDic.keys():
+                if DefaultInputs.has_key(inKey):
+                    inputFileValue=DefaultInputs[inKey]
+                    if amiTag=="q120": inputFileValue=DefaultInputs["cosmicsBS"]                
+                    outDic[inKey]=inputFileValue
+                    print "INFO Using default input value: %s=%s"%(inKey,outDic[inKey])
+                else:
+                    raise RuntimeError("Key %s is not defined in DefaultInputs"%inKey)
     
     #outputs
     #if no output is specified, use default values for all those specified in AMI tag if input matches regular expression 

@@ -143,8 +143,8 @@ class BaseOfCompositeTrf( JobTransform ):
                 newVal=val+",,"+dic[key]
                 dic[key]=newVal
             else:
-                raise RuntimeError("Key '%s' is already defined in %s and cannot be overwritten."%(key,dicName))
-        return
+                raise RuntimeError("Key '%s' is already defined in the current dictionary and cannot be overwritten."%(key))
+            return
 
     def AddToAllDics(self,newKey,val,meth):
         for key in self.ValidSubStepsDic.keys():
