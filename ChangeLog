@@ -1,3 +1,7 @@
+2011-04-28  Rolf Seuster <seuster AT cern.ch>
+	* adding rec.OutputFileNameForRecoStep to skeleton.ESDtoDPD_trf.py
+	* Tagging as PATJobTransforms-00-03-33
+
 2011-04-21  Junji Tojo <Junji.Tojo@cern.ch>
 	* Add NTUP_PHOTON in script/Merging_trf.py
 	* Tagging as PATJobTransforms-00-03-32
