@@ -1,3 +1,8 @@
+2011-04-29  Rolf Seuster <seuster AT cern.ch>
+	* python/Configuration.py: add logic for new outputfile outputHIST_PHYSVALMONFile
+	* scripts/Reco_trf.py:     add it to ListOfDefaultPositionalKeys
+	* Tagging as PATJobTransforms-00-03-34
+
 2011-04-28  Rolf Seuster <seuster AT cern.ch>
 	* adding rec.OutputFileNameForRecoStep to skeleton.ESDtoDPD_trf.py
 	* Tagging as PATJobTransforms-00-03-33
