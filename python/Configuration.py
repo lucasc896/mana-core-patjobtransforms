@@ -437,6 +437,13 @@ AddHIST.subSteps=['none']
 AddHIST.isOutput='root'
 AddToConfigDic('outputHISTFile',AddHIST)
 
+def AddOutputHIST_PHYSVALMONFile(trf,inDic):
+    trf.add( NtupleFileArg(name='outputHIST_PHYSVALMONFile') )
+    return
+AddOutputHIST_PHYSVALMONFile.subSteps=['e2a']
+AddOutputHIST_PHYSVALMONFile.isOutput='root'
+AddToConfigDic('outputHIST_PHYSVALMONFile',AddOutputHIST_PHYSVALMONFile)
+
 #cmora added for ESDtoNT transform
 def AddOutputNTUP_TRIG(trf,inDic):
     trf.add( NtupleFileArg(name='outputNTUP_TRIGFile',tree_names=["Tau/TrigTau","MinBias/TrigMinBias","Muon/TrigMuon","EGamma/EventInfo","Menu/TrigMenu"]) )
