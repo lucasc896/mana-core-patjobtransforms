@@ -1,3 +1,7 @@
+2011-05-01  Rolf Seuster <seuster AT cern.ch>
+	* fixing the misspelled rec.OutputFileNameForRecoStep in skeleton.ESDtoDPD_trf.py
+	* Tagging as PATJobTransforms-00-03-35
+
 2011-04-29  Rolf Seuster <seuster AT cern.ch>
 	* python/Configuration.py: add logic for new outputfile outputHIST_PHYSVALMONFile
 	* scripts/Reco_trf.py:     add it to ListOfDefaultPositionalKeys

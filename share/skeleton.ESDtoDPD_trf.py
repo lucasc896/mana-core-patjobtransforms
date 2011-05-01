@@ -41,7 +41,7 @@ for key in dir(runArgs):
     if key.startswith(magicKey):
         outputsMgr.addOutput(key,getattr(runArgs,key))
 
-rec.OutputFileNameForRecoStep=*"ESDtoDPD"
+rec.OutputFileNameForRecoStep="ESDtoDPD"
 
 ## Input
 if hasattr(runArgs,"inputFile"): athenaCommonFlags.FilesInput.set_Value_and_Lock( runArgs.inputFile )
