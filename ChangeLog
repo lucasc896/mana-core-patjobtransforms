@@ -1,3 +1,7 @@
+2011-05-03  David Cote  <david.cote@cern.ch>
+	* Added outputNTUP_TRUTHFile to Reco_trf for step a2d
+	* Tagging as PATJobTransforms-00-03-36
+
 2011-05-01  Rolf Seuster <seuster AT cern.ch>
 	* fixing the misspelled rec.OutputFileNameForRecoStep in skeleton.ESDtoDPD_trf.py
 	* Tagging as PATJobTransforms-00-03-35

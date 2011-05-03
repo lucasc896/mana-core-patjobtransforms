@@ -290,7 +290,7 @@ AddToConfigDic('inputRDOFile',AddInputRDOFile)
 def AddInputEVNTFile(trf,inDic):    
     trf.add( InputRDOFileArg(name='inputEVNTFile') )
     return
-AddInputEVNTFile.subSteps=['r2e']
+AddInputEVNTFile.subSteps=['r2e','a2d']
 AddInputEVNTFile.isInput=True
 AddToConfigDic('inputEVNTFile',AddInputEVNTFile)
 
@@ -578,6 +578,13 @@ def AddNTUP_ENHBIAS(trf,inDic):
 AddNTUP_ENHBIAS.subSteps=['e2a','e2d']
 AddNTUP_ENHBIAS.isOutput='root'
 AddToConfigDic('outputNTUP_ENHBIASFile',AddNTUP_ENHBIAS)
+
+def AddNTUP_TRUTH(trf,inDic):
+    trf.add( NtupleFileArg(name='outputNTUP_TRUTHFile',tree_names="truth") )
+    return
+AddNTUP_TRUTH.subSteps=['a2d']
+AddNTUP_TRUTH.isOutput='root'
+AddToConfigDic('outputNTUP_TRUTHFile',AddNTUP_TRUTH)
 
 def AddNTUP_HIGHMULT(trf, inDic):
     trf.add( NtupleFileArg(name='outputNTUP_HIGHMULTFile', tree_names="MinBiasTree") )
