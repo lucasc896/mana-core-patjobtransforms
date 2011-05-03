@@ -48,6 +48,7 @@ for key in dir(runArgs):
 
 ## Input
 if hasattr(runArgs,"inputFile"): athenaCommonFlags.FilesInput.set_Value_and_Lock( runArgs.inputFile )
+if hasattr(runArgs,"inputEVNTFile"): athenaCommonFlags.FilesInput.set_Value_and_Lock( runArgs.inputEVNTFile )
 if hasattr(runArgs,"inputAODFile"):
     globalflags.InputFormat.set_Value_and_Lock('pool')
     rec.readAOD.set_Value_and_Lock( True )
@@ -85,6 +86,12 @@ if hasattr(runArgs,"outputNTUP_SMEWFile"):
     #little hack while autoConfiguration=everything is still not the default...
     if hasattr(runArgs,"inputAODFile") and not hasattr(runArgs,"inputFile"):
         athenaCommonFlags.FilesInput.set_Value_and_Lock( runArgs.inputAODFile )
+
+if hasattr(runArgs,"outputNTUP_TRUTHFile"):
+    from TruthD3PDMaker.TruthD3PDMakerFlags import TruthD3PDFlags
+    TruthD3PDFlags.TruthD3PDOutputFileName = runArgs.outputNTUP_TRUTHFile
+    include("TruthD3PDMaker/TruthD3PDfromEVGEN_preInclude.py")
+
 
 if hasattr(runArgs,"outputDAOD_2LHSG2File"):
     #FIXME: input/outputs should configured via job properties instead of directly using the runArgs object
