@@ -126,7 +126,8 @@ except ImportError:
 # Add D3PD
 try:
     from D3PDMakerConfig.D3PDProdFlags import listAllKnownD3PD
-    AddDPDs (listAllKnownD3PD, ['a2d','e2d'] )
+    for d3pd in listAllKnownD3PD:
+        AddDPDs( [d3pd], d3pd.SubSteps )
 except ImportError:
     print "WARNING D3PDProdFlags not available. Only OK if you're using job transforms without the AtlasAnalysis project."
 

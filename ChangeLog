@@ -1,3 +1,11 @@
+2011-05-09 Attila Krasznahorkay <Attila.Krasznahorkay@cern.ch>
+	* Modified python/Configuration.py to use the 'SubSteps' property
+	  of the D3PD production flags when setting up the possible
+	  D3PD outputs. This exchanges the previous blanket
+	  ['a2d','e2d'] definition, and makes it possible to run large
+	  D3PD production jobs with D3PD produced at different steps.
+	* Tagging as PATJobTransforms-00-03-38
+
 2011-05-04  Sami Kama  <sami.kama@cern.ch>
 	* Changed skeleton.DQHistogramMerge_trf.py to use subprocess module to prevent stray processes
 	* Tagging as PATJobTransforms-00-03-37
