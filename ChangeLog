@@ -1,3 +1,8 @@
+2011-05-12 Walter Lampl <walter.lampl@cern.ch>
+	* Modifications to Configuration.py and skeleton.AODtoTAG_trf.py to run
+	  TAG and FastPhysicsMonitoring in the same athena step. 
+	* Tagging as PATJobTransforms-00-03-40
+
 2011-05-11  Junji Tojo <Junji.Tojo@cern.ch>
 	* Add NTUP_BTAGD3PD in script/Reco_trf.py
 	* Tagging as PATJobTransforms-00-03-39

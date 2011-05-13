@@ -692,7 +692,7 @@ def AddOutputNTUP_FASTMONFile(trf,inDic):
     #trf.add(MonitorHistArg(name='outputNTUP_FASTMONFile') )
     trf.add(NtupleFileArg(name='outputNTUP_FASTMONFile', tree_names="") )
     return
-AddOutputNTUP_FASTMONFile.subSteps=['a2d','e2a']
+AddOutputNTUP_FASTMONFile.subSteps=['a2t','a2d','e2a']
 AddOutputNTUP_FASTMONFile.isOutput='root'
 AddToConfigDic('outputNTUP_FASTMONFile',AddOutputNTUP_FASTMONFile)
 
