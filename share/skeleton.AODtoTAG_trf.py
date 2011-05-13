@@ -24,6 +24,11 @@ if hasattr(runArgs,"inputAODFile"):
 if hasattr(runArgs,"outputTAGFile"):
     athenaCommonFlags.PoolTAGOutput.set_Value_and_Lock( runArgs.outputTAGFile )
 
+
+if hasattr(runArgs,"outputNTUP_FASTMONFile"):
+    rec.doFastPhysMonitoring.set_Value_and_Lock(True)
+    rec.RootFastPhysMonOutput.set_Value_and_Lock(runArgs.outputNTUP_FASTMONFile)
+
 ## Pre-exec
 if hasattr(runArgs,"preExec"):
     recoLog.info("transform pre-exec")
