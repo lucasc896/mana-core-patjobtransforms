@@ -1,3 +1,7 @@
+2011-05-16  Rolf Seuster <seuster AT cern.ch>
+	* run DQHistogramMerge with only single process even with athenaMP
+	* Tagging as PATJobTransforms-00-03-41
+
 2011-05-12 Walter Lampl <walter.lampl@cern.ch>
 	* Modifications to Configuration.py and skeleton.AODtoTAG_trf.py to run
 	  TAG and FastPhysicsMonitoring in the same athena step. 

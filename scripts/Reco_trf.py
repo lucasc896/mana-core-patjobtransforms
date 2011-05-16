@@ -228,6 +228,7 @@ class FlexibleRecoTransform( BaseOfCompositeTrf ):
             DQMerge = DQHistogramMergeJobTransform(dic)
             DQMerge._lastInChain=False
             DQMerge.setParent(self)
+            DQMerge.forceSingleProcess()
             DQMerge.setJobReportOptions('Summary')
             reportDQMerge = DQMerge.exeArgDict( dic )
             report.addReport( reportDQMerge )
