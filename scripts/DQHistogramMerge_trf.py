@@ -16,6 +16,14 @@ class DQHistogramMergeJobTransform( BaseOfBasicTrf ):
         self.logger().info("MatchEvents is not executed for DQHistogramMerge.")
         return
 
+    def forceSingleProcess(self):
+        import os
+        os.putenv('ATHENA_PROC_NUMBER','0')
+        for opt in self._athenaOptions:
+            if opt.split('=')[0]=='--nprocs' :
+                self._athenaOptions.remove(opt)
+                break
+
 #----------------------------------------------------------------------
 if __name__ == '__main__':    
     #Special preparation for command-line
