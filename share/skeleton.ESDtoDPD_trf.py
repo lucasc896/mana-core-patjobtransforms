@@ -128,6 +128,14 @@ if hasattr(runArgs,"outputNTUP_ENHBIASFile"):
         athenaCommonFlags.FilesInput.set_Value_and_Lock( runArgs.inputESDFile )
     include("TrigCostAthena/ESDtoNTUP_ENHBIAS.py")
 
+
+if hasattr(runArgs,"outputNTUP_LARNOISEFile"):
+    from LArMonitoring.LArMonitoringFlags import larNoiseBurstFlags
+    larNoiseBurstFlags.outputFile = runArgs.outputNTUP_LARNOISEFile
+    #little hack while autoConfiguration=everything is still not the default...
+    if hasattr(runArgs,"inputESDFile") and not hasattr(runArgs,"inputFile"):
+        athenaCommonFlags.FilesInput.set_Value_and_Lock( runArgs.inputESDFile )
+
 #Import D3PD flags before preExec, for convenience
 from D3PDMakerConfig.D3PDProdFlags  import oldProdFlags
 from D3PDMakerConfig.D3PDMakerFlags import D3PDMakerFlags

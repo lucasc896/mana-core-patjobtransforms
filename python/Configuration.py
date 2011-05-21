@@ -697,6 +697,13 @@ AddOutputNTUP_FASTMONFile.isOutput='root'
 AddToConfigDic('outputNTUP_FASTMONFile',AddOutputNTUP_FASTMONFile)
 
 
+def AddOutputNTUP_LARNOISE(trf,inDic):
+    trf.add( NtupleFileArg(name='outputNTUP_LARNOISEFile', tree_names="CollectionTree") )
+    return
+AddOutputNTUP_LARNOISE.subSteps=['e2d']
+AddOutputNTUP_LARNOISE.isOutput='root'
+AddToConfigDic('outputNTUP_LARNOISEFile',AddOutputNTUP_LARNOISE)
+
 ## def Add(trf,inDic):
 ##     return
 ## AddToConfigDic('',)
