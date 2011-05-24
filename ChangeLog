@@ -1,3 +1,7 @@
+2011-05-24  Maarten Boonekamp
+	* add NTUP_SMWZSOFT to Reco_trf
+	* Tagging as PATJobTransforms-00-03-43
+
 2011-05-21  Maarten Boonekamp
 	* add NTUP_LARNOISE
 	* Tagging as PATJobTransforms-00-03-42
