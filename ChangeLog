@@ -1,3 +1,7 @@
+2011-05-31 Walter Lampl <walter.lampl@ cern.ch>
+	* Add outputNTUP_FASTMONFile to ListOfDefaultPositionalKeys of Merging_trf.py
+	* Tagging as PATJobTransforms-00-03-45
+
 2011-05-11  Junji Tojo <Junji.Tojo@cern.ch>
 	* Fixed a typo for NTUP_BTAGD3PD in script/Reco_trf.py
 	* Tagging as PATJobTransforms-00-03-44
