@@ -1,3 +1,7 @@
+2011-06-08 Susumu Oda <Susumu.Oda@cern.ch>
+	* Changed default ByteStream file to data11_7TeV (python/DefaultInputs.py).  
+	* Tagging as PATJobTransforms-00-03-46
+
 2011-05-31 Walter Lampl <walter.lampl@ cern.ch>
 	* Add outputNTUP_FASTMONFile to ListOfDefaultPositionalKeys of Merging_trf.py
 	* Tagging as PATJobTransforms-00-03-45

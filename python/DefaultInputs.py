@@ -6,7 +6,7 @@
 
 #Default values of input/output types, for standard tests
 DefaultInputs={
-    'inputBSFile' : '/afs/cern.ch/atlas/offline/test/data10_7TeV.00162882.physics_Egamma.merge.RAW._lb0201.10evts._0001.data',
+    'inputBSFile' : '/afs/cern.ch/atlas/offline/test/data11_7TeV.00182796.physics_JetTauEtmiss.merge.RAW._lb0300._SFO-10._0001.1.10evts.data',
     'inputRDOFile': '/afs/cern.ch/atlas/offline/ReleaseData/v3/testfile/valid1.005200.T1_McAtNlo_Jimmy.digit.RDO.e322_s488_d151_tid039414_RDO.039414._00001_extract_10evt.pool.root',
     'inputESDFile': '/afs/cern.ch/atlas/offline/test/data10_7TeV.00162882.physics_Egamma.merge.ESD._lb201.10evts.rel16.pool.root', 
     'inputAODFile': '/afs/cern.ch/atlas/offline/test/data10_7TeV.00162882.physics_Egamma.merge.AOD._lb201.10evts.rel16.pool.root', 
