@@ -8,7 +8,7 @@ Once the configuration is decided, the whole job stops if any intermediate job f
 from PyJobTransformsCore.trf import Author,JobReport
 from RecJobTransforms.RAWtoESD_trf import RAWtoESDJobTransform
 from RecJobTransforms.RDOtoBS_trf import RDOtoBSJobTransform
-#from RecJobTransforms.ESDtoESD_trf import ESDtoESDJobTransform
+from RecJobTransforms.ESDtoESD_trf import ESDtoESDJobTransform
 from PATJobTransforms.MergePool_trf import MergePoolJobTransform
 from RecJobTransforms.ESDtoAOD_trf import ESDtoAODJobTransform
 from PATJobTransforms.ESDtoDPD_trf import ESDtoDPDJobTransform
@@ -131,12 +131,19 @@ class FlexibleRecoTransform( BaseOfCompositeTrf ):
             print "Skipping RAW->ESD step..."
 
         ########################
-        # ESD->ESD, moved to ESD->MergedESD
+        # ESD->ESD, moved to ESD->MergedESD, if user does _not_ specify doESD in preExec
         if(allOK and self.SubStepIsExecuted('e2e')):
+            doMerge=True
             dic=self.dicESDToESD.copy()
             print "ESDtoESD dic:",dic
-            #ESD = ESDtoESDJobTransform(dic)
-            ESD = MergePoolJobTransform(dic)
+            if 'preExec' in dic:
+                if dic['preExec'].find("rec.doESD.set_Value_and_Lock(True)")>0 or dic['preExec'].find("rec.doESD=True")>0:
+                    print "user wants re-reconstruct on ESD !!!"
+                    doMerge=False
+            if doMerge:
+                ESD = MergePoolJobTransform(dic)
+            else:
+                ESD = ESDtoESDJobTransform(dic)
             ESD._lastInChain=False
             ESD.setParent(self)
             ESD.setJobReportOptions('Summary')

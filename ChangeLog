@@ -1,3 +1,7 @@
+2011-06-09 Rolf Seuster <seuster AT  cern.ch>
+	* re-enable ESDtoESD re-reconstruction, if user specifies doESD in preExec
+	* Tagging as PATJobTransforms-00-03-49
+
 2011-06-08  Junji Tojo <Junji.Tojo@cern.ch>
         * Add inputTAGFile in script/Reco_trf.py
         * Tagging as PATJobTransforms-00-03-48
