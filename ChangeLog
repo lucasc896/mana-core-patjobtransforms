@@ -1,4 +1,8 @@
 2011-06-14 Susumu Oda <Susumu.Oda@cern.ch>
+	* Changed default RDO to mc10_7TeV (MC10b) (python/DefaultInputs.py).
+	* Tagging as PATJobTransforms-00-03-51
+
+2011-06-14 Susumu Oda <Susumu.Oda@cern.ch>
 	* Changed default ESD and AOD to data11_7TeV (python/DefaultInputs.py).
 	* Changed default cosmic ByteStream file to data11_cos (python/DefaultInputs.py).
 	* Tagging as PATJobTransforms-00-03-50
