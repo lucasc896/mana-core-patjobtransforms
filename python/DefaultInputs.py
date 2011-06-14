@@ -7,7 +7,7 @@
 #Default values of input/output types, for standard tests
 DefaultInputs={
     'inputBSFile' : '/afs/cern.ch/atlas/offline/test/data11_7TeV.00182796.physics_JetTauEtmiss.merge.RAW._lb0300._SFO-10._0001.1.10evts.data',
-    'inputRDOFile': '/afs/cern.ch/user/g/gencomm/w0/oda/q121/mc10_7TeV.105200.T1_McAtNlo_Jimmy.digit.RDO.e598_s933_s946_d529_tid338572_00_RDO.338572._000001_extract_10evt.pool.root',
+    'inputRDOFile': '/afs/cern.ch/atlas/offline/test/mc10_7TeV.105200.T1_McAtNlo_Jimmy.digit.RDO.e598_s933_s946_d529_tid338572_00_RDO.338572._000001_extract_10evt.pool.root',
     'inputESDFile': '/afs/cern.ch/atlas/offline/test/data11_7TeV.00182796.physics_JetTauEtmiss.merge.ESD._lb0300._SFO-10._0001.1.10evts.16.6.6.4.pool.root', 
     'inputAODFile': '/afs/cern.ch/atlas/offline/test/data11_7TeV.00182796.physics_JetTauEtmiss.merge.AOD._lb0300._SFO-10._0001.1.10evts.16.6.6.4.pool.root', 
     'cosmicsBS'   : '/afs/cern.ch/atlas/offline/test/data11_cos.00182609.physics_CosmicCalo.merge.RAW._lb0100._SFO-ALL._0001.1.SFO-ALL._0001.1.10evts.data',
