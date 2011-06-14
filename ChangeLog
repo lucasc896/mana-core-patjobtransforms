@@ -1,3 +1,8 @@
+2011-06-14 Susumu Oda <Susumu.Oda@cern.ch>
+	* Changed default ESD and AOD to data11_7TeV (python/DefaultInputs.py).
+	* Changed default cosmic ByteStream file to data11_cos (python/DefaultInputs.py).
+	* Tagging as PATJobTransforms-00-03-50
+
 2011-06-09 Rolf Seuster <seuster AT  cern.ch>
 	* re-enable ESDtoESD re-reconstruction, if user specifies doESD in preExec
 	* Tagging as PATJobTransforms-00-03-49

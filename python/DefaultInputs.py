@@ -8,9 +8,9 @@
 DefaultInputs={
     'inputBSFile' : '/afs/cern.ch/atlas/offline/test/data11_7TeV.00182796.physics_JetTauEtmiss.merge.RAW._lb0300._SFO-10._0001.1.10evts.data',
     'inputRDOFile': '/afs/cern.ch/atlas/offline/ReleaseData/v3/testfile/valid1.005200.T1_McAtNlo_Jimmy.digit.RDO.e322_s488_d151_tid039414_RDO.039414._00001_extract_10evt.pool.root',
-    'inputESDFile': '/afs/cern.ch/atlas/offline/test/data10_7TeV.00162882.physics_Egamma.merge.ESD._lb201.10evts.rel16.pool.root', 
-    'inputAODFile': '/afs/cern.ch/atlas/offline/test/data10_7TeV.00162882.physics_Egamma.merge.AOD._lb201.10evts.rel16.pool.root', 
-    'cosmicsBS'   : '/afs/cern.ch/atlas/offline/test/data09_cos.00135664.physics_IDCosmic.daq.RAW._lb0000._SFO-2._0001_10evts.data',
+    'inputESDFile': '/afs/cern.ch/atlas/offline/test/data11_7TeV.00182796.physics_JetTauEtmiss.merge.ESD._lb0300._SFO-10._0001.1.10evts.16.6.6.4.pool.root', 
+    'inputAODFile': '/afs/cern.ch/atlas/offline/test/data11_7TeV.00182796.physics_JetTauEtmiss.merge.AOD._lb0300._SFO-10._0001.1.10evts.16.6.6.4.pool.root', 
+    'cosmicsBS'   : '/afs/cern.ch/atlas/offline/test/data11_cos.00182609.physics_CosmicCalo.merge.RAW._lb0100._SFO-ALL._0001.1.SFO-ALL._0001.1.10evts.data',
     
     'inputEvgenFile': '/afs/cern.ch/atlas/offline/ProdData/15.6.11.3/mu_E50_eta0-25-7000.evgen.pool.root',
     'inputHitsFile' : 'root://castoratlas//castor/cern.ch/atlas/atlascerngroupdisk/proj-sit/digitization/RTT/mc10/mc10_7TeV.105200.T1_McAtNlo_Jimmy.simul.HITS.e598_s933_tid168076_00/HITS.168076._008421.pool.root.1',
