@@ -1,3 +1,7 @@
+2011-07-13 Attila Krasznahorkay <Attila.Krasznahorkay@cern.ch>
+	* Added outputNTUP_L1TGCFile to script/Reco_trf.py
+	* Tagging as PATJobTransforms-00-03-53
+
 2011-06-15 Junji Tojo <Junji.Tojo@cern.ch>
 	* Add outputNTUP_SMQCDFile in script/Reco_trf.py
 	* Tagging as PATJobTransforms-00-03-52
