@@ -165,7 +165,8 @@ AddToConfigDic('useSQLite',AddSQLite)
 
 ## New optional config
 def AddBeamType(trf,inDic):
-    trf.add( BasicStringArg(name='beamType') )
+    from AthenaCommon.BeamFlags import beamType
+    trf.add( BasicStringArg(name='beamType',help='Beam Type, chose from %s' % beamType.allowedValues) )
     return
 AddToConfigDic('beamType',AddBeamType)
 
