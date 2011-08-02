@@ -12,7 +12,7 @@ from PATJobTransforms.AODtoDPD_trf import AODtoDPDJobTransform
 from PATJobTransforms.MergePool_trf import MergePoolJobTransform
 from PATJobTransforms.MergeHIT_trf import MergeHITSJobTransform
 
-ListOfDefaultPositionalKeys=['maxEvents','skipEvents','RunNumber','inputAODFile','inputESDFile','outputAODFile','outputESDFile','outputTAGFile','DBRelease','geometryVersion','conditionsTag','autoConfiguration','preInclude','postInclude','preExec','postExec','--ignoreerrors','--athenaopts','--omitvalidation','extraParameter','inputHitsFile','outputHitsFile','inputLogsFile','outputNTUP_SUSYFile','outputNTUP_TOPFile','outputNTUP_PHOTONFile', 'outputNTUP_FASTMONFile']
+ListOfDefaultPositionalKeys=['maxEvents','skipEvents','RunNumber','inputAODFile','inputESDFile','outputAODFile','outputESDFile','outputTAGFile','DBRelease','geometryVersion','conditionsTag','autoConfiguration','preInclude','postInclude','preExec','postExec','--ignoreerrors','--athenaopts','--omitvalidation','extraParameter','inputHitsFile','outputHitsFile','inputLogsFile','outputNTUP_SUSYFile','outputNTUP_TOPFile','outputNTUP_PHOTONFile', 'outputNTUP_FASTMONFile','outputNTUP_HSG2File']
 
 
 class MergingTransform( BaseOfCompositeTrf ):
