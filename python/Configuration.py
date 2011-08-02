@@ -14,6 +14,7 @@ ConfigDic={}
 
 #Use this function to add new keys in ConfigDic
 def AddToConfigDic(key,val):
+    #print "adding ",key,val
     if ConfigDic.has_key(key):
         raise RuntimeError("Key '%s' already defined in ConfigDic and cannot be overwritten."%key)
     if hasattr(val,"subSteps"):
@@ -490,27 +491,30 @@ AddNTUP_SMEW.subSteps=['a2d']
 AddNTUP_SMEW.isOutput='root'
 AddToConfigDic('outputNTUP_SMEWFile',AddNTUP_SMEW)
 
-def AddNTUP_1LHSG2(trf,inDic):
-    trf.add( NtupleFileArg(name='outputNTUP_1LHSG2File',tree_names="physics") )
-    return
-AddNTUP_1LHSG2.subSteps=['a2d']
-AddNTUP_1LHSG2.isOutput='root'
-AddToConfigDic('outputNTUP_1LHSG2File',AddNTUP_1LHSG2)
+# this is obsolete, commeting it out for the time being
+#def AddNTUP_1LHSG2(trf,inDic):
+#    trf.add( NtupleFileArg(name='outputNTUP_1LHSG2File',tree_names="physics") )
+#    return
+#AddNTUP_1LHSG2.subSteps=['a2d']
+#AddNTUP_1LHSG2.isOutput='root'
+#AddToConfigDic('outputNTUP_1LHSG2File',AddNTUP_1LHSG2)
 
-def AddNTUP_2LHSG2(trf,inDic):
-    trf.add( NtupleFileArg(name='outputNTUP_2LHSG2File',tree_names="physics") )
-    return
-AddNTUP_2LHSG2.subSteps=['a2d']
-AddNTUP_2LHSG2.isOutput='root'
-AddToConfigDic('outputNTUP_2LHSG2File',AddNTUP_2LHSG2)
+# this is obsolete, commeting it out for the time being
+#def AddNTUP_2LHSG2(trf,inDic):
+#    trf.add( NtupleFileArg(name='outputNTUP_2LHSG2File',tree_names="physics") )
+#    return
+#AddNTUP_2LHSG2.subSteps=['a2d']
+#AddNTUP_2LHSG2.isOutput='root'
+#AddToConfigDic('outputNTUP_2LHSG2File',AddNTUP_2LHSG2)
 
-def AddNTUP_HSG2(trf,inDic):
-    trf.add( NtupleFileArg(name='outputNTUP_HSG2File',tree_names="physics") )
-    return
-AddNTUP_HSG2.subSteps=['a2d']
-AddNTUP_HSG2.isOutput='root'
-AddToConfigDic('outputNTUP_HSG2File',AddNTUP_HSG2)
-
+# this is obsolete, commeting it out for the time being
+#def AddNTUP_HSG2(trf,inDic):
+#    trf.add( NtupleFileArg(name='outputNTUP_HSG2File',tree_names="physics") )
+#    return
+#AddNTUP_HSG2.subSteps=['a2d']
+#AddNTUP_HSG2.isOutput='root'
+#AddToConfigDic('outputNTUP_HSG2File',AddNTUP_HSG2)
+#
 def AddNTUP_WZ(trf,inDic):
     trf.add( NtupleFileArg(name='outputNTUP_WZFile',tree_names="physics") )
     return
@@ -616,12 +620,20 @@ AddDESDM_BEAMSPOTFile.subSteps=['e2a']
 AddDESDM_BEAMSPOTFile.isOutput='pool'
 AddToConfigDic('outputDESDM_BEAMSPOTFile',AddDESDM_BEAMSPOTFile)
 
-def AddDAOD_2LHSG2File(trf,inDic):
-    trf.add( OutputDPDFileArg(name='outputDAOD_2LHSG2File') )
-    return
-AddDAOD_2LHSG2File.subSteps=['a2d','e2d']
-AddDAOD_2LHSG2File.isOutput='pool'
-AddToConfigDic('outputDAOD_2LHSG2File',AddDAOD_2LHSG2File)
+#def AddDAOD_2LHSG2File(trf,inDic):
+#    trf.add( OutputDPDFileArg(name='outputDAOD_2LHSG2File') )
+#    return
+#AddDAOD_2LHSG2File.subSteps=['a2d','e2d']
+#AddDAOD_2LHSG2File.isOutput='pool'
+#AddToConfigDic('outputDAOD_2LHSG2File',AddDAOD_2LHSG2File)
+#
+#def AddDAOD_4LHSG2File(trf,inDic):
+#    trf.add( OutputDPDFileArg(name='outputDAOD_4LHSG2File') )
+#    return
+#AddDAOD_4LHSG2File.subSteps=['a2d','e2d']
+#AddDAOD_4LHSG2File.isOutput='pool'
+#AddToConfigDic('outputDAOD_4LHSG2File',AddDAOD_4LHSG2File)
+#
 
 def AddDAOD_HSG2File(trf,inDic):
     trf.add( OutputDPDFileArg(name='outputDAOD_HSG2File') )
