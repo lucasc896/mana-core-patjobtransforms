@@ -4,7 +4,7 @@
 # Usage:
 #   -transform input arguments into a dictionary
 
-import pickle,sys
+import pickle,sys,os
 
 # This function looks for known exceptions occuring when interpreting sysArgs
 def SysArgsExceptionCatcher(sysArgs):
@@ -93,7 +93,7 @@ def DicInputs(aDic):
     return ""
 
 #-------------------------------
-def GetAMIClient():
+def GetAMIClient(useReplica=False):
     from pyAMI.pyAMIErrors import AMI_Error
     try:
         from pyAMI.pyAMI import AMI
@@ -109,30 +109,14 @@ def GetAMIClient():
         from pyAMI.pyAMI import AMI
         print "import pyAMI was succesful"
 
-    amiclient=AMI(False)
-    return amiclient
+    if useReplica:
+        print "INFO: Using CERN AMI replica"
+        from pyAMI.pyAMIEndPoint import pyAMIEndPoint
+        pyAMIEndPoint.setType("replica")
+    else:
+        print "INFO: Using primary AMI"
 
-#-------------------------------
-def GetAMIClientReplica():
-    from pyAMI.pyAMIErrors import AMI_Error
-    try:
-        from pyAMI.pyAMI import AMI
-    except AMI_Error:
-        print "WARNING unable to import AMI, maybe because of temporary AMI unavailability. Trying again..."
-        from pyAMI.pyAMI import AMI        
-    except ImportError:
-        print "WARNING unable to import AMI from pyAMI with standard $PYTHONPATH."
-        print "Will manually add ZSI and 4suite, then try again..."
-        import sys
-        sys.path.insert(0,'/afs/cern.ch/atlas/offline/external/ZSI/2.1-a1/lib/python')
-        sys.path.insert(0,'/afs/cern.ch/sw/lcg/external/4suite/1.0.2_python2.5/slc4_ia32_gcc34/lib/python2.5/site-packages')
-        from pyAMI.pyAMI import AMI
-        print "import pyAMI was succesful"
-
-    print "INFO Get AMI info from CERN replica"
-    from pyAMI.pyAMIEndPoint import pyAMIEndPoint
-    pyAMIEndPoint.setType("replica")
-    amiclient=AMI(False)
+    amiclient=AMI()
     return amiclient
 
 #------------------------------------
@@ -176,7 +160,7 @@ def BuildDicFromCommandLineIgnoreAMI(sysArgv):
     return inDic
 
 #-----------------------------------
-def GetInfoFromAMIXML(amitag):
+def GetInfoFromAMIXML(amitag, suppressPass = True):
     #get dics from AMI
         #import pyAMI and luxml
     try:
@@ -193,6 +177,11 @@ def GetInfoFromAMIXML(amitag):
     #get dic from AMI
     amiclient=GetAMIClient()
     l=['ListConfigurationTag','-configTag='+amitag]
+    if 'AMIUser' in os.environ and 'AMIPass' in os.environ:
+        l.append('-AMIUser=%s' % os.environ['AMIUser'])
+        l.append('-AMIPass=%s' % os.environ['AMIPass'])
+        if suppressPass:
+            del(os.environ['AMIPass'])
     result=amiclient.execute(l)
     dicOfDico=result.getDict()
     xmlstr = str(dicOfDico[u'rowset_'+amitag][u''+amitag][u'moreInfo'])
@@ -217,20 +206,27 @@ def GetInfoFromAMIXML(amitag):
 
 
 #-----------------------------------
-def GetInfoFromAMIPython(amitag):
+def GetInfoFromAMIPython(amitag, suppressPass = True):
     from pyAMI.pyAMIErrors import AMI_Error
     #get dics from AMI
     amiclient=GetAMIClient()
     l=['ListConfigurationTag','configTag='+amitag]
+    if 'AMIUser' in os.environ and 'AMIPass' in os.environ:
+        l.append('-AMIUser=%s' % os.environ['AMIUser'])
+        l.append('-AMIPass=%s' % os.environ['AMIPass'])
+        if suppressPass:
+            del(os.environ['AMIPass'])
 
     try:
         result=amiclient.execute(l)
     except Exception:
         print "WARNING problem in amiclient.execute, try using CERN replica instead"
-        amiclient=GetAMIClientReplica()
-        result=amiclient.execute(l)
-    except Exception:
-        print "FATAL could not execute AMI-command, gonna crash now..."
+        amiclient=GetAMIClient(useReplica=True)
+        try:
+            result=amiclient.execute(l)
+        except Exception:
+            print "FATAL could not execute AMI-command, gonna crash now..."
+            raise
         
     dicOfDico=result.getDict()
     #configuration is a python dic in string format, get back to real python using exec 

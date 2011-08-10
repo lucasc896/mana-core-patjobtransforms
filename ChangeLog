@@ -1,3 +1,9 @@
+2011-08-10 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * Ensure that AMI tag resolution will work with a voms proxy in ArgDictTools
+    * Consolidate AMI methods 
+    * Handle AMI query exceptions properly
+    * Tagging as PATJobTransforms-00-03-55
+
 2011-08-02 Andrea Di Simone
 	* adding NTUP_HSG2 to ListOfDefaultPositionalKeys
 	* tagging PATJobTransforms-00-03-54
