@@ -1,3 +1,7 @@
+2011-06-08  Junji Tojo <Junji.Tojo@cern.ch>
+        * Add outputNTUP_HSG5WHFile, outputNTUP_HSG5ZHLLFile and outputNTUP_HSG5ZHMETFile in script/Reco_trf.py
+        * Tagging as PATJobTransforms-00-03-56
+
 2011-08-10 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Ensure that AMI tag resolution will work with a voms proxy in ArgDictTools
     * Consolidate AMI methods 
