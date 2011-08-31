@@ -1,3 +1,7 @@
+2011-08-31  Junji Tojo <Junji.Tojo@cern.ch>
+        * Add outputNTUP_HSG5GAMZFile and outputNTUP_HSG5ZBBFile in script/Reco_trf.py
+        * Tagging as PATJobTransforms-00-03-58
+
 2011-08-25  Junji Tojo <Junji.Tojo@cern.ch>
         * Add outputD2AODM_TOPJETFile, outputNTUP_TOPELFile, outputNTUP_TOPMUFile, outputNTUP_TOPJETFile and outputNTUP_TOPEJETFile in script/Reco_trf.py
         * Add outputNTUP_TOPELFile, outputNTUP_TOPMUFile, outputNTUP_TOPJETFile and outputNTUP_TOPEJETFile in script/Merging_trf.py
