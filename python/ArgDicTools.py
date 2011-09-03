@@ -404,6 +404,7 @@ def UpdateDicWithAMI(userDic,amiTag,info):
                 if DefaultInputs.has_key(inKey):
                     inputFileValue=DefaultInputs[inKey]
                     if amiTag=="q120": inputFileValue=DefaultInputs["cosmicsBS"]                
+                    else if amiTag=="q126": inputFileValue=DefaultInputs["topBS"]                
                     outDic[inKey]=inputFileValue
                     print "INFO Using default input value: %s=%s"%(inKey,outDic[inKey])
                 else:
