@@ -1,3 +1,8 @@
+2011-09-15 Attila Krasznahorkay <Attila.Krasznahorkay@cern.ch>
+	* Added outputNTUP_TAUSMALLFile and outputNTUP_TAUMEDIUMFile
+	  to scripts/Reco_trf.py
+	* Tagging as PATJobTransforms-00-03-62
+
 2011-09-13 Attila Krasznahorkay <Attila.Krasznahorkay@cern.ch>
 	* Added outputNTUP_SMTRILEPFile to scripts/Reco_trf.py
 	* Tagging as PATJobTransforms-00-03-61
