@@ -28,6 +28,7 @@ if hasattr(runArgs,"inputESDFile"):
 ## Output
 if hasattr(runArgs,"outputAODFile"): athenaCommonFlags.PoolAODOutput.set_Value_and_Lock( runArgs.outputAODFile )
 if hasattr(runArgs,"outputESDFile"): athenaCommonFlags.PoolESDOutput.set_Value_and_Lock( runArgs.outputESDFile )
+if hasattr(runArgs,"tmpESD"): athenaCommonFlags.PoolESDOutput.set_Value_and_Lock( runArgs.tmpESD )
 
 ## Pre-exec
 if hasattr(runArgs,"preExec"):

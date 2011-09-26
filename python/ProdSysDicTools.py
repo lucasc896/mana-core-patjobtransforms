@@ -85,7 +85,8 @@ def AddDigijobOptions(aDic):
 #-------------------------------
 def GetPANDAClient(amitag):
     import cx_Oracle
-    cur = cx_Oracle.connect('atlas_grisli_r/panda_c10@atlas_panda').cursor()
+    #cur = cx_Oracle.connect('atlas_grisli_r/panda_c10@atlas_panda').cursor()
+    cur = cx_Oracle.connect('atlas_grisli_r/panda_c10@adcr_panda').cursor()
     return cur
 
 #-------------------------------

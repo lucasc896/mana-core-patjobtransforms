@@ -286,11 +286,12 @@ class FlexibleRecoTransform( BaseOfCompositeTrf ):
                     self.dicESDToDPD['inputESDFile']=outESD
                 else:
                     raise RuntimeError("Illegal configuration. Confusion about ESD->DPD input.")
-                    
+
         #ESD->ESD->AOD/DPD
         outESD=None
-        if self.dicESDToESD.has_key('outputESDFile'): outESD=self.dicESDToESD['outputESDFile']
-        elif self.dicESDToESD.has_key('tmpESD'): outESD=self.dicESDToESD['tmpESD']
+        if self.hasOutput(self.dicESDToESD):
+            if self.dicESDToESD.has_key('outputESDFile'): outESD=self.dicESDToESD['outputESDFile']
+            if self.dicESDToESD.has_key('tmpESD'): outESD=self.dicESDToESD['tmpESD']
         if self.runESDtoESD() and outESD!=None:        
             if self.hasOutput(self.dicESDToAOD):
                 if self.hasInput(self.dicESDToAOD):
@@ -346,7 +347,7 @@ class FlexibleRecoTransform( BaseOfCompositeTrf ):
         return (self.dicRDOToBS.has_key('inputRDOFile') and self.dicRDOToBS.has_key('outputBSFile'))
     
     def runESDtoESD(self):
-        return (self.hasInput(self.dicESDToESD) and self.dicESDToESD.has_key('outputESDFile'))
+        return (self.hasInput(self.dicESDToESD) and self.hasOutput(self.dicESDToESD))
 
     def runESDtoAOD(self):
         return (self.hasInput(self.dicESDToAOD) and self.hasOutput(self.dicESDToAOD))
