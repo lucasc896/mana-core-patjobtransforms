@@ -358,7 +358,7 @@ class FlexibleRecoTransform( BaseOfCompositeTrf ):
         return (self.dicRDOToBS.has_key('inputRDOFile') and self.dicRDOToBS.has_key('outputBSFile'))
     
     def runESDtoESD(self):
-        return (self.hasInput(self.dicESDToESD) and self.dicESDToESD.has_key('outputESDFile'))
+        return (self.hasInput(self.dicESDToESD) and self.hasOutput(self.dicESDToESD))
 
     def runESDtoAOD(self):
         return (self.hasInput(self.dicESDToAOD) and self.hasOutput(self.dicESDToAOD))
