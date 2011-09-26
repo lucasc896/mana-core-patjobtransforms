@@ -1,0 +1,1339 @@
+2010-11-18  Karsten Koeneke  <kkoeneke@lxplus307.cern.ch>
+
+	* scripts/Reco_trf.py (ListOfDefaultPositionalKeys): Adding DESDM_HIRARE.
+	* tag PATJobTransforms-00-02-91
+
+2010-11-12 Walter Lampl <walter.lampl@ cern.ch>
+        * Configuration.py: Allow tag to be made in ESDtoAOD or dedicated AODtoTAG step
+	* tag PATJobTransforms-00-02-90
+	
+2010-11-12  David Cote  <david.cote@cern.ch>
+	* Removed need for obsolete function AddDPD() in AddDPDXXX of Configuration.py
+	* Added new machinery in BaseOfCompositeTrf.CommonSpecialFinalConfig() to avoid duplicated outputs
+	* Use of new machinery in Reco_trf and Merging_trf
+	* tag PATJobTransforms-00-02-89
+
+2010-11-07  David Cote  <david.cote@cern.ch>
+	* Added NTUP_MCP, usable by ProdSys
+	* tag PATJobTransforms-00-02-88
+
+2010-10-29  David Cote <david.cote@cern.ch>
+	* fixed requirements to execute mk-trf-argpickle at the very end of the build procedure
+	* tag PATJobTransforms-00-02-87
+
+2010-10-29  David Cote <david.cote@cern.ch>
+	* Added outputNTUP_SGTOPFile in Reco_trf list for ProdSys
+	* tag PATJobTransforms-00-02-86
+
+2010-10-28  David Cote <david.cote@cern.ch>
+	* finished coherent output bs file name from previous tag
+	* tag PATJobTransforms-00-02-85
+
+2010-10-27 Rolf Seuster <seuster AT cern.ch>
+	* removed hack for bytestream file naming
+	* tag PATJobTransforms-00-02-84
+
+2010-10-12  Karsten Koeneke  <kkoeneke@lxplus302.cern.ch>
+
+	* scripts/Reco_trf.py (ListOfDefaultPositionalKeys): Adding D2ESD_WENU and D2ESD_WMUNU.
+	* tag PATJobTransforms-00-02-83
+
+2010-10-12  David Cote  <david.cote@cern.ch>
+	* Added D2AODM_TOPJET to hard-coded ProdSys list
+	* tag PATJobTransforms-00-02-82
+
+2010-10-06  David Cote  <david.cote@cern.ch>
+	* Added new function getPotentialArgs() to BaseOfCompositeTrf, for automated ProdSys list.
+	* Added new script share/mk-trf-argpickle to generate JobTransformsSignatures.pickle file
+	* tag PATJobTransforms-00-02-81 (requires PyJobTransformsCore-00-08-66)
+
+2010-10-06  Karsten Koeneke  <kkoeneke@lxplus302.cern.ch>
+	* scripts/Reco_trf.py (ListOfDefaultPositionalKeys): add outputDESD_HIRAREFile
+	* tag PATJobTransforms-00-02-80
+
+2010-10-05  David Cote  <david.cote@cern.ch>
+	* Added NTUP_TOP to ProdSys list of Merging_trf
+	* tag PATJobTransforms-00-02-79
+
+2010-10-04  David Cote  <david.cote@cern.ch>
+	* Removed fileArg default argument from AddDPDs function in Configuration.py
+	  Then pool vs bs vs ntup configuration is done automatically
+	* Added NTUP_TOPVAL in the Reco_trf list for ProdSys
+	* tag PATJobTransforms-00-02-78
+
+2010-09-28 Andrzej Olszewski
+	* Add a new HI ntuple type outputNTUP_HIFile 
+	* tag PATJobTransforms-00-02-77
+
+2010-09-26 Walter Lampl
+	* Add forgotten fix to ArgDictTools
+	* tag PATJobTransforms-00-02-76
+
+2010-09-22  Walter Lampl
+	* Change CmdToPickledDict.py: keepFullCommandUntouched is now the default. Can be easily used
+	  to create pickle files for AMI updates. 
+	* tag PATJobTransforms-00-02-75
+
+	
+2010-09-22  David Cote  <david.cote@cern.ch>
+	* Added returnList option to BuildDicFromCommandLine, and updated GetCommand.py script to use it
+	  hence removing the split between GetCommand.py AMI=blah and Reco_trf.py AMI=blah, and the duplicated call of PopSysnomyms_DRAW()
+	* not tagged yet
+
+2010-09-20  David Cote  <david.cote@cern.ch>
+	* Added DAOD_RNDM output in Reco_trf list for ProdSys
+	* tag PATJobTransforms-00-02-74
+
+2010-09-17 Walter Lampl <walter.lampl@cern.ch>
+	* ArgDicTools:
+	  Execute DRAW synonym popping even if no info comes from AMI 
+	  (calling the method twice)
+	* DefaultInputs.py:
+	  Change default inputs for real data reco to /afs/cern.ch/atlas/offline/test
+	* tag PATJobTransforms-00-02-73
+	
+2010-09-16  John Chapman  <John.Chapman@cern.ch>
+	* python/ArgDicTools.py - use GetInfoFromPANDA for amiTags begininning with d and s also
+	* python/ProdSysDicTools.py - new code for tidying up AtlasG4_trf.py inputs
+	* tag PATJobTransforms-00-02-72
+
+2010-09-16 David Cote <david.cote@cern.ch>
+	* Added dummy argument for ProdSys convenience
+	* tag PATJobTransforms-00-02-71
+
+2010-09-16  John Chapman  <John.Chapman@cern.ch>
+
+	* add python/DefaultInputs.py - store default input files dictionary here now rather than in Reco_trf.py
+	* scripts/Reco_trf.py - removed DefaultInputs dictionary - now in python/DefaultInputs.py
+	* python/ArgDicTools.py - import DefaultInputs from DefaultInputs.py now
+	* python/ProdSysDicTools.py - new code for tidying up Digi_trf.py inputs + import DefaultInputs from DefaultInputs.py
+	* scripts/GetCommand.py - rename old csc*trf to new equivalents
+	* tag PATJobTransforms-00-02-70
+
+2010-09-15 Walter Lampl <walter.lampl@cern.ch>
+	* ArgDicTools: 
+	   - Resolve DRAW sysnonyms *after* adding adding outputs given on the command line
+	   - keepFullCommandUntouched applies now only to the DRAW synonym popping. The synonyms for 
+	     obsolete aruments are popped in any case. 
+	   - New parameter applyIfMatchPattern (default: False) to steer the output vs input steram pattern matching.
+	* tag PATJobTransforms-00-02-69
+
+2010-09-15 Walter Lampl <walter.lampl@cern.ch>
+	* ArgDicTools: Remove path before applying ifmatch
+	* tag PATJobTransforms-00-02-68
+
+
+2010-09-09 David Cote <david.cote@cern.ch>
+	* Added hooks for D2PDMaker in skeleton.ESDtoDPD
+	* Added D2ESDM_TRKJET in Reco_trf list for ProdSys
+	* Updated outputNTUP_SMEWFile job options for output file name
+	* tag PATJobTransforms-00-02-67
+
+2010-09-07 Maaike Limper
+	* Update of ArgDicTools to deal with DRAW_XXX reconstruction
+	* tag PATJobTransforms-00-02-66
+	
+2010-09-02 David Cote <david.cote@cern.ch>
+	* Added dummy outputs for DRAW reconstructed DESD_XXX and DAOD_XXX.
+	* Added NTUP_TOP in Reco_trf ListOfDefaultPositionalKeys
+	* tag PATJobTransforms-00-02-65
+
+2010-09-02 David Cote <david.cote@cern.ch>
+	* Added two new synonyms for backward compatibility: DESDM_CALJET->DESD_CALJET and DESD_MET->DESDM_MET
+	* tag PATJobTransforms-00-02-64
+
+2010-09-02 David Cote <david.cote@cern.ch>
+	* Added AOD->DPD capabilities in Merging_trf
+	* tag PATJobTransforms-00-02-63
+
+2010-09-02 David Cote <david.cote@cern.ch>
+	* Added new synonyms DESD/AOD_W/ZMUMU/EE, pointing to normal ESD/AOD
+	* Introduced output-vs-stream dependence by default in GetCommand and Reco_trf when reading from AMI (using ifMatch pattern) 
+	* Added keepFullCommandUntouched option to bypass PopSynonyms and output-vs-stream dependence when needed
+	* tag PATJobTransforms-00-02-62
+
+2010-09-01 David Cote <david.cote@cern.ch>
+	* Added DAOD_SUSYEGAMMA, renamed DAOD_SUSYJETS and DAOD_SUSYMUONS for ProdSys in Reco_trf
+	* tag PATJobTransforms-00-02-61
+
+2010-08-31 David Cote <david.cote@cern.ch>
+	* Renamed file python/AutoConfiguration.py to python/ConfigDicUtils.py, with no other change.
+	* tag PATJobTransforms-00-02-60
+
+2010-08-31  Karsten Koeneke  <kkoeneke@lxplus302.cern.ch>
+
+	* scripts/Reco_trf.py (ListOfDefaultPositionalKeys): Add outputDESD_CALJETFile and outputDESDM_METFile
+	* tag PATJobTransforms-00-02-59
+
+2010-08-25  John Chapman  <John.Chapman@cern.ch>
+
+	* scripts/Reco_trf.py (ListOfDefaultPositionalKeys): Adding outputNTUP_SMEWFile
+	* tag PATJobTransforms-00-02-58
+
+2010-08-18  Karsten Koeneke  <kkoeneke@lxplus309.cern.ch>
+
+	* scripts/Reco_trf.py (ListOfDefaultPositionalKeys): Adding NTUP_TRT, D2ESD_ZMM, and D2ESD_JPSIUPSMM.
+	* share/skeleton.ESDtoDPD_trf.py: Adding NTUP_TRT.
+	* python/Configuration.py (AddNTUP_TRT): Adding NTUP_TRT.
+	* tag PATJobTransforms-00-02-57
+
+2010-08-16  John Chapman  <John.Chapman@cern.ch>
+	* Updates requested by Haijun Yang obo SM EW group
+	* python/Configuration.py - added outputNTUP_SMEWFile argument for a2d substep
+	* share/skeleton.AODtoDPD_trf.py - added code to respond to outputNTUP_SMEWFile argument
+	* tag PATJobTransforms-00-02-56
+
+2010-08-12 Walter Lampl <walter.Lampl@cern.ch>
+	* Reco_trf.py: Remove file-renaming gymnastics for skimmed Bytestream files
+	* tag PATJobTransforms-00-02-55
+
+2010-08-11 Tulay Cuhadar Donszelmann <tcuhadar@cern.ch>
+	* Fix TAG related part in the skeleton.ESD/AODtoDPD_trf.py
+	* tag PATJobTransforms-00-02-54
+
+2010-08-09  John Chapman  <John.Chapman@cern.ch>
+
+	* add share/skeleton.MergeHIT.py,scripts/MergeHIT_trf.py - basic transform for HITS file merging, can be used as
+	within Merging_trf.py
+	* scripts/Merging_trf.py - allow HITS merging step to be run using Merging_trf.py
+	* python/Configuration.py - add InputLogsFile argument for HITS merging, also add input/output evgen/HITS file
+	arguments to tidy up SimuJobTransforms and pave the way for EvgenJobTransforms migration to new framework
+	* python/ProdSysDicTools.py - replace the mention of 'inputHITSFile' with 'inputHitsFile'
+	* tag PATJobTransforms-00-02-53
+
+2010-08-07  Simon George  <S.George@rhul.ac.uk>
+
+	* python/DPDUtils.py: protect PrimaryDPDMaker import against exception due to use without AtlasAnalysis project 
+	* tag PATJobTransforms-00-02-52
+
+2010-07-28 David Cote <david.cote@cern.ch>
+	* Pre-loaded D3PD flags and removed excessive try/except protection of D3PDMakers in skeleton.ESD/AOD_toDPD.py
+	* Added D2AOD_SUSYMUONS/JETS to the ProdSys list in Reco_trf
+	* tag PATJobTransforms-00-02-51
+
+2010-07-27 David Cote <david.cote@cern.ch>
+	* Added protection against missing configuration script in SetupOutputDPDs
+	* Added import D2PDFlags in skeleton.AODtoDPD_trf.py
+	* tag PATJobTransforms-00-02-50
+
+2010-07-23 David Cote <david.cote@cern.ch>
+	* Removed synonyms D3PD_XXX-->NTUP_XXX, as this is now done at the D3PDMakerConfig level
+	* tag PATJobTransforms-00-02-49 (require D3PDMakerConfig-00-01-85)
+
+2010-07-22 David Cote <david.cote@cern.ch>
+	* Typo fix: added rec.readRDO=True readESD=False for outputRDOFile from inputTAGFile in skeleton.ESDtoDPD_trf.py
+	* tag PATJobTransforms-00-02-48
+
+2010-07-22 David Cote <david.cote@cern.ch>
+	* Added inputTAGFile and support for TAG->RDO/ESD/AOD->skimmedRDO/ESD/AOD, using skeleton.ESD/AODtoDPD since doESD/AOD=False for this task.
+	  Note that ESDtoDPD_trf and AODtoDPD_trf should be used with inputTAGFile, and NOT Reco_trf.
+	  To force the usage of Reco_trf (but I don't see why), use: inputTAGFile outputRDOFile_e2d outputESDFile_e2d outputAODFile=a2d.
+	* tag PATJobTransforms-00-02-47
+
+2010-07-21 David Cote <david.cote@cern.ch>
+	* Added NTUP_SUSY in ProdSys list, dynamically configured from automated D3PD_SUSY
+	* tag PATJobTransforms-00-02-46
+
+2010-07-20 David Cote <david.cote@cern.ch>
+	* Added NTUP_HECNOISE in ESD->DPD step, from Sven Menke
+	* tag PATJobTransforms-00-02-45
+
+2010-07-19  John Chapman  <John.Chapman@cern.ch>
+	* python/BaseOfCompositeTrf.py - small change to CommonSpecialFinalConfig method 
+	to work with new functionality implemented in AddNewSubStep method
+	* scripts/Reco_trf.py, scripts/Merging_trf.py - GetFirstSubStep now returns a list of step names rather than 
+	dict names - required to use new functionality implemented in AddNewSubStep method
+	 tag PATJobTransforms-00-02-44
+
+2010-07-16 David Cote <david.cote@cern.ch>
+	* Implemented new method AddNewSubStep in BaseOfCompositeTrf and its dependent Reco_trf and Merging_trf
+	* tag PATJobTransforms-00-02-43
+
+2010-07-16  Karsten Koeneke  <kkoeneke@lxplus256.cern.ch>
+	* scripts/Reco_trf.py: Add DRAW_ZMUMU and DRAW_WMUNU.
+	* tag PATJobTransforms-00-02-42
+
+2010-07-14 David Cote <david.cote@cern.ch>
+	* Added NTUP_WZ in Reco_trf for ESD->DPD
+	* tag PATJobTransforms-00-02-41
+	
+2010-07-13 David Cote <david.cote@cern.ch>
+	* Added tree_names='PAUReco' for NTUP_PROMPTPHOT in python/Configuration.py
+	* tag PATJobTransforms-00-02-40
+
+2010-07-13 David Cote <david.cote@cern.ch>
+	* Added NTUP_PROMPTPHOT in ESD->DPD and AOD->DPD, usable by ProdSys with Reco_trf
+	* tag PATJobTransforms-00-02-39
+
+2010-07-03 Walter Lampl <walter.lampl@cern.ch>
+	* Delete UploadAMITag.py, moved to /Tools/PROCTools
+	* tag PATJobTransforms-00-02-38
+
+2010-07-03 Walter Lampl <walter.lampl@cern.ch>
+	* UploadAMITag: change config for histmerge following Armin's request
+	* tag PATJobTransforms-00-02-37
+	
+2010-06-25 David Cote <david.cote@cern.ch>
+	* Moved UploadAMITag to use releases area instead of builds area
+	* tag PATJobTransforms-00-02-36
+
+2010-06-16 David Cote <david.cote@cern.ch>
+	* Removed obsolete RAW_IDPROJCOMM everywhere
+	* Added hacks for DRAW_ZEE and DRAW_WENU in Reco_trf
+	* Added hacks for outputBSFile in production in MergeBS_trf
+	* tag PATJobTransforms-00-02-35
+	
+2010-06-10 David Cote <david.cote@cern.ch>
+	* Updated default input files for Reco_trf q12X tests
+	* tag PATJobTransforms-00-02-34
+
+2010-06-10 David Cote <david.cote@cern.ch>
+	* Added NTUP/D3PD_JETMET in PopSynonyms and Reco_trf
+	* tag PATJobTransforms-00-02-33
+
+2010-06-09 David Cote <david.cote@cern.ch>
+	* Added inputEVNTFile argument in Reco_trf
+	* Added EnhancedBias stream for all basic outputs, removed debug stream for NTUP_MUONCALIB, in UploadAMITag
+	* tag PATJobTransforms-00-02-32
+
+2010-06-08 David Cote <david.cote@cern.ch>
+	* Fixed mistake in muman-readable outputs: debug was wrongly mentionned in UploadAMITag.py
+	* tag PATJobTransforms-00-02-31
+
+2010-06-08 David Cote <david.cote@cern.ch>
+	* Changed NTUP_MUONCALIB production to express, MuonssBeam and debug only in UploadAMITag.
+	* tag PATJobTransforms-00-02-30
+
+2010-06-04 David Cote <david.cote@cern.ch>
+	* Added NTUP_BTAG at AOD->DPD step
+	* Added lastInChain info in Reco_trf, fixing bug #67475
+	* tag PATJobTransforms-00-02-29 (requires PyJobTransformsCore-00-08-44)
+
+2010-06-02  Karsten Koeneke  <kkoeneke@lxplus302.cern.ch>
+	* python/Configuration.py: Add the possibility for DRAW. (not tagged)
+
+2010-05-26 David Cote <david.cote@cern.ch>
+	* Added backward compatible support for NTUP_EGAMMA in PopSynonyms
+	* tag PATJobTransforms-00-02-28
+
+2010-05-21 David Cote <david.cote@cern.ch>
+	* Added DESDM_BEAMSPOT in ESD->AOD step
+	* tag PATJobTransforms-00-02-27
+
+2010-05-18 David Cote <david.cote@cern.ch>
+	* Removed ESD->ESD re-reco feature and replaced ESD->mergedESD in Reco_trf.
+	* tag PATJobTransforms-00-02-26
+
+2010-05-18 David Cote <david.cote@cern.ch>
+	* More updates in UploadAMITag for TAG/TAG_COMM merger in 15.6.9.Y
+	* tag PATJobTransforms-00-02-25
+
+2010-05-17 David Cote <david.cote@cern.ch>
+	* In UploadAMITag updated CMT version to support 15.6.9.Y and temporary preExec for AOD/DPD merging jobs.
+	* tag PATJobTransforms-00-02-24
+
+2010-05-04 David Cote <david.cote@cern.ch>
+	* re-added include(PrimaryDPDMaker/esdtodpd.py) in skeleton.ESDtoDPD.py (needed!) if rec.DPDMakerScripts()>0
+	* tag PATJobTransforms-00-02-23
+
+2010-05-04 David Cote <david.cote@cern.ch>
+	* Added dynamic configuration of D3PDMakers from Scott, removed hard-coded definition for EGammaD3PD
+	* tag PATJobTransforms-00-02-22 (requires D3PDMakerConfig-00-01-67)
+
+2010-05-03 David Cote <david.cote@cern.ch>
+	* Changed L1CaloEM-->L1Calo for DESDs in UploadAMITag (used from f254)
+	* tag PATJobTransforms-00-02-21
+
+2010-05-03 David Cote <david.cote@cern.ch>
+	* Updated NTUP_EGAM --> NTUP_EGAMMA in Configuration.py (forgotten in tag 00-02-16!)
+	* tag PATJobTransforms-00-02-20
+
+2010-04-30 David Cote <david.cote@cern.ch>
+	* Added outputs configuration for ZeroBias stream
+	* tag PATJobTransforms-00-02-19   (tag 02-18 is similar but had a typo)
+
+2010-04-28 David Cote <david.cote@cern.ch>
+	* Removed NTUP_TRKVALID from MinBias stream in UploadAMITag
+	* tag PATJobTransforms-00-02-17
+
+2010-04-26 David Cote <david.cote@cern.ch>
+	* Updated NTUP_EGAM --> NTUP_EGAMMA in Reco_trf's ListOfDefaultPositionalKeys
+	* Moved DBRelease exception handling from ProdSysTools to GetCommand.py
+	* tag PATJobTransforms-00-02-16
+
+2010-04-23 David Cote <david.cote@cern.ch>
+	* In UploadAMITag: unblocks AOD->TAG for ES1 processing (effective from m462)
+	* tag PATJobTransforms-00-02-15
+
+2010-04-22 David Cote <david.cote@cern.ch>
+	* Big update to support GetCommand from ProdSys database!
+	* First implementation of ProdSysDicTools (from Joao Firmino da Costa)
+	* In ArgDicToools.py: added GetInfoFromPANDA() and updated UpdateDicWithAMI() to support list of commands
+	* In GetCommand.py: introduced badCharList and updated UpdateDicWithAMI() to support list of commands
+	* In Configuration.py: added outputRDOFile and inputHITSFile for csc_digi_trf
+	* tag PATJobTransforms-00-02-14
+	
+2010-04-20 David Cote <david.cote@cern.ch>
+	* Removed rec.doDPD=False from share/CommonSkeletonJobOptions.py
+	* tag PATJobTransforms-00-02-13
+
+2010-04-16 David Cote <david.cote@cern.ch>
+	* Update of DESD vs stream for muons in UploadAMITag (for f257)
+	* Protect flag import in skeleton.AODtoDPD
+	* tag PATJobTransforms-00-02-12
+
+2010-04-15 David Cote <david.cote@cern.ch>
+	* In UploadAMITag: Switched to using DQM_Tier0Wrapper_trf.py for histogram merging.
+	* tag PATJobTransforms-00-02-11
+
+2010-04-14  Karsten Koeneke  <karsten.koeneke@desy.de>
+	* scripts/Reco_trf.py (ListOfDefaultPositionalKeys): adding D2AODM_TOPQCDJ1 and D2AODM_TOPQCDJ2.
+	* tag PATJobTransforms-00-02-10
+
+2010-04-13  Karsten Koeneke  <karsten.koeneke@desy.de>
+	* scripts/Reco_trf.py (ListOfDefaultPositionalKeys): Change typo for DESDM_RPVLLCC.
+	* tag PATJobTransforms-00-02-09
+
+2010-04-11  Karsten Koeneke  <karsten.koeneke@desy.de>
+	* scripts/Reco_trf.py (ListOfDefaultPositionalKeys): Add outputD2AODM_TOPELFile,
+	outputD2AODM_TOPMUFile,outputD2AODM_TOPQCDELFile,outputD2AODM_TOPQCDMUFile,outputDAOD_PHLOOSEFile,
+	outputDESDM_RPVLLFile,outputDESDM_RPVLL_CCFile
+	Remove outputD2AODM_MUONTOPFile.
+	* tag PATJobTransforms-00-02-08
+
+2010-04-09 David Cote <david.cote@cern.ch>
+	* In UploadAMITag: desactivate DESD_PHOJET, DESD_SGLEL for MinBias stream, desactivate DESD_SGLMU for MuonswBeam stream.
+	* Updated SetupOutputDPDs to handle list of flag containers and return list of DPDMakerScripts.
+	* Added Top D2AODMs in python/Configuration.py
+	* tag PATJobTransforms-00-02-07
+	
+2010-04-07 David Cote <david.cote@cern.ch>
+	* In UploadAMITag: added DESD_MET and DESD_SGLMU to MinBias stream. Added --omitvalidation=ALL to DPD and AOD merging.
+	* tag PATJobTransforms-00-02-06
+	
+2010-03-30 Jamie Boyd <Jamie.Boyd@cern.ch>
+	* some updates for MinBias ntuple production
+	* tag PATJobTransforms-00-02-05
+	
+2010-03-29 Jamie Boyd <Jamie.Boyd@cern.ch>
+      * add in MinBias ntuple production option
+      * tag PATJobTransforms-00-02-04
+	
+2010-03-24 David Cote  <david.cote@cern.ch>
+	* Added one re-try when pyAMI import fails.  
+	* tag PATJobTransforms-00-02-03
+
+2010-03-22 David Cote  <david.cote@cern.ch>
+	* Added protection for non-zero status code in skeleton.DQMonitoringMerge_trf.py 
+	* tag PATJobTransforms-00-02-02
+
+2010-03-19 David Cote  <david.cote@cern.ch>
+	* Added RunNumber in the list ProdSys parameters of Merging_trf (bug #64528)
+	* tag PATJobTransforms-00-02-01
+
+2010-03-15 David Cote  <david.cote@cern.ch>
+	* Added outputTAGFile in the list ProdSys parameters of Merging_trf
+	* tag PATJobTransforms-00-02-00
+
+2010-03-04 David Cote  <david.cote@cern.ch>
+	* Two more removal of storageinfo=CASTORTEMP, in merging, in scripts/UploadAMITag.py
+	* tag PATJobTransforms-00-01-99
+
+2010-03-04 David Cote  <david.cote@cern.ch>
+	* Simplified UploadAMITag by removing storageinfo=CASTORTEMP (which is default) and using simpler dsnamefion for AOD,DPD,HIST merging
+	* tag PATJobTransforms-00-01-98
+
+2010-02-25  Karsten Koeneke  <karsten.koeneke@desy.de>
+
+	* scripts/Reco_trf.py (ListOfDefaultPositionalKeys): Changed DAOD_ELXXX names to DAOD_EMXXX.
+	* tag PATJobTransforms-00-01-97
+
+2010-02-25 David Cote  <david.cote@cern.ch>
+	* Added outputNTUP_EGAMFile as a valid argument known by ProdSys.
+	* tag PATJobTransforms-00-01-96
+
+2010-02-24 David Cote  <david.cote@cern.ch>
+	* Updated ifMatch regular expressions to support all outputs of cosmics & collisions runs, and  ES-1, ES-2, debug and physics streams all together, 
+	  and added few exceptions for x tags, all in UploadAMITag
+	* tag PATJobTransforms-00-01-95
+
+2010-02-23 David Cote  <david.cote@cern.ch>
+	* Removed Tier0 wrapper for Merging_trf (Cos_AODMerge.v3.py, Cos_DPDMerge.v1.py) in scripts/UploadAMITag.py 
+	* tag PATJobTransforms-00-01-94
+
+2010-02-22 David Cote  <david.cote@cern.ch>
+	* Removed Tier0 wrapper for Reco_trf (Recon.v5.py) in scripts/UploadAMITag.py 
+	* Added tmpAOD and tmpESD, for e.g. RDO->tmpESD->tmpAOD->DAOD. 
+	  Note that RDO->AOD now stop working, needs to be RDO->tmpESD->AOD
+	* tag PATJobTransforms-00-01-93 (requires RecJobTransforms-00-08-57)
+
+2010-02-18  Karsten Koeneke  <karsten.koeneke@desy.de>
+
+	* scripts/Reco_trf.py (ListOfDefaultPositionalKeys): Add the DAOD_2PH to the list.
+	* tag PATJobTransforms-00-01-92
+
+2010-02-16  Karsten Koeneke  <karsten.koeneke@desy.de>
+
+	* python/Configuration.py:  Fix for new DPD naming convention
+	* share/skeleton.AODtoDPD_trf.py: Fix for new DPD naming convention
+	* share/skeleton.ESDtoDPD_trf.py: Fix for new DPD naming convention
+	* tag PATJobTransforms-00-01-91
+
+2010-02-12 Alvin Tan <david.cote@cern.ch>
+	* Added support for -t/--test and -c/--command options in Configuration.py
+	* tag PATJobTransforms-00-01-90
+
+2010-01-26 David Cote  <david.cote@cern.ch>
+	* Introduced eventCount methods for HIST and NTUP
+	* Introduced new DQHistogramMergeJobTransform
+	* Changed status of outputDQMonitorFile arg to temporary
+	* tag PATJobTransforms-00-01-89 (requires PyJobTransformsCore-00-08-22)
+
+2010-01-24 David Cote  <david.cote@cern.ch>
+	* Renamed DAODM_TOP to DAODM2_TOP and fixed bug in Configuration.py
+	* tag PATJobTransforms-00-01-88
+
+2010-01-22  Karsten KOENEKE  <karsten.koeneke@desy.de>
+	* scripts/Reco_trf.py (ListOfDefaultPositionalKeys): Added DAOD_ONIA_MUMU.
+	* tag PATJobTransforms-00-01-87
+
+2010-01-20 David Cote  <david.cote@cern.ch>
+	* Added NTUP_BTAG in ConfigDic and Reco_trf for ESD->AOD
+	* tag PATJobTransforms-00-01-86 (needs RecJobTransforms-00-08-54)
+
+2010-01-18 David Cote  <david.cote@cern.ch>
+	* Updated CMT setup scripts for 2010 setup in scripts/UploadAMITag.py
+	* tag PATJobTransforms-00-01-85
+
+2010-01-07 Michael Boehler <michael.boehler@cern.de>
+        * Modified Reco_trf.py: addded 'outputDAOD_EGLOOSEFile' and 'outputDAOD_MUFile' to ListOfDefaultPositionalKeys
+	* tag PATJobTransforms-00-01-84
+	
+2009-12-17 David Cote  <david.cote@cern.ch>
+	* Renamed DAOD_TOP --> DAODM_TOP
+	* tag PATJobTransforms-00-01-83
+
+2009-12-17 David Cote  <david.cote@cern.ch>
+	* Completed migration to outputAMITypeFile naming convention.
+	* Removed outputMergedDQMonitorFile, only using outputHISTFile instead.
+	* Renamed D2PD_TOP --> DAOD_TOP
+	* tag PATJobTransforms-00-01-82 (needs RecJobTransforms-00-08-52)
+	
+2009-12-16 David Cote  <david.cote@cern.ch>
+	* Added --omitvalidation to the ProdSys ListOfDefaultPositionalKeys of Reco_trf and Merging_trf
+	* tag PATJobTransforms-00-01-81
+
+2009-12-15 David Cote  <david.cote@cern.ch>
+	* Updated DPD merging autoConfiguration in UploadAMITag
+	* tag PATJobTransforms-00-01-80
+
+2009-12-11 David Cote  <david.cote@cern.ch>
+	* Changed default files to collision ones, when using AMI=q122 and so on.
+	* tag PATJobTransforms-00-01-79
+	
+2009-12-09 David Cote  <david.cote@cern.ch>
+	* Added extraParameter=key=value in PopSynonyms and Reco_trf and Merging_trf, should be useul for ProdSys
+	* tag PATJobTransforms-00-01-78
+
+2009-12-09 Alvin Tan <clat@hep.ph.bham.ac.uk>
+	* Added support for --extraignorefilters.
+	* tag PATJobTransforms-00-01-77
+
+2009-12-09 David Cote  <david.cote@cern.ch>
+	* Removed AutoConfigureFromDic(self,inDic) from Merging_trf, which is reserved for BasicTrfs.
+	* tag PATJobTransforms-00-01-76
+
+2009-12-05 David Cote  <david.cote@cern.ch>
+	* Added hardcoded preExec=beamEnergy=450GeV to DPD merging in UploadAMITag.py
+	* tag PATJobTransforms-00-01-75
+
+2009-12-03 David Cote  <david.cote@cern.ch>
+	* Added auto-configured InputType to DPD merging in scripts/UploadAMITag.py
+	* Added outputDESD_COLLCANDFile in Reco_trf ProdSys list
+	* tag PATJobTransforms-00-01-74
+	
+2009-12-02 David Cote  <david.cote@cern.ch>
+	* Typo fix in skeleton.AODtoDPD.py for outputD2DP_TOPFile
+	* tag PATJobTransforms-00-01-73
+
+2009-12-01 David Cote  <david.cote@cern.ch>
+	* Added DESD_COLLCAND. Migrated all tasks to builds area.
+	* tag PATJobTransforms-00-01-72
+
+2009-11-25 David Cote  <david.cote@cern.ch>
+	* Typo fix CosmicMuons stream name for ESD_IDCOMM in UploadAMITag
+	* Added new default collisionBS for AMI=q122 in Reco_trf and ArgDicTools
+	* tag PATJobTransforms-00-01-71
+
+2009-11-24 David Cote  <david.cote@cern.ch>
+	* Added MuonswBeam stream to DESD_MUON in UploadAMITag
+	* tag PATJobTransforms-00-01-70
+
+2009-11-18 David Cote  <david.cote@cern.ch>
+	* Added core arguments --usesqlite and --mcinput in ConfigDic.py
+	* tag PATJobTransforms-00-01-69
+
+2009-11-18 David Cote  <david.cote@cern.ch>
+	* Changed .*L1Calo.* to .*L1Calo\..* in UploadAMITag
+	* Added MinBias to trkValidNtup and updated all CollisionsDPDVsStreams in UploadAMITag
+	* Added PopSynonyms for amiInputDic and amiPhysDic in ArgDicTools
+	* tag PATJobTransforms-00-01-68
+
+2009-11-13 David Cote  <david.cote@cern.ch>
+	* Removed default execution of SQLiteSupport() in BaseOfBasicTrf. Added explicit useSQLite argument.
+	* Renamed BaseOfRecoTrfFriends --> BaseOfBasicTrf
+	* tag PATJobTransforms-00-01-67
+
+2009-11-12 David Cote  <david.cote@cern.ch>
+	* Added Reco_trf and Merging_trf alias
+	* Updated 'dsnamefion' in UploadAMITag as requested by Armin
+	* Removed outputMergedDQMonitorFile from ArgDicTools synonyms, as this indeed violating the outputAMIFile convention (added back in Reco_trf)
+	* tag PATJobTransforms-00-01-66
+
+2009-11-10 David Cote  <david.cote@cern.ch>
+	* implemented outputXXXFile convention for DPD, using synonyms for backward compatibility.
+	* moved synonyms from Reco_trf to ArgDicTools
+	* tag PATJobTransforms-00-01-65
+	
+2009-11-09 David Cote  <david.cote@cern.ch>
+	* Migrated DPD args to follow outputAMITYPEFile convention, as agreed with Pavel
+	* tag PATJobTransforms-00-01-64
+
+2009-11-04 David Cote  <david.cote@cern.ch>
+	* Added RNDM stream in UploadAMITag for trkValidNtup
+	* tag PATJobTransforms-00-01-63
+
+2009-11-02 David Cote  <david.cote@cern.ch>
+	* New update of ListOfDefaultPositionalKeys and UploadAMITag, for new DPD naming convention
+	* tag PATJobTransforms-00-01-62
+
+2009-11-02 David Cote  <david.cote@cern.ch>
+	* Updated ListOfDefaultPositionalKeys for new DPD naming convention and added new default inputRDOFile in Reco_trf.py
+	* tag PATJobTransforms-00-01-61
+	
+2009-10-30 David Cote  <david.cote@cern.ch>
+	* Re-updated default Reco_trf files to files with 10 evts.
+	* Cosmetic tweaks of UploadAMITag.py
+	* tag PATJobTransforms-00-01-60
+
+2009-10-29 David Cote  <david.cote@cern.ch>
+	* Removed postExec to read from COOL during AOD merging in UploadAMITag.
+	* tag PATJobTransforms-00-01-59
+
+2009-10-27 David Cote  <david.cote@cern.ch>
+	* Updated Reco_trf default input files
+	* tag PATJobTransforms-00-01-58
+
+2009-10-19 David Cote  <david.cote@cern.ch>
+	* Enabled NTUP_TRKVALID production for express stream, to define f157.
+	* Added merging tags in UploadAMITag.py
+	* tag PATJobTransforms-00-01-57
+
+2009-10-14 Michael Boehler <michael.boehler@desy.de>
+      	* modified scripts/Reco_trf.py to add RDO -> BS finally
+	* tag PATJobTransforms-00-01-56
+
+2009-10-13 Michael Boehler <michael.boehler@desy.de>
+        * modified python/BaseOfCompositeTrf.py, 
+	* modified python/Configuration.py
+	* modified scripts/Reco_trf.py
+	* these changes have been needed to add RDO -> BS
+	* tag PATJobTransforms-00-01-55
+
+2009-10-13 David Cote  <david.cote@cern.ch>
+	* More UploadAMITag tunings, to define f154
+	
+2009-10-12 David Cote  <david.cote@cern.ch>
+	* Further UploadAMITag evolution, to define f153
+	* tag PATJobTransforms-00-01-54
+
+2009-10-09 David Cote  <david.cote@cern.ch>
+	* First UploadAMITag version used by the Tier0 (f151)
+	* tag PATJobTransforms-00-01-53
+
+2009-09-25 David Cote  <david.cote@cern.ch>
+	* Added --omitvalidation from Alvin in ConfigDic
+	* tag PATJobTransforms-00-01-52
+
+2009-09-24 David Cote  <david.cote@cern.ch>
+	* Re-added D2PD_TOP, now renamed outputD2PD_TOPFile, following naming convention of Pavel.
+	* tag PATJobTransforms-00-01-51
+
+2009-09-24 David Cote  <david.cote@cern.ch>
+	* Temporarily removed problematic D2PD_TOP from Reco_trf ListOfDefaultPositionalKeys
+	* Removed rec.doTruth=False from CommonSkeletonJobOptions.py (fixing bug #55442)
+	* Re-added Merging_trf and RAWtoRAWHLT_trf with correct executable status
+	* tag PATJobTransforms-00-01-50
+
+2009-09-21 David Cote  <david.cote@cern.ch>
+	* Added backward incompatibility warning for q109 --> q116
+	* tag PATJobTransforms-00-01-49
+	
+2009-09-21 David Cote  <david.cote@cern.ch>
+	* Introduced new Merging_trf, a composite trf that can do AOD->MergeAOD->TAG
+	* This implied introducing a new BaseOfCompositeTrf class and modifying Reco_trf accordingly.
+	* tag PATJobTransforms-00-01-48
+	
+2009-09-16 David Cote  <david.cote@cern.ch>
+	* Updated AMI read/write to new syntax q116, as agreed with Tier0 guys.
+	* tag PATJobTransforms-00-01-47
+
+2009-09-09 David Cote  <david.cote@cern.ch>
+	* Implemented a common base class for all Reco_trf friends.
+	* Implemented matchEvents() for all Reco_trf friends.
+	* tag PATJobTransforms-00-01-46
+
+2009-09-09 David Cote  <david.cote@cern.ch>
+	* Migrated all skeletons to use PATJobTransforms/CommonSkeletonJobOptions.py
+	* tag PATJobTransforms-00-01-45
+
+2009-09-09 David Cote  <david.cote@cern.ch>
+	* Typo fix: outputD2PD_TOP is for sub-step a2d
+	* Added support for core trf options: --leakcheckexecute, --rss=XYZ, --vmem=XYZ
+	* tag PATJobTransforms-00-01-44	
+
+2009-09-09 David Cote  <david.cote@cern.ch>
+	* Added rec.DPDMakerScripts.append("TopPhysD2PDMaker/PhysDPD_TopD2PD.py") in skeleton.AODtoDPD_trf.py
+	* Switched to amiclient=AMI(False) to avoid Grid-Proxy problem, in ArgDicTools.py
+	* tag PATJobTransforms-00-01-43
+	
+2009-09-08 David Cote  <david.cote@cern.ch>
+	* Added 'topOptions' to ListOfDefaultPositionalKeys
+	* tag PATJobTransforms-00-01-42
+
+2009-09-08 David Cote  <david.cote@cern.ch>
+	* Added D2PD_TOP in AOD->DPD
+	* Updated ListOfDefaultPositionalKeys
+	* tag PATJobTransforms-00-01-41
+
+2009-09-07 David Cote  <david.cote@cern.ch>
+	* Added --extrametadatadict, --usenewmeta in ConfigDic
+	* tag PATJobTransforms-00-01-40
+
+2009-09-07 David Cote  <david.cote@cern.ch>
+	* Added --ignoreerrors in ConfigDic
+	* Added  print "Original job transform command:" in ArgDicTools
+	* tag PATJobTransforms-00-01-39
+
+2009-09-03 David Cote  <david.cote@cern.ch>
+	* Added report.setProducer('RecoTrf')
+	* Removed obsolete OptionArg('loglevel') from RAWtoRAWHLT_trf
+	* tag PATJobTransforms-00-01-38
+	
+2009-09-02 David Cote  <david.cote@cern.ch>
+	* Update of UploadAMITag.py, CmdToPickledDic.py, GetCommand.py and ArgDicTools.py for easier AMI tag manipulation.
+	* tag PATJobTransforms-00-01-37
+
+2009-08-26 David Cote  <david.cote@cern.ch>
+	* set_value_and_locked doESD/AOD=False in skeleton.MergePool, to fix bug #54840
+	* tag PATJobTransforms-00-01-36
+	
+2009-08-24 Clemencia Mora <cmora@mail.cern.ch>
+	* Changed default menu in skeleton.runHLT.py, rearranged the arguments and enabled triggerConfig for setting rerunning menu
+	* Made SetFieldForHLT function in python/GeoConfig.py
+	* in RAWtoRAWHLT_trf.py fixed name changing and erasing of old file for outputBS
+	* tag PATJobTransforms-00-01-35
+	
+2009-08-21 David Cote  <david.cote@cern.ch>
+	* Added muonCalibNtuple as a potential 'e2e' argument
+	* tag PATJobTransforms-00-01-34
+
+2009-08-19 David Cote  <david.cote@cern.ch>
+	* Added skipEvents in ListOfDefaultPositionalKeys of MergePool_trf.py
+	* tag PATJobTransforms-00-01-33
+
+2009-08-18 David Cote  <david.cote@cern.ch>
+	* Added AOD->TAG into Reco_trf
+	* Added DBRelease in ListOfDefaultPositionalKeys of MergePool_trf.py
+	* tag PATJobTransforms-00-01-32
+
+2009-08-12 Michael Boehler <michael.boehler@desy.de>
+	* removed def AddFilteredESD in python/Configuration.py
+	* tag PATJobTransforms-00-01-31
+
+2009-08-11 David Cote  <david.cote@cern.ch>
+	* added postExec_e2e in ListOfDefaultPositionalKeys for ESD->ESD reprocessing
+	* tag PATJobTransforms-00-01-30
+
+2009-08-07  Karsten Koeneke  <karsten.koeneke@.desy.de>
+	* scripts/Reco_trf.py (ListOfDefaultPositionalKeys): Add new performance DPD names.
+	* tag PATJobTransforms-00-01-29
+
+2009-08-06 David Cote  <david.cote@cern.ch>
+	* updated Reco_trf to support ESD->ESD->AOD+DPD
+	* tag PATJobTransforms-00-01-28
+	
+2009-07-22  Karsten Koeneke  <karsten.koeneke@.desy.de>
+
+	* scripts/Reco_trf.py (FlexibleRecoTransform.ConfigureInternalSubSteps): Make an import
+	also work in older (<15.4.0) releases using a try/except block.
+	* tag PATJobTransforms-00-01-27
+
+2009-07-21  Karsten Koeneke  <karsten.koeneke@.desy.de>
+
+	* scripts/Reco_trf.py (ListOfDefaultPositionalKeys): Update for new primary physics DPDs.
+	* tag PATJobTransforms-00-01-26
+
+2009-07-21 David Cote  <david.cote@cern.ch>
+	* Updated the ListOfDefaultPositionalKeys of Reco_trf
+	* tag PATJobTransforms-00-01-25
+
+2009-07-17 David Cote  <david.cote@cern.ch>
+	* in ArgDicTools, append_ option returns a list.
+	* tag PATJobTransforms-00-01-24
+
+2009-07-13 Clemencia Mora <cmora@mail.cern.ch>
+	* Added outputNTUP_TRIG to ESDtoAOD step and removed outputNTUP_TRIGTAUFile from RAWtoESD step
+	* tag PATJobTransforms-00-01-23
+
+2009-07-13 David Cote  <david.cote@cern.ch>
+	* New public script GetCommand to get a transform command from an AMI tag
+	* Added append option to trf AMI=tag. AMI functions more modular to share between python and XML, and with GetCommand.
+	* tag PATJobTransforms-00-01-22
+	
+2009-07-10 David Cote  <david.cote@cern.ch>
+	* UploadAMITag.trf now conform to convention agreed with Luc for Tier0
+	* ArgDicTools now able to read from new convention agreed with Luc for Tier0
+	* Added importable default values of input/output types in Reco_trf, for standard tests.
+	* Added meaningful value 'bs', 'pool' or 'root' to isOutput attribute, 
+	  instead of former redundant value True in python/Configuration.py
+	* tag PATJobTransforms-00-01-21
+	
+2009-07-07 David Cote  <david.cote@cern.ch>
+	* Added exception in Reco_trf: RAW->AOD is automatically interpreted as RAW->ESD->AOD
+	* tag PATJobTransforms-00-01-20
+
+2009-07-06 Michael Boehler <michael.boehler@desy.de>
+	* moved  RecExCommon.RecoFunctions to RecExConfig (from AtlasReconstruction to AtlasEvent)
+	* updated all clients
+	* tag PATJobTransforms-00-01-19
+
+2009-07-06 David Cote  <david.cote@cern.ch>
+	* In UploadAMITag, added elements to $PYTHONPATH to be able to import pyAMI with standard release environment.
+	* Tag PATJobTransforms-00-01-18
+
+2009-07-03 David Cote  <david.cote@cern.ch>
+	* Added DPD_MUONCOMM as valid positional argument of Reco_trf, for coming fast reprocessing
+	* Bug fix in ArgDicTools to allow --athenaopts='--stdcmalloc' in positional mode
+	* Tag PATJobTransforms-00-01-16 (note PATJobTransforms-00-01-17 is copy of -16, by mistake)
+
+2009-07-03 David Cote  <david.cote@cern.ch>
+	* Added elements to $PYTHONPATH to be able to import pyAMI.with standard release environment.
+	* Tag PATJobTransforms-00-01-15
+
+2009-06-30 David Cote  <david.cote@cern.ch>
+	* Working (beta) version of Reco_trf.py AMI=f119 reading either XML or python
+	* Tag PATJobTransforms-00-01-14	
+
+2009-06-15 Rolf Seuster  <seuster AT cern.ch>
+	* adding ESDtoESD reprocessing to Reco_trf.py
+	* tagging PATJobTransforms-00-01-13
+
+2009-09-06 Michael Boehler  <michael.boehler.desy.de>
+ 	* code cleaning in Reco_trf.py DQHistogramMerge
+	* Tag PATJobTransforms-00-01-12
+	
+2009-05-14  Sebastien Binet  <binet@lxplus211.cern.ch>
+
+	* tagging PATJobTransforms-00-01-11
+	* apply bwd/fwd compatible change for AthFile
+	* M share/skeleton.runHLT.py
+
+2009-04-22 David Cote  <david.cote@cern.ch>
+	* Fix CmdToPickledDic.py warning in compilation
+	* Added inputFile argument in ConfigDic and skeleton.XXX
+	* Work-in-progress implementation of read/write from/to AMI
+	* Tag PATJobTransforms-00-01-10
+
+2009-04-17 David Cote  <david.cote@cern.ch>
+	* Use new ,, syntax in method AddToDic 'update' of Reco_trf
+	* Started methods to read from AMI in job transforms
+	* Tag PATJobTransforms-00-01-09 (requires PyJobTransformsCore-00-07-27)
+
+2009-04-17 David Cote  <david.cote@cern.ch>
+	* Added rec.UserExecs in skeleton.XXX
+	* Tag PATJobTransforms-00-01-08
+	
+2009-04-16 David Cote  <david.cote@cern.ch>
+	* Migrated pre/postExec arguments to be instances of new BasicExec type
+	* Removed checkString methods in skeleton.XXX. 
+	  This is now handled in PyJobTransformsCore (with extra support for blank spaces, double-quotes, etc.)
+	* Tag PATJobTransforms-00-01-07 (requires PyJobTransformsCore-00-07-26)
+
+2009-04-08 David Cote  <david.cote@cern.ch>
+	* Added protection against PrimaryDPDFlags import without AtlasAnalysis project.
+	* Removed all tests from this package. Migrated to Reconstruction/RecExample/RecJobTransformTests.
+	* Tag PATJobTransforms-00-01-06
+
+2009-04-06 David Cote  <david.cote@cern.ch>
+	* Modified Reco_trf such that skipEvents is automatically added to the first sub-step only. 
+	* Added sub-step=['first'] to skipEvents and typo fix: AddInputESDFile-->AddInputAODFile in ConfigDic.
+	* Tag PATJobTransforms-00-01-05
+
+2009-04-03 David Cote  <david.cote@cern.ch>
+	* Added special treatment to prevent using skipEvents for all sub-steps.
+	* Execute Reco_trf core configuration only for arguments with subSteps=['none']
+	* Tag PATJobTransforms-00-01-04
+	
+2009-04-02 David Cote  <david.cote@cern.ch>
+	* Removed --ignoreunknown overwrite by fullForceReco in Reco_trf. Leave this to the TransformsCore.
+	  Added --ignoreall in ConfigDic.
+	* Tag PATJobTransforms-00-01-03
+	
+2009-03-30 David Cote  <david.cote@cern.ch>
+	* Re-added AutoConfigureFromDic(self,self.inDic) in Reco_trf. Needed for using DBRelease.
+	* Tag PATJobTransforms-00-01-02
+	
+2009-03-26 David Cote  <david.cote@cern.ch>
+	* Removal of AddDPD() usage. Added runXXXtoYYY() methods. Further clean-up of hacks.
+	* Removal of MonitorESD argument. If needed, now doable with outputDQMonitorFile_e2a=blah.
+	* Tag PATJobTransforms-00-01-01 (MonitorESD requires RecJobTransforms-00-08-17)
+
+2009-03-25 David Cote  <david.cote@cern.ch>
+	* Complete re-write of sub-steps configuration of Reco_trf. Introduced subSteps, isInput and isOutput attributes of ConfigDic's values.
+	  One can now do stuff like: preExec_r2e or postInclude_e2a to add arguments only to a given sub-step.
+	* Tag PATJobTransforms-00-01-00
+
+2009-03-23 Tulay Cuhadar Donszelmann <tcuhadar@cern.ch>
+	* Values in PATJobTransforms_TestConfiguration.xml are changed according to the standard (RTT html)
+	* Tag PATJobTransforms-00-00-99
+
+2009-03-20 David Cote  <david.cote@cern.ch>
+	* Fix os.rename problem for non-existing filtered bytestreams
+	* Tag PATJobTransforms-00-00-98
+
+2009-03-13 Tulay Cuhadar Donszelmann <tcuhadar@cern.ch>
+	* test/PATJobTransforms_TestConfiguration.xml created to add PAT trfs to RTT, currently only AODtoTAG implemented in there.
+	* requirement is changed accordingly
+	* Tag PATJobTransforms-00-00-97
+
+2009-03-12 David Cote  <david.cote@cern.ch>
+	* Removed triggerStream auto-configuration from Reco_trf. This is now in RecExCommon/python/AutoConfiguration.py. 
+	  To use, do e.g. autoConfiguration=FieldAndGeo,BeamType,ConditionsTag,TriggerStream
+	* Tag PATJobTransforms-00-00-96
+	
+2009-03-06 David Cote  <david.cote@cern.ch>
+	* Hack to handle skimmed bytestream files named with e.g. IDPROJCOMM._0001.data.8
+	  In 15.0.0, a new TDAQ feature should be available to avoid this hack. (FIXME)
+	* Tag PATJobTransforms-00-00-95
+
+2009-02-26 David Cote  <david.cote@cern.ch>
+	* Changed outputPixelCalibNtp->outputPixelCalibNtup and outputMuonCalibNtp->outputMuonCalibNtup.
+	* Tag PATJobTransforms-00-00-94
+
+2009-02-16 David Cote  <david.cote@cern.ch>
+	* Added back old style treatment for RAW_IDPROJCOMM. Bytestreams are not yet ready for automatic DPD treatment.
+	* Tag PATJobTransforms-00-00-93 (requires PrimaryDPDMaker-00-01-38)
+
+2009-02-16 David Cote  <david.cote@cern.ch>
+	* Now automatically turn ON/OFF and set output file name of each possible DPD, without using dangerous SetOutputFileName() method
+	* Also automatically add all DPD-related arguments to ConfigDic from primDPD, using a python "closure"
+	* Make use of listESDtoDPD and listAODtoDPD from primDPD in Reco_trf
+	* Tag PATJobTransforms-00-00-92 (requires PrimaryDPDMaker-00-01-37)
+
+2009-02-09 Tulay Cuhadar Donszelmann <tcuhadar@cern.ch>
+	* Fix the bug which outputTAG is generated for default name
+	* Tagging PATJobTransforms-00-00-91
+
+2009-02-02 David Cote  <david.cote@cern.ch>
+	* Clean-up. Removed obsolete files:
+	scripts/BStoESDAODDPD_trf.py, scripts/MergeDPD_trf.py, share/skeleton.MergeDPD_trf.py, share/RecEx_Preprocess_ESDtoDPD.py.
+	* tag PATJobTransforms-00-00-90
+	
+2009-01-30 David Cote  <david.cote@cern.ch>
+	* Changed RAW_IDPROJCOMM type to new OutputSkimmedBSFileArg type in python/Configuration.py
+	* Added default EvtMax=-1 in skeleton.MergePool.py
+	* tag PATJobTransforms-00-00-89 (requires PyJobTransformsCore-00-07-10)
+	
+2009-01-21 David Cote  <david.cote@cern.ch>
+	* Added optional RDO input in skeleton.ESDtoDPD.py
+	* Tag PATJobTransforms-00-00-88
+
+2009-01-21 David Cote  <david.cote@cern.ch>
+	* Added triggerConfig argument in ConfigDic, in Reco_trf and in all skeletons (including skeleton.runHLT.py)
+	* Tag PATJobTransforms-00-00-87
+	
+2009-01-15  Simon George  <S.George@rhul.ac.uk>
+	* python/Configuration.py: add outputNTUP_TRIGTAUFile
+	* scripts/Reco_trf.py: add outputNTUP_TRIGTAUFile for RAWtoESD
+
+2009-01-13  Simon George  <S.George@rhul.ac.uk>
+
+	* share/skeleton.runHLT.py: change HIST_MUFAST to NTUP_MUFAST
+	* scripts/Reco_trf.py: change HIST_MUFAST to NTUP_MUFAST
+	* python/Configuration.py: change HIST_MUFAST to NTUP_MUFAST
+
+2008-12-18  Simon George  <S.George@rhul.ac.uk>
+
+	* scripts/Reco_trf.py: for autoConfiguration, derive trigStream from inputBSFile name if possible. Needed for Tier0 use.
+
+2008-12-17  Simon George  <S.George@rhul.ac.uk>
+
+        * share/skeleton.runHLT.py: remove superfluous print.
+	
+2008-12-17  Simon George  <S.George@rhul.ac.uk>
+	
+	* python/Configuration.py: rename trigger output histos as
+	requested by Armin.
+	* share/skeleton.runHLT.py: rename trigger output histos as requested
+	by Armin.
+	* scripts/Reco_trf.py: rename trigger output histos as requested
+	by Armin.
+
+2008-12-17  Simon George  <S.George@rhul.ac.uk>
+
+	* share/skeleton.runHLT.py: fix typo runArgs.trigStream, not
+	triggerStream.
+
+2008-12-17  Simon George  <S.George@rhul.ac.uk>
+
+	* scripts/Reco_trf.py: add a few things to dicRAWToRAWHLT
+
+	* share/skeleton.runHLT.py: make connection to various runArgs
+
+	* python/Configuration.py: add HIST_TRIGEXPERT and HIST_MUFAST
+
+2008-12-12  David Rousseau  <droussea@lxbuild084.cern.ch>
+
+	* share/skeleton.XYZ_trf.py :  use RecoUsefulFlags.py
+
+2008-12-06 David Cote <david.cote@cern.ch>
+	* Extended ListOfDefaultPositionalKeys in MergePool_trf.
+	* Tag PATJobTransforms-00-00-79
+	
+2008-12-04  Simon George  <S.George@rhul.ac.uk>
+
+	* Reco_trf.py: add RAWToRAWHLT functionality which is triggers by specifying outputBSFile in the command line args.
+	* related new files: python/BSutils.py scripts/RAWtoRAWHLT_trf.py share/skeleton.runHLT.py
+	
+
+2008-12-03 David Cote <david.cote@cern.ch>
+	* Renamed DPD_EGAMMACOMM -> DPD_EGAMTAUCOMM
+	* Added rec.Production=True in all relevant skeletons.
+	* PATJobTransforms-00-00-77
+
+2008-11-29 David Cote <david.cote@cern.ch>
+	* Added HIST argument, a synonym for outputMergedDQMonitorFile using the AMI convention
+	* Removed outputMergedDQMonitorFile and outputFilteredESD from ListOfDefaultPositionalKeys in Reco_trf
+	* PATJobTransforms-00-00-76
+	
+2008-11-28 David Cote <david.cote@cern.ch>
+	* Removed DPD_MUONCOMM, added DPD_RANDOMCOMM
+	* PATJobTransforms-00-00-75
+	
+2008-11-26 David Cote <david.cote@cern.ch>
+	* import JetRecFlags in skeleton.ESDtoDPD
+	* hack to fix output bytestream name in MergeBS and python/DPDUtils
+	* PATJobTransforms-00-00-74
+	
+2008-11-25 David Cote <david.cote@cern.ch>
+	* New checkString function used by all preExec and postExec.
+	* PATJobTransforms-00-00-73 (requires PyJobTransformsCore-00-07-02)
+
+2008-11-25 David Cote <david.cote@cern.ch>
+	* Added new arguments: RunNumber, projectName & trigStream in all skeletons
+	* PATJobTransforms-00-00-72
+	
+2008-11-24 David Cote <david.cote@cern.ch>
+	* Reordered execution steps in all skeletons:
+	  defaults, input/output, beamType+geo+conditions, autoConfiguration, preExec, preInclude, topOptions, postInclude, postExec
+	* PATJobTransforms-00-00-71
+	
+2008-11-21 David Cote <david.cote@cern.ch>
+	* introduced Jamie's flags in skeleton.MergePool.py, now everything works! :-)
+	* PATJobTransforms-00-00-70
+
+2008-11-17 David Cote <david.cote@cern.ch>
+	* Moved DefaultConfigFromSysArgv to python/ArgDicTools
+	* New-style MergePool_trf will replace MergeDPD_trf
+	* Added new arguments 'projectName','trigStream','outputTypes'
+	* PATJobTransforms-00-00-69
+
+2008-11-17 David Cote <david.cote@cern.ch>
+	* Changed max output file size to 15 GB in MergeBS
+	* Replaced RAW_CALOCOMM --> RAW_IDPROJCOMM
+	* PATJobTransforms-00-00-68
+
+2008-11-15 David Cote <david.cote@cern.ch>
+	* New MergeBS_trf
+	* PATJobTransforms-00-00-67
+
+2008-11-14 David Cote <david.cote@cern.ch>
+	* Added DPD_MUONCOMM, DPD_TILECOMM.
+	* Changed Reco_trf for fullForceReco=self.inDic.has_key('--ignoreunknown')
+	* PATJobTransforms-00-00-66
+
+2008-11-14 David Cote <david.cote@cern.ch>
+	* Added new commissioning DPD: 'DPD_PIXELCOMM','DPD_SCTCOMM','DPD_IDCOMM','DPD_IDPROJCOMM','DPD_CALOCOMM',
+	  'DPD_EMCLUSTCOMM','DPD_EGAMMACOMM','DPD_RPCCOMM','DPD_TGCCOMM','RAW_CALOCOMM'
+	* Renamed outputSkimmedBS -> RAW_CALOCOMM
+	* PATJobTransforms-00-00-65
+
+2008-11-11 David Cote <david.cote@cern.ch>
+	* Migrated auto-configuration out of job transforms, into RecExCommon
+	* PATJobTransforms-00-00-64
+
+2008-11-11 David Cote <david.cote@cern.ch>
+	* Removed jobConfig argument
+	* PATJobTransforms-00-00-63
+	
+2008-11-10 David Cote <david.cote@cern.ch>
+	* Renamed BStoESD -> RAWtoESD in Reco_trf
+	* Tag PATJobTransforms-00-00-62 (requires RecJobTransforms-00-07-65)
+
+2008-11-09 David Cote <david.cote@cern.ch>
+	* Added missing positional arguments in Reco_trf: preExec,postExec,topOptions,--athenaopts
+	* Tag PATJobTransforms-00-00-61
+	
+2008-11-07 David Cote <david.cote@cern.ch>
+	* Lite -> Li changed everywhere to respect AMI naming convension (<=15 characters)
+	* Tag PATJobTransforms-00-00-60
+
+2008-10-30 David Cote <david.cote@cern.ch>
+	* Added outputBSSkim in ConfigDic and Reco_trf.
+	* Tag PATJobTransforms-00-00-59
+
+2008-10-30 David Cote <david.cote@cern.ch>
+	* Added inputRDOFile in ConfigDic and Reco_trf.py
+	* Tag PATJobTransforms-00-00-58
+
+2008-10-30 Tulay Cuhadar Donszelmann <tcuhadar@cern.ch>
+	* First implementation of AODtoTAG_trf and skeleton.AODtoTAG_trf. 
+	  They are converted from csc_buildTAG_trf.py and skeleton.csc_buildTAG_REC.py in RecJobTransforms.
+	* Tag PATJobTransforms-00-00-57
+
+2008-10-29 David Cote <david.cote@cern.ch>
+	* Added AMITag argument in ConfigDic, Reco_trf, ESDtoDPD and AODtoDPD
+	* Tag PATJobTransforms-00-00-56
+
+2008-10-22 David Cote <david.cote@cern.ch>
+	* Changed TightMuonStream -> MuonStream in skeleton.AODtoDPD.py
+	* Tag PATJobTransforms-00-00-55
+
+2008-10-20 David Cote <david.cote@cern.ch>
+	* Added prescales in ListOfDefaultPositionalKeys
+	* Added singleElDPDMed in skeleton.AODtoDPD_trf.py
+	* Tag PATJobTransforms-00-00-54
+	
+2008-10-16 David Cote <david.cote@cern.ch>
+	* Added DPD outputs, geometryVersion and inputESD/AOD in positional arg support
+	* Added singleElDPDMed in python/Configuration.py
+	* Fine-tuned print statements in scripts/CmdToPositional.py python/ArgDicTools.py
+	* Tag PATJobTransforms-00-00-53
+
+2008-10-14 David Cote <david.cote@cern.ch>
+	* In Reco_trf, do ESD->AOD only if output is requested to avoid double-running when ESD->DPD is also asked.
+	* Added all False default values in skeleton.ESD/AODtoDPD.py 
+	* Tag PATJobTransforms-00-00-52
+
+2008-10-14 David Cote <david.cote@cern.ch>
+	* Bug fix: prescales moved after topOptions in skeleton.ESDtoDPD.py
+	* Tag PATJobTransforms-00-00-51
+
+2008-10-14 David Cote <david.cote@cern.ch>
+	* Fixed ESD->DPD and AOD->DPD transforms in Reco_trf.
+	* Tag PATJobTransforms-00-00-50
+	
+2008-10-13 David Cote <david.cote@cern.ch>
+	* Treat filteredESD as a DPD since it has skimming
+	* Added DBRelease, RunNumber, beamType in default positional arguments
+	* CmdToPickledDic output is now: 'Reco_trf.py --argdict=input.pickle 1>&2 | tee Log.txt'
+	* Moved ListOfDefaultPositionalKeys to a public place in Reco_trf.py
+	* Implemented in CmdToPositional.py 
+	* Tag PATJobTransforms-00-00-49
+
+2008-10-12 David Cote <david.cote@cern.ch>
+	* Support for positional values in Reco_trf
+	* Fix for DBRelease install in Reco_trf
+	* Now supports 'Reco_trf -h'
+	* Tag PATJobTransforms-00-00-48
+	
+2008-10-08 David Cote <david.cote@cern.ch>
+	* Removed --forceComplete option
+	
+2008-10-08 David Cote <david.cote@cern.ch>
+	* Copied Hist merging from Sebastian Schaetzel in Reco_trf.
+	* Tag PATJobTransforms-00-00-47
+
+2008-10-07 David Cote <david.cote@cern.ch>
+	* Removed special arguments option from CmdToPickledDic.
+	* Tag PATJobTransforms-00-00-46
+	
+2008-10-07 David Cote <david.cote@cern.ch>
+	* Added new utility: CmdToPickledDic
+	* Added new argument outputMergedDQMonitorFile, which triggers Monitoring file merging in Reco_trf
+	* In ArgDicTools, include special keys like --ignoreunknown in inDic
+	* Tag PATJobTransforms-00-00-45
+
+2008-10-02  David Rousseau  <droussea@lxbuild084.cern.ch>
+	* scripts/Reco_trf.py : default maxEvents=-1 
+
+2008-10-02 David Cote <david.cote@cern.ch>
+	* Fix Reco_trf to send outputDQMonitorFile only to BS->ESD and outputDQMonitorESDFile only to ESD->AOD
+	* Tag PATJobTransforms-00-00-41
+
+2008-10-02 David Cote <david.cote@cern.ch>
+	* Fix in skeleton.ESDtoAOD.py 
+	* Tag PATJobTransforms-00-00-40
+	
+2008-10-01 David Cote <david.cote@cern.ch>
+	* New BuildDicFromCommandLine() in ArgDicTools to handle options like: --ignoreunknown, --athenaopts, -h, etc.
+	* Removed obsolete AutoConfigBStoESDAODDPD_trf and AutoConfigESDtoDPD_trf
+	* Tag PATJobTransforms-00-00-39
+	
+2008-10-01 David Cote <david.cote@cern.ch>
+	* Changed outputXXX arg names according to Armin's suggestion
+	* Removed unused ntupleFile and commissioning arguments
+	* Tag PATJobTransforms-00-00-38
+	
+2008-09-30 David Cote <david.cote@cern.ch>
+	* Replaced 'magicWords' by 'autoConfiguration'
+	* GetRunNumber now supports inputBS/ESD/AOD
+	* Tag PATJobTransforms-00-00-37
+
+2008-09-30 David Cote <david.cote@cern.ch>
+	* Fixed GeoConfig.py to get run number from local file name, not directory structure
+	* Added magicWords argument, for things like 'configFieldAndGeo'.
+	* Tag PATJobTransforms-00-00-36
+	
+2008-09-29 David Cote <david.cote@cern.ch>
+	* Changed the logic for inputESD in ESD->AOD in Reco_trf
+	* Added RunNumber argument
+	* Tag PATJobTransforms-00-00-35
+	
+2008-09-26 David Cote <david.cote@cern.ch>
+	* Migrated DPDConfigArg -> ListOfStringsArg
+	* Added beamType and commissioning arguments in Reco_trf and ConfigDic
+	* Tag PATJobTransforms-00-00-34
+
+2008-09-25 David Cote <david.cote@cern.ch>
+	* Added AddToConfigDic method
+	* Added many new arguments: preInclude, preExec, topOptions, postInclude, postExec
+	                            TAG, TAG_COMM, NTUP_PIXELCALIB, NTUP_MUONCALIB, filteredESD
+	* Included all this in Reco_trf
+	* Tag: PATJobTransforms-00-00-33
+
+2008-09-18 David Cote <david.cote@cern.ch>
+	* Added extraFlags argument (type DPDConfigArg)
+	* Tag PATJobTransforms-00-00-32
+
+2008-09-18 David Cote <david.cote@cern.ch>
+	* Added preOptions and postOptions arguments (type DPDConfigArg), and CBNT (type NtupleFileArg)
+	* Tag PATJobTransforms-00-00-31
+
+2008-09-15 David Cote <david.cote@cern.ch>
+	* Added prescales (type DPDConfigArg) argument, used in skeleton.ESDtoDPD.py
+	* Tag PATJobTransforms-00-00-30
+
+14-09-2008 David Cote <david.cote@cern.ch>
+	* Improved self-configuration from input dictionary:
+	   -all arguments are now optional
+	   -DPD args now have meaningful names like eGammaDPD=file.pool.root, which triggers the approriate configuration
+	* ESDtoDPD_trf migrated to new-style self-configuration. 
+	* AODtoDPD_trf migrated to new-style self-configuration, but no output DPD is entered yet.
+	* Reco_trf supports all BS->ESD,ESD->AOD,ESD->DPD,AOD->DPD with new-style self-configuration.
+	* Tag PATJobTransforms-00-00-29 (requires RecJobTransforms-00-07-19 + PyJobTransformsCore-00-06-95)
+
+07-09-2008 David Cote <david.cote@cern.ch>
+	* Now able to handle partially specified DPDNames, up to DPDName15.
+	* Improved print and ERROR statements 
+	* Tag PATJobTransforms-00-00-28
+	
+07-09-2008 David Cote <david.cote@cern.ch>
+	* Migrated class DpdConfigArg to PyJobTransformsCore/full_trfarg.py
+	* Updated pickle support to --argdict=NameOfLocalFile convention, following Tier-0 request.
+	* Fix to use default DPD names if DPDName1 - DPDName8 are not specified in sys.argv
+	* Tag PATJobTransforms-00-00-27 (requires PyJobTransformsCore-00-06-90)
+	
+02-09-2008 David Cote <david.cote@cern.ch>
+	* Introduced dpdConfig arg in AODtoDPD_trf
+	* Tag PATJobTransforms-00-00-26
+
+27-08-2008 David Cote <david.cote@cern.ch>
+	* Fix to pickle support for no dpd case (e.g. BPhys).
+	* Tag PATJobTransforms-00-00-25
+
+27-08-2008 David Cote <david.cote@cern.ch>
+	* Fix to pickled dictionary support of AutoConfigBStoESDAODDPD_trf
+	* Tag PATJobTransforms-00-00-24
+	
+25-08-2008 David Cote <david.cote@cern.ch>
+	* Added pickled dictionary support (hack)
+	* Tag PATJobTransforms-00-00-23 (works with PrimaryDPDMaker-00-00-28)
+	
+25-08-2008 David Cote <david.cote@cern.ch>
+	* Implemented GetTier0DPDNamesAndRemoveFromSysArgs() method in python/DPDUtils.py for FDR-2c (probably temporary)
+	* Added Tier0DPDNames in AutoConfigBStoESDAODDPD_trf for FDR-2c (probably temporary)
+	* Replaced 'DPDNames' by 'DefaultDPDNames' in AutoConfig DPD transforms.
+	* Tag PATJobTransforms-00-00-22
+	
+22-08-2008 David Cote <david.cote@cern.ch>
+	* Added zero DPD configuration for unexpected input BS file name instead of previous RunTimeError.
+	  In this case, zero DPD are produced and a WARNING is printed.
+	* Tag PATJobTransforms-00-00-21
+	
+22-08-2008 David Cote <david.cote@cern.ch>
+	* Added BS naming convention (e.g. ".physics.Muon.") in DPDConfigFromInputFile().
+	* Tagged PATJobTransforms-00-00-20
+
+21-08-2008 David Cote <david.cote@cern.ch>
+	* Changed python/DPDUtils.py to take DPD configuration from PrimaryDPDMaker.JobTransformConfiguration.
+	* Generalized DPD configuration to handle BS, ESD and AOD input file name.
+	* Added more DPD configurations, including TCT and express streams.
+	* Use new dpdConfig argument for ESDtoDPD in composite transform BStoESDAODDPD_trf
+	* Added new executable AutoConfigBStoESDAODDPD_trf
+	* Tagged PATJobTransforms-00-00-19 (requires PrimaryDPDMaker-00-00-17)	
+
+21-08-2008 David Cote <david.cote@cern.ch>
+	* Updated python/DPDUtils.py for AutoConfigESDtoDPD_trf to work with PrimaryDPDMaker-00-00-12
+	  This specific part should indeed be moved to the PrimaryDPDMaker package (will do).
+	* Tagged as PATJobTransforms-00-00-18
+
+21-08-2008 David Cote <david.cote@cern.ch>
+	* Introduced new argument class DpdConfigArg, only used in ESDtoDPD_trf so far.
+	  This is only executed in skeleton.XXX part, where athena is already setup.
+	* Introduced new AutoConfigESDtoDPD_trf.py where the whole DPD configuration 
+	  is determined from the input ESD file name.
+	* Tagged as PATJobTransforms-00-00-17
+
+20-08-2008 Max Baak <mbaak@cern.ch>
+        * Bug fix of scripts/BStoESDAODDPD_trf.py: now accepts both str and list when adding 
+        * jobConfig and DPDFromAODConfig, or jobConfig and DPDFromESDConfig.
+	* Needed to run imported trf in TCT.
+        * Tagged as PATJobTransforms-00-00-16
+
+19-08-2008 David Cote <david.cote@cern.ch>
+	* Propagate conditionsTag argument to ESD->DPD and AOD->DPD transforms in BStoESDAODDPD_trf.
+	* Tagged as PATJobTransforms-00-00-15
+
+19-08-2008 David Cote <david.cote@cern.ch>
+	* Directly use RecJobTransform from csc_BSreco_trf in BStoESDAODDPD_trf, instead of duplicating the code.
+	* Added conditionsTag argument to ESDtoDPD_trf and AODtoDPD_trf
+	* Removed athena setup from skeleton.ESD/AODtoDPD_trf.py. This job is now done in RecExCommon.
+	* Tagged as PATJobTransforms-00-00-14
+
+07-07-2008 David Cote
+	* Bug fix in python DPDUtils.py: added forgotten int conversion in nDPD=int(sysArgs[defaultPosition])
+	* Tagged as PATJobTransforms-00-00-13
+	
+01-07-2008 David Cote
+	* Introduced python/DPDUtils.py, used in BStoESDAODDPD, AODtoDPD, ESDtoDPD transforms.
+	This recovers the help functionnality (unavailable so far for these transforms).
+	* Tagged as PATJobTransforms-00-00-12
+
+28-05-2008 DavidCote
+	* Added luminosity info to all streams in AODtoDPD_trf and ESDtoDPD_trf.
+	* Created new transform: MergeDPD_trf, inspired RecJobTransforms/csc_buildTAG.
+	* Tagged as PATJobTransforms-00-00-03.
+
+28-05-2008: David Cote 
+	* Load ATLAS geometry in the AODtoDPD_trf to fix FATAL tracking messages.
+	* Tagged as PATJobTransforms-00-00-02.
+	
+27-05-2008      David Cote <david.cote@cern.ch>
+	* First implementation of AODtoDPD_trf and ESDtoDPD_trf transforms (copied from RecJobTransforms with a different name).
+	* First implementation of BStoESDAODDPD_trf, which is a genuine new transform.
+	* Succesfully validated and tested. Tagged as PATJobTransforms-00-00-01.
+
+27-05-2008	Emil Obreshkov <Emil.Obreshkov@cern.ch>
+	* First creation of the package
