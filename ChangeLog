@@ -1,4 +1,8 @@
 2011-09-28  Junji Tojo <Junji.Tojo@cern.ch>
+        * Added outputNTUP_TOPBOOSTFil in script/Reco_trf.py
+        * Tagging as PATJobTransforms-00-03-65
+
+2011-09-28  Junji Tojo <Junji.Tojo@cern.ch>
 	* Add outputNTUP_SUSYSKIMFile and outputNTUP_SUSY01LEPFile in script/Reco_trf.py
 	* Tagging as PATJobTransforms-00-03-64
 
