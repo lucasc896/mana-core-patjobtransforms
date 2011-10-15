@@ -1,3 +1,7 @@
+2011-10-16  Junji Tojo <Junji.Tojo@cern.ch>
+        * Added outputNTUP_JETMETFULL,outputNTUP_JETMETWZ,outputNTUP_JETMETEMCL in script/Reco_trf.py
+        * Tagging as PATJobTransforms-00-03-69
+
 2011-10-10 Attila Krasznahorkay <Attila.Krasznahorkay@cern.ch>
 	* Added outputNTUP_MUONFile in scripts/Reco_trf.py
 	* Tagging as PATJobTransforms-00-03-68
@@ -11,7 +15,7 @@
         * Tagging as PATJobTransforms-00-03-66
 
 2011-09-28  Junji Tojo <Junji.Tojo@cern.ch>
-        * Added outputNTUP_TOPBOOSTFil in script/Reco_trf.py
+        * Added outputNTUP_TOPBOOSTFile in script/Reco_trf.py
         * Tagging as PATJobTransforms-00-03-65
 
 2011-09-28  Junji Tojo <Junji.Tojo@cern.ch>
