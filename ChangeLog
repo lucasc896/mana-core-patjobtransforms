@@ -1,3 +1,7 @@
+2011-10-25 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * Define tmpRDO in Configuration.py
+    * Tagging as PATJobTransforms-00-03-71    
+
 2011-10-20 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Update DefaultInputs to use EOS instead of CASTOR
     * Tagging as PATJobTransforms-00-03-70    

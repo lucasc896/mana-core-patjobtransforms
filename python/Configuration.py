@@ -412,6 +412,13 @@ AddOutputAODFile.subSteps=['e2a','merge']
 AddOutputAODFile.isOutput='pool'
 AddToConfigDic('outputAODFile',AddOutputAODFile)
 
+def AddTmpRDOFile(trf,inDic):
+    trf.add( OutputRDOFileArg(temporary=True) )
+    return
+AddTmpRDOFile.subSteps=['h2r']
+AddTmpRDOFile.isOutput='pool'
+AddToConfigDic('tmpRDO',AddTmpRDOFile)
+
 def AddTmpESDFile(trf,inDic):
     trf.add( OutputESDFileArg(name='tmpESD',temporary=True) )
     return
