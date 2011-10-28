@@ -1,3 +1,8 @@
+2011-10-28 Attila Krasznahorkay <Attila.Krasznahorkay@cern.ch>
+	* Adding outputNTUP_SMWENUJJFile and outputNTUP_SMWMUNUJJFile
+	  in scripts/Reco_trf.py
+	* Tagging as PATJobTransforms-00-03-72
+
 2011-10-25 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Define tmpRDO in Configuration.py
     * Tagging as PATJobTransforms-00-03-71    
