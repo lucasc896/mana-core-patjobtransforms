@@ -13,7 +13,7 @@ class BaseOfCompositeTrf( JobTransform ):
             raise TypeError("inputDic has %s but should be a dictionary." %type(inputDic))
 
         #Help?
-        if inputDic.has_key('-h'):
+        if '-h' in inputDic or '--help' in inputDic:
             print "\nThousands of parameter combinations can be generated dynamically by this transform."
             print "See: https://twiki.cern.ch/twiki/bin/view/Atlas/RecoTrf"
             print "\nThis design has one exception: ProdSys (Tier1), which can only use keys:"

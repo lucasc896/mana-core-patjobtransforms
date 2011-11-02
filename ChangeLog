@@ -1,3 +1,6 @@
+2011-11-02 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * Print full help for '--help' as well as '-h' (BaseOfCompositeTrf)
+
 2011-10-28 Attila Krasznahorkay <Attila.Krasznahorkay@cern.ch>
 	* Adding outputNTUP_SMWENUJJFile and outputNTUP_SMWMUNUJJFile
 	  in scripts/Reco_trf.py
