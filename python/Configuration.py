@@ -413,7 +413,7 @@ AddOutputAODFile.isOutput='pool'
 AddToConfigDic('outputAODFile',AddOutputAODFile)
 
 def AddTmpRDOFile(trf,inDic):
-    trf.add( OutputRDOFileArg(temporary=True) )
+    trf.add( OutputRDOFileArg(name='tmpRDO',temporary=True) )
     return
 AddTmpRDOFile.subSteps=['h2r']
 AddTmpRDOFile.isOutput='pool'

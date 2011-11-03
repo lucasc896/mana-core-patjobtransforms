@@ -1,3 +1,7 @@
+2011-11-03 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * Correct definition of tmpRDO argument.
+	* Tagging as PATJobTransforms-00-03-73    
+
 2011-11-02 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Print full help for '--help' as well as '-h' (BaseOfCompositeTrf)
 
