@@ -135,6 +135,7 @@ if hasattr(runArgs,"outputNTUP_LARNOISEFile"):
     #little hack while autoConfiguration=everything is still not the default...
     if hasattr(runArgs,"inputESDFile") and not hasattr(runArgs,"inputFile"):
         athenaCommonFlags.FilesInput.set_Value_and_Lock( runArgs.inputESDFile )
+    include("LArMonitoring/LArNoiseBursts_prodJO.py")
 
 #Import D3PD flags before preExec, for convenience
 from D3PDMakerConfig.D3PDProdFlags  import oldProdFlags
