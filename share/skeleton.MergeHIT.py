@@ -134,3 +134,15 @@ StreamHITS.ExtendProvenanceRecord = False
 ServiceMgr.AthenaPoolCnvSvc.MaxFileSizes = [ "15000000000" ]
 
 #--------------------------------------------------------------
+
+## Post-include
+if hasattr(runArgs,"postInclude"):
+    for fragment in runArgs.postInclude:
+        include(fragment)
+
+## Post-exec
+if hasattr(runArgs,"postExec"):
+    digilog.info("transform post-exec")
+    for cmd in runArgs.postExec:
+        digilog.info(cmd)
+        exec(cmd)

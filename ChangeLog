@@ -1,3 +1,10 @@
+2011-11-10  John Chapman  <John.Chapman@cern.ch>
+
+	* share/skeleton.MergeHIT.py - add code to use postExec and
+	postInclude runArgs if provided. (Required for AF2 HIT file
+	merging.)
+	* Tagging as PATJobTransforms-00-03-75
+
 2011-11-06  Maarten Boonekamp
 	* improve LARNOISE handling
 	* Tagging as PATJobTransforms-00-03-74
