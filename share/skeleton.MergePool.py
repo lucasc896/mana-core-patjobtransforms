@@ -60,6 +60,20 @@ if rec.doWriteESD:
     else:
         print "StreamESD was not defined, cannot set ExtendProvenanceRecord = False. Check your flags."
 
+# fast merge
+if hasattr(runArgs,"fastPoolMerge"):
+     recoLog.info("Using CopyEventStreamInfo")
+     from OutputStreamAthenaPool.OutputStreamAthenaPoolConf import CopyEventStreamInfo
+     if rec.doWriteAOD: stream = StreamAOD
+     if rec.doWriteESD: stream = StreamESD
+     stream.HelperTools = []
+     streamInfoToolKey = stream.name()
+     streamInfoTool = CopyEventStreamInfo( streamInfoToolKey+"_CopyEventStreamInfo" )
+     streamInfoTool.Key = streamInfoToolKey
+     ToolSvc += streamInfoTool
+     ServiceMgr.MetaDataSvc.MetaDataTools += [ streamInfoTool ]
+
+
 ## Post-include
 if hasattr(runArgs,"postInclude"): 
     for fragment in runArgs.postInclude:

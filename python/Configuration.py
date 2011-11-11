@@ -728,4 +728,9 @@ AddToConfigDic('outputNTUP_LARNOISEFile',AddOutputNTUP_LARNOISE)
 ##     return
 ## AddToConfigDic('',)
 
+def AddFastMerge(trf,inDic):
+#    trf.add( BasicStringArg(name='fastmerge'))
+    trf.add( BasicBoolArg(name='fastPoolMerge'))
+    return
+AddToConfigDic('fastPoolMerge',AddFastMerge)
 

@@ -20,6 +20,45 @@ class MergePoolJobTransform( JobTransform ):
         self.inDic=inDic
         AutoConfigureFromDic(self,inDic)
 
+    def fastMerge(self):
+        filelist = []
+        outputfile = self._outputFiles[0].value()
+        for file in self._inputFiles:
+          if file:
+            value = file.value()
+            if type(value).__name__ == 'list':
+              filelist += value
+          else:
+            filelist.append(value)
+        print "Files to Merge: %s" %filelist
+
+        #1st run mergePOOL.exe to get events.pool
+        cmd = 'mergePOOL.exe -o events.pool.root '
+        for file in filelist:
+          cmd += '-i %s ' % file
+        cmd += '-e MetaData -e MetaDataHdrDataHeaderForm -e MetaDataHdrDataHeader'
+
+        p = Popen(cmd,shell=True,stdout=PIPE,stderr=PIPE,close_fds=True)
+        while p.poll() is None:
+          line = p.stdout.readline()
+          if line:
+            print "mergePOOL.exe Report: %s" % line.strip()
+        rc = p.returncode
+        print "mergePOOL finished with code %s" % rc
+        #2nd merge with metadata.pool to produce final output
+        #1st move the athena output to a temp location
+        shutil.move(outputfile,'metadata.pool.root')
+        cmd = 'mergePOOL.exe -o events.pool.root -i metadata.pool.root '
+        p = Popen(cmd,shell=True,stdout=PIPE,stderr=PIPE,close_fds=True)
+        while p.poll() is None:
+          line = p.stdout.readline()
+          if line:
+            print "mergePOOL.exe Report: %s" % line.strip()
+        rc = p.returncode
+        print "mergePOOL finished with code %s" % rc
+        shutil.move('events.pool.root',outputfile)
+
+
 # Python executable
 if __name__ == '__main__':
     #Special preparation for command-line

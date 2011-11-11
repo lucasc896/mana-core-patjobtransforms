@@ -65,15 +65,31 @@ class MergingTransform( BaseOfCompositeTrf ):
         # Pool Merging
         if(allOK and self.SubStepIsExecuted('merge')):
             dic=self.dicMergePool.copy()            
-            print "MergePool dic:",dic
-            mPool = MergePoolJobTransform(dic)
-            mPool.setParent(self)
-            mPool.setJobReportOptions('Summary')
-            reportMergePool = mPool.exeArgDict( dic )
-            report.addReport( reportMergePool )
-            mergeOK = ( reportMergePool.exitCode() == 0 )
-            print "mergeOK is ",mergeOK
-            allOK = (allOK and mergeOK)
+            if(dic.has_key('fastPoolMerge') and  dic['fastPoolMerge']=='True' ):
+              #Fast merge runs athena just to get the metadata, 
+              #Actual merging of data files is below
+              dic['skipEvents']=10000000
+              print "MergePool dic:", dic
+              mPool = MergePoolJobTransform(dic)
+              mPool.setParent(self)
+              mPool.setJobReportOptions('Summary')
+              reportMergePool = mPool.exeArgDict( dic )
+              mergeOK = ( reportMergePool.exitCode() == 0 )
+              print "mergeOK is ",mergeOK
+              allOK = (allOK and mergeOK)
+              #The actual merging:
+              mPool.fastMerge()
+              report.addReport( reportMergePool )
+            else:
+              print "MergePool dic:",dic
+              mPool = MergePoolJobTransform(dic)
+              mPool.setParent(self)
+              mPool.setJobReportOptions('Summary')
+              reportMergePool = mPool.exeArgDict( dic )
+              report.addReport( reportMergePool )
+              mergeOK = ( reportMergePool.exitCode() == 0 )
+              print "mergeOK is ",mergeOK
+              allOK = (allOK and mergeOK)
         else:
             print "Skipping MergePool step..."
 
