@@ -1,6 +1,9 @@
+2011-11-15 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * Support for AMI configuration file via env var AMIConfFile.
+
 2011-11-11 Steven Beale <steven.beale@physik.uni-muenchen.de>
-        * Adding option fastPoolMerge for running mergePOOL.exe 
-          * Added as an extension of existing MergePool_trf.py
+    * Adding option fastPoolMerge for running mergePOOL.exe 
+    * Added as an extension of existing MergePool_trf.py
 
 2011-11-10  John Chapman  <John.Chapman@cern.ch>
 
