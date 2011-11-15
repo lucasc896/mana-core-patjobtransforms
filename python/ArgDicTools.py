@@ -117,6 +117,12 @@ def GetAMIClient(useReplica=False):
         print "INFO: Using primary AMI"
 
     amiclient=AMI()
+    if 'AMIConfFile' in os.environ:
+        from ConfigParser import Error as ConfigParserError
+        try:
+            amiclient.readConfig(os.environ['AMIConfFile'])
+        except ConfigParserError, e:
+            print "Problem reading AMI configuration file:", e
     return amiclient
 
 #------------------------------------
