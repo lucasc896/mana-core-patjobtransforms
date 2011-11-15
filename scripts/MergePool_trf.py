@@ -46,9 +46,7 @@ class MergePoolJobTransform( JobTransform ):
         rc = p.returncode
         print "mergePOOL finished with code %s" % rc
         #2nd merge with metadata.pool to produce final output
-        #1st move the athena output to a temp location
-        shutil.move(outputfile,'metadata.pool.root')
-        cmd = 'mergePOOL.exe -o events.pool.root -i metadata.pool.root '
+        cmd = 'mergePOOL.exe -o events.pool.root -i %s ' % outputfile
         p = Popen(cmd,shell=True,stdout=PIPE,stderr=PIPE,close_fds=True)
         while p.poll() is None:
           line = p.stdout.readline()
