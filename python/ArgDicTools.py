@@ -122,7 +122,9 @@ def GetAMIClient(useReplica=False):
         try:
             amiclient.readConfig(os.environ['AMIConfFile'])
         except ConfigParserError, e:
-            print "Problem reading AMI configuration file:", e
+            print "WARNING: Problem reading AMI configuration file:", e
+        except AttributeError, e:
+            print "WARNING: The version of pyAMI in this release does not support configuration files (%s)" % e
     return amiclient
 
 #------------------------------------
