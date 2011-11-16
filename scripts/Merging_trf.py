@@ -65,7 +65,7 @@ class MergingTransform( BaseOfCompositeTrf ):
         # Pool Merging
         if(allOK and self.SubStepIsExecuted('merge')):
             dic=self.dicMergePool.copy()            
-            if(dic.has_key('fastPoolMerge') and  dic['fastPoolMerge']=='True' ):
+            if(dic.has_key('fastPoolMerge') and  dic['fastPoolMerge'].lower()=='true' ):
               #Fast merge runs athena just to get the metadata, 
               #Actual merging of data files is below
               dic['skipEvents']=10000000
