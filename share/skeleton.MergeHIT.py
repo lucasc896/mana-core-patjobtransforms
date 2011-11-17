@@ -10,29 +10,14 @@ from AthenaCommon.AlgSequence import AlgSequence
 topSequence = AlgSequence()
 
 #==============================================================
-# Job Configuration parameters:
-#==============================================================
-## Pre-exec
-if hasattr(runArgs,"preExec"):
-    merHitLog.info("transform pre-exec")
-    for cmd in runArgs.preExec:
-        merHitLog.info(cmd)
-        exec(cmd)
-
-## Pre-include
-if hasattr(runArgs,"preInclude"): 
-    for fragment in runArgs.preInclude:
-        include(fragment)
-
-#==============================================================
 # Job definition parameters:
 #==============================================================
-from AthenaCommon.AthenaCommonFlags import jobproperties
+from AthenaCommon.AthenaCommonFlags import athenaCommonFlags
 #Jobs should stop if an include fails.
 if hasattr(runArgs,"IgnoreConfigError"):
-    jobproperties.AthenaCommonFlags.AllowIgnoreConfigError=runArgs.IgnoreConfigError 
+    athenaCommonFlags.AllowIgnoreConfigError=runArgs.IgnoreConfigError 
 else:
-    jobproperties.AthenaCommonFlags.AllowIgnoreConfigError=False
+    athenaCommonFlags.AllowIgnoreConfigError=False
 
 from AthenaCommon.AppMgr import theApp
 EvtMax=-1
@@ -67,6 +52,21 @@ GeoModelSvc.IgnoreTagDifference=True
 
 # set up all detector description stuff 
 include( "RecExCond/AllDet_detDescr.py" )
+
+#==============================================================
+# Job Configuration parameters:
+#==============================================================
+## Pre-exec
+if hasattr(runArgs,"preExec"):
+    merHitLog.info("transform pre-exec")
+    for cmd in runArgs.preExec:
+        merHitLog.info(cmd)
+        exec(cmd)
+
+## Pre-include
+if hasattr(runArgs,"preInclude"): 
+    for fragment in runArgs.preInclude:
+        include(fragment)
 
 #--------------------------------------------------------------
 # Setup Input

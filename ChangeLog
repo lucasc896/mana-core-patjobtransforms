@@ -1,3 +1,9 @@
+2011-11-17  John Chapman  <John.Chapman@cern.ch>
+
+	* share/skeleton.MergeHIT.py - move preExec/preInclude slightly
+	later in skeleton. (Required for AF2 HIT file merging.)
+	* Tagging as PATJobTransforms-00-03-77
+
 2011-11-16 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Handle smoothly older versions of pyAMI with no conf file support.
     * Tagging as PATJobTransforms-00-03-76
