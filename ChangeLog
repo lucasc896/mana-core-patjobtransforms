@@ -1,3 +1,7 @@
+2011-11-19 Bjoern Sarrazin <bjorn.sarrazin@cern.ch>
+    * commit James' replacement of outputDAOD_ONIAMUMUHI with outputDESD_ONIAMUMUHIFile in Reco_trf.py 
+    * Tagging as PATJobTransforms-00-03-78
+
 2011-11-17  John Chapman  <John.Chapman@cern.ch>
 
 	* share/skeleton.MergeHIT.py - move preExec/preInclude slightly
