@@ -734,3 +734,26 @@ def AddFastMerge(trf,inDic):
     return
 AddToConfigDic('fastPoolMerge',AddFastMerge)
 
+
+def AddInputNTUPFunctionMaker(name, tree_names):
+    def AddInputNTUPXXX(trf,inDic):
+        trf.add(InputNtupleFileArg(name=name,tree_names=tree_names))
+        return
+    return AddInputNTUPXXX
+
+def AddInputNTUPs():
+    ConfigDicCopy=ConfigDic.copy()
+    for key in ConfigDicCopy:
+        trf=set()
+        ConfigDicCopy[key](trf=trf,inDic={})
+        for x in trf:
+            if key.startswith('outputNTUP') and key.endswith('File') and isinstance(x, NtupleFileArg):
+                tree_names=x._fileType.tree_names
+                name=key.replace('outputNTUP','inputNTUP')
+                function=AddInputNTUPFunctionMaker(name, tree_names)
+                AddToConfigDic(name,function)
+    return
+
+AddInputNTUPs()
+
+

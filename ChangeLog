@@ -1,3 +1,10 @@
+
+2011-11-20 Bjoern Sarrazin <bjorn.sarrazin@cern.ch>
+    * test for non integer values of event number in BaseOfBasic.matchEventsExpectEqual()
+    * for each outputNTUPXXXFile argument in ConfigDic add an inputNTUPXXXFile argument (Configuration.py)
+    * add MergeNTUP_trf.py and skeleton.MergeNTUP_trf.py 
+    * Tagging as PATJobTransforms-00-03-79
+
 2011-11-19 Bjoern Sarrazin <bjorn.sarrazin@cern.ch>
     * commit James' replacement of outputDAOD_ONIAMUMUHI with outputDESD_ONIAMUMUHIFile in Reco_trf.py 
     * Tagging as PATJobTransforms-00-03-78

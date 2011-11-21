@@ -37,15 +37,24 @@ class BaseOfBasicTrf( JobTransform ):
             maxEvents=self.getArgument("maxevents").value()
 
         inEvents=inFile.eventCount()
+        if not isinstance(inEvents, (int, long)):
+            self.logger().warning("Input events could not be determined. MatchEvents not executed. ")
+            return
+        
         if (maxEvents > 0) and (maxEvents < inEvents):
             self.logger().info("MaxEvents < input_Events. MatchEvents not executed.")
             return
 
         outEvents=outFile.eventCount()
+        if not isinstance(outEvents, (int, long)):
+            self.logger().warning("Output events could not be determined. MatchEvents not executed. ")
+            return
+
         diff=inEvents-outEvents
         if diff==0:
             self.logger().info("Input and output files have the same number of events. That's good!")
         else:
+            #            raise TransformValidationError( outFile.value(), "failed validation. Input (%i events) and output (%i events) files have different number of events. That's unexpected. Stopping!", 'TRF_OUTFILE_TOOFEW' )
             from PyJobTransformsCore import AtlasErrorCodes
             self.logger().warning("Input (%i events) and output (%i events) files have different number of events. That's unexpected."%(inEvents,outEvents))
             self.addError( acronym = 'TRF_OUTFILE_TOOFEW', severity = AtlasErrorCodes.FATAL )
