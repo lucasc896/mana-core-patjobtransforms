@@ -36,7 +36,7 @@ class MergePoolJobTransform( JobTransform ):
         cmd = 'mergePOOL.exe -o events.pool.root '
         for file in filelist:
           cmd += '-i %s ' % file
-        cmd += '-e MetaData -e MetaDataHdrDataHeaderForm -e MetaDataHdrDataHeader'
+        cmd += '-e MetaData -e MetaDataHdrDataHeaderForm -e MetaDataHdrDataHeader -e MetaDataHdr'
 
         p = Popen(cmd,shell=True,stdout=PIPE,stderr=PIPE,close_fds=True)
         while p.poll() is None:
