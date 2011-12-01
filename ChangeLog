@@ -1,6 +1,11 @@
 2011-12-01 Attila Krasznahorkay <Attila.Krasznahorkay@cern.ch>
+	* Reverting the change, as Bertrand failed to note down
+	  his own change in the ChangeLog... :-(
+	* Tagging as PATJobTransforms-00-03-82
+
+2011-12-01 Attila Krasznahorkay <Attila.Krasznahorkay@cern.ch>
 	* Added the NTUP_HSG5GAMZ type to Reco_trf.py
-	* Tagging as PATJobTransforms-00-03-81
+	* Tagging as PATJobTransforms-00-03-81 (Nope...)
 
 2011-11-11 Steven Beale <steven.beale@physik.uni-muenchen.de>
     * Updated fast merge to accomodate changes to mergePOOL.exe (add -e MetaDataHdr)
