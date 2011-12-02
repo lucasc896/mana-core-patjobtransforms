@@ -142,7 +142,7 @@ if hasattr(runArgs,"postInclude"):
 
 ## Post-exec
 if hasattr(runArgs,"postExec"):
-    digilog.info("transform post-exec")
+    merHitLog.info("transform post-exec")
     for cmd in runArgs.postExec:
-        digilog.info(cmd)
+        merHitLog.info(cmd)
         exec(cmd)

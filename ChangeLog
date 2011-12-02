@@ -1,3 +1,9 @@
+2011-12-02  John Chapman  <John.Chapman@cern.ch>
+
+	* share/skeleton.MergeHIT.py - correct log file name when
+	executing postExecs.
+	* Tagging as PATJobTransforms-00-03-83
+
 2011-12-01 Attila Krasznahorkay <Attila.Krasznahorkay@cern.ch>
 	* Reverting the change, as Bertrand failed to note down
 	  his own change in the ChangeLog... :-(
