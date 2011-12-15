@@ -1,3 +1,6 @@
+2011-12-15 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * Added support for DigiMReco_trf in GetCommand. 
+
 2011-12-02  John Chapman  <John.Chapman@cern.ch>
 
 	* share/skeleton.MergeHIT.py - correct log file name when

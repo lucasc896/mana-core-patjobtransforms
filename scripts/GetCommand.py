@@ -48,6 +48,7 @@ def GetKeysAndValues(outDic):
 
 def GetCommand(sysArgv):
     cmdList=BuildDicFromCommandLine(sysArgv,returnList=True)
+    print cmdList
     if cmdList==[]:
         print "\nGetCommand finds nothing, probably because you didn't specify an AMI tag."
         print "Please use syntax:  GetCommand.py AMI=<tag>"
@@ -76,6 +77,10 @@ def GetCommand(sysArgv):
         
 
     print "***Note: input and output file names are just suggestions, you're expected to change them as you need.***\n"
+    if trf == 'DigiMReco_trf.py':
+        print "***DigiMReco_trf note: The minbias HITS files used must match the conditions ***"
+        print "*** for the main HITS file. Here the minbias 'files' refer to the datasets   ***"
+        print "*** used by this tag, not to specific files.                                 ***\n"
 
 if __name__ == '__main__':
     GetCommand(sys.argv)

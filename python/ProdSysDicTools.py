@@ -210,6 +210,19 @@ def GetInfoFromPANDA(amitag):
                 input[inkey]=DefaultInputs[inkey]
                 outkey='output'+tmpfmt[i]+'File'
                 OutputDicPANDA[outkey]={'dstype': tmpfmt[j]}
+                
+        elif trf[i]=='DigiMReco_trf.py':
+            input['inputHitsFile']=DefaultInputs['inputHitsFile']
+            fmt=fmt.replace('.',' ') 
+            tmpfmt = string.split(fmt)
+            items = len(tmpfmt)
+            for j in range(0,items):
+                if not tmpfmt[j].startswith('RDO'): 
+                    key='output'+tmpfmt[j]+'File'
+                    OutputDicPANDA[key]={'dstype': tmpfmt[j]}
+            if not ('outputRDOFile' in OutputDicPANDA or 'tmpRDO' in OutputDicPANDA):
+                OutputDicPANDA['tmpRDO'] = {'dstype': 'RDO.tmp'}
+
         else:
             raise RuntimeError("No support yet for job transform '%s' returned by ProdSys tag %s"%(trf[i],amitag))
 
