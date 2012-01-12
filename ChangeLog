@@ -1,6 +1,6 @@
-2011-10-16  Junji Tojo <Junji.Tojo@cern.ch>
+2012-01-12  Junji Tojo <Junji.Tojo@cern.ch>
         * Added outputNTUP_ZPRIMEEE in script/Reco_trf.py
-        * Tagging as PATJobTransforms-00-03-84
+        * Tagging as PATJobTransforms-00-03-85
 	
 2011-12-15 Bjorn Sarrazin  <bjorn.sarrazin@cern.ch>
     * Added ListofDefaultPositionalKeys to MergeNTUP_trf.py
