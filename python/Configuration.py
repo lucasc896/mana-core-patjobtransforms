@@ -286,7 +286,7 @@ AddToConfigDic('inputBSFile',AddInputBSFile)
 def AddInputRDOFile(trf,inDic):    
     trf.add( InputRDOFileArg() )
     return
-AddInputRDOFile.subSteps=['r2e','r2b']
+AddInputRDOFile.subSteps=['r2e','r2b','mergeRDO']
 AddInputRDOFile.isInput=True
 AddToConfigDic('inputRDOFile',AddInputRDOFile)
 
@@ -387,7 +387,7 @@ AddToConfigDic('outputHitsFile',AddOutputHITFile)
 def AddOutputRDOFile(trf,inDic):
     trf.add( OutputRDOFileArg() )
     return
-AddOutputRDOFile.subSteps=['h2r']
+AddOutputRDOFile.subSteps=['h2r','mergeRDO']
 AddOutputRDOFile.isOutput='pool'
 AddToConfigDic('outputRDOFile',AddOutputRDOFile)
 

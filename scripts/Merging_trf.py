@@ -11,8 +11,9 @@ from PATJobTransforms.AODtoTAG_trf import AODtoTAGJobTransform
 from PATJobTransforms.AODtoDPD_trf import AODtoDPDJobTransform
 from PATJobTransforms.MergePool_trf import MergePoolJobTransform
 from PATJobTransforms.MergeHIT_trf import MergeHITSJobTransform
+from PATJobTransforms.MergeRDO_trf import MergeRDOJobTransform
 
-ListOfDefaultPositionalKeys=['maxEvents','skipEvents','RunNumber','inputAODFile','inputESDFile','outputAODFile','outputESDFile','outputTAGFile','DBRelease','geometryVersion','conditionsTag','autoConfiguration','preInclude','postInclude','preExec','postExec','--ignoreerrors','--athenaopts','--omitvalidation','extraParameter','inputHitsFile','outputHitsFile','inputLogsFile','outputNTUP_SUSYFile','outputNTUP_TOPFile','outputNTUP_TOPELFile','outputNTUP_TOPMUFile','outputNTUP_TOPJETFile','outputNTUP_TOPEJETFile','outputNTUP_PHOTONFile', 'outputNTUP_FASTMONFile','outputNTUP_HSG2File']
+ListOfDefaultPositionalKeys=['maxEvents','skipEvents','RunNumber','inputAODFile','inputESDFile','outputAODFile','outputESDFile','outputTAGFile','DBRelease','geometryVersion','conditionsTag','autoConfiguration','preInclude','postInclude','preExec','postExec','--ignoreerrors','--athenaopts','--omitvalidation','extraParameter','inputHitsFile','outputHitsFile','inputLogsFile','outputNTUP_SUSYFile','outputNTUP_TOPFile','outputNTUP_TOPELFile','outputNTUP_TOPMUFile','outputNTUP_TOPJETFile','outputNTUP_TOPEJETFile','outputNTUP_PHOTONFile', 'outputNTUP_FASTMONFile','outputNTUP_HSG2File','inputRDOFile','outputRDOFile']
 
 
 class MergingTransform( BaseOfCompositeTrf ):
@@ -23,6 +24,7 @@ class MergingTransform( BaseOfCompositeTrf ):
                                     help = __doc__ )
 
         self.dicMergeHITS=self.AddNewSubStep("mergeHITS",self.runMergeHITS)
+        self.dicMergeRDO=self.AddNewSubStep("mergeRDO",self.runMergeRDO)
         self.dicMergePool=self.AddNewSubStep("merge",self.runMergePool)
         self.dicAODToDPD=self.AddNewSubStep("a2d",self.runAODtoDPD)
         self.dicAODToTAG=self.AddNewSubStep("a2t",self.runAODtoTAG)
@@ -60,6 +62,22 @@ class MergingTransform( BaseOfCompositeTrf ):
             allOK = (allOK and mergeHITS_OK)
         else:
             print "Skipping MergeHIT step..."
+
+        ######################
+        # RDO Merging
+        if(allOK and self.SubStepIsExecuted('mergeRDO')):
+            dic=self.dicMergeRDO.copy()
+            print "MergeRDO dic:",dic
+            mRDO = MergeRDOJobTransform(dic)
+            mRDO.setParent(self)
+            mRDO.setJobReportOptions('Summary')
+            reportMergeRDO = mRDO.exeArgDict(dic)
+            report.addReport( reportMergeRDO )
+            mergeRDO_OK = ( reportMergeRDO.exitCode() == 0 )
+            print "mergeRDO_OK is ", mergeRDO_OK
+            allOK = (allOK and mergeRDO_OK)
+        else:
+            print "Skipping MergeRDO step..."
 
         ######################
         # Pool Merging
@@ -178,6 +196,8 @@ class MergingTransform( BaseOfCompositeTrf ):
     def runMergeESD(self):
         return (self.hasInput(self.dicMergePool) and self.dicMergePool.has_key('outputESDFile'))
         
+    def runMergeRDO(self):
+        return (self.hasInput(self.dicMergeRDO) and self.dicMergeRDO.has_key('outputRDOFile'))
 
 
 ################# Python executable
