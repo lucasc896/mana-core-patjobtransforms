@@ -1,3 +1,7 @@
+2012-01-23 Bjorn Sarrazin  <bjorn.sarrazin@cern.ch>
+    * set EvtMax=0 in MergeNTUP_trf.py (for panda monitor)
+    * Tagging as PATJobTransforms-00-03-87
+
 2012-01-20 Attila Krasznahorkay <Attila.Krasznahorkay@cern.ch>
 	* Removed the special handling of NTUP_TRIG. Now it's handled
 	  through the regular D3PD production schema.

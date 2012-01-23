@@ -8,7 +8,7 @@ import subprocess
 from PATJobTransforms.Configuration import ConfigDic
 from PyJobTransformsCore.trferr import TransformArgumentError
 
-theApp.EvtMax = 1
+theApp.EvtMax = 0
 
 inFileArgs=0
 outFileArgs=0
