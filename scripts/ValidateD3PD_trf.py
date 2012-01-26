@@ -7,6 +7,8 @@ import subprocess
 from PATJobTransforms.BaseOfBasicTrf import BaseOfBasicTrf
 from PyJobTransformsCore.trf import Author
 
+ListOfDefaultPositionalKeys=['maxEvents','inputFile','preInclude','postInclude','preExec','postExec','--ignoreerros']
+
 #List of root files created by the transform (for merging)
 rootfiles= [ 'PhysVal_InDetPerf.root', 'PhysVal_BackTracking.root', 'PhysVal_MissingET.root', 'PhysVal_Jets.root', 'PhysVal_Tau.root', 'PhysVal_Electrons.root','PhysVal_MUONSPLACEHOLDER.root','PhysVal_Btag.root', 'PhysVal_SUSY.root', 'PhysVal_MonTop.root', 'PhysVal_Zee.root', 'PhysVal_Exotics.root', 'PhysVal_HSG6.root'] 
 
