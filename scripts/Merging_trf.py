@@ -13,7 +13,7 @@ from PATJobTransforms.MergePool_trf import MergePoolJobTransform
 from PATJobTransforms.MergeHIT_trf import MergeHITSJobTransform
 from PATJobTransforms.MergeRDO_trf import MergeRDOJobTransform
 
-ListOfDefaultPositionalKeys=['maxEvents','skipEvents','RunNumber','inputAODFile','inputESDFile','outputAODFile','outputESDFile','outputTAGFile','DBRelease','geometryVersion','conditionsTag','autoConfiguration','preInclude','postInclude','preExec','postExec','--ignoreerrors','--athenaopts','--omitvalidation','extraParameter','inputHitsFile','outputHitsFile','inputLogsFile','outputNTUP_SUSYFile','outputNTUP_TOPFile','outputNTUP_TOPELFile','outputNTUP_TOPMUFile','outputNTUP_TOPJETFile','outputNTUP_TOPEJETFile','outputNTUP_PHOTONFile', 'outputNTUP_FASTMONFile','outputNTUP_HSG2File','inputRDOFile','outputRDOFile']
+ListOfDefaultPositionalKeys=['maxEvents','skipEvents','RunNumber','fastPoolMerge','inputAODFile','inputESDFile','outputAODFile','outputESDFile','outputTAGFile','DBRelease','geometryVersion','conditionsTag','autoConfiguration','preInclude','postInclude','preExec','postExec','--ignoreerrors','--athenaopts','--omitvalidation','extraParameter','inputHitsFile','outputHitsFile','inputLogsFile','outputNTUP_SUSYFile','outputNTUP_TOPFile','outputNTUP_TOPELFile','outputNTUP_TOPMUFile','outputNTUP_TOPJETFile','outputNTUP_TOPEJETFile','outputNTUP_PHOTONFile', 'outputNTUP_FASTMONFile','outputNTUP_HSG2File','inputRDOFile','outputRDOFile']
 
 
 class MergingTransform( BaseOfCompositeTrf ):

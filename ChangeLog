@@ -1,3 +1,6 @@
+2012-01-26 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * Added fastPoolMerge to Merging_trf ListOfDefaultPositionalKeys
+
 2012-01-26 Steven Beale <steven.beale@physik.uni-muenchen.de>
     * Added ValidateD3PD_trf.py transform 
 
