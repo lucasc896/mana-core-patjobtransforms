@@ -725,6 +725,10 @@ def AddFastMerge(trf,inDic):
     return
 AddToConfigDic('fastPoolMerge',AddFastMerge)
 
+def AddD3PDVal(trf,inDic):
+    trf.add( ListOfStringsArg(name='d3pdVal') )
+    return
+AddToConfigDic('d3pdVal',AddD3PDVal)
 
 def AddInputNTUPFunctionMaker(name, tree_names):
     def AddInputNTUPXXX(trf,inDic):

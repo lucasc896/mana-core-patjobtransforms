@@ -1,3 +1,6 @@
+2012-01-26 Steven Beale <steven.beale@physik.uni-muenchen.de>
+    * Added ValidateD3PD_trf.py transform 
+
 2012-01-12  Junji Tojo <Junji.Tojo@cern.ch>
         * Added outputNTUP_SUSYTAG, outputNTUP_SUSYRAZOR, outputNTUP_SUSY23LEP in script/Reco_trf.py
         * Tagging as PATJobTransforms-00-03-89
