@@ -22,27 +22,27 @@ class ValidationD3PDJobTransform( BaseOfBasicTrf ):
         self._addPostRunAction(self)
 
     def postRunAction(self):
-      inlist = [ ]
-      for file in rootfiles:
-        if os.path.exists(file):
-          inlist.append(file)
+        inlist = [ ]
+        for file in rootfiles:
+            if os.path.exists(file):
+                inlist.append(file)
   
-      print "Merging root files: %s" % inlist 
+        print "Merging root files: %s" % inlist 
       
-      cmd = ['hadd' , 'PhysVal.root']
-      cmd.extend(inlist)
-      proc = subprocess.Popen(args = cmd,bufsize = 1, shell = False,stdout = subprocess.PIPE, stderr = subprocess.STDOUT )
-      while proc.poll() is None:
-        line = proc.stdout.readline()
-        if line:
-          print line
+        cmd = ['hadd' , 'PhysVal.root']
+        cmd.extend(inlist)
+        proc = subprocess.Popen(args = cmd,bufsize = 1, shell = False,stdout = subprocess.PIPE, stderr = subprocess.STDOUT )
+        while proc.poll() is None:
+            line = proc.stdout.readline()
+            if line:
+                print line
 
-      rc=proc.returncode
+        rc=proc.returncode
 
-      if not rc==0:
-        raise RuntimeError("hadd returned with value {0:d} instead of 0. Stopping!".format(rc))
+        if not rc==0:
+            raise RuntimeError("hadd returned with value {0:d} instead of 0. Stopping!".format(rc))
 
-      print "Merging finished"
+        print "Merging finished"
 
 
 if __name__ == '__main__':

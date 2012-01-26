@@ -30,13 +30,13 @@ Routines = ['PhysInDetPerf','PhysBackTrack','PhysMet','PhysJets','PhysTau','Phys
 
 #Switch on/off various validation routines:
 if hasattr(runArgs,"d3pdVal"):
-  for val in Routines:
-    dostr = val
-    dontstr = 'no'+val
-    if dostr in runArgs.d3pdVal:
-      vars()['do'+dostr] = True
-    if dontstr in runArgs.d3pdVal:
-      vars()['do'+dostr] = False
+    for val in Routines:
+        dostr = val
+        dontstr = 'no'+val
+        if dostr in runArgs.d3pdVal:
+            vars()['do'+dostr] = True
+        if dontstr in runArgs.d3pdVal:
+            vars()['do'+dostr] = False
 
 
 # ==============================================================================
