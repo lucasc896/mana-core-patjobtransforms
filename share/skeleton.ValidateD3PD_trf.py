@@ -60,6 +60,9 @@ rec.doWriteTAG.set_Value_and_Lock(False)
 rec.doWriteAOD.set_Value_and_Lock(False)
 rec.doCBNT.set_Value_and_Lock(False)
 
+from ParticleBuilderOptions.AODFlags import AODFlags
+AODFlags.ParticleJet = False
+
 # ----------------------------------------------------------------------------------------------------
 # If you have your own DPD Maker scripts
 # (for examples, see in svn: PhysicsAnalysis/D2PDMaker/share/D2PD_ExampleSimple*.py ),
