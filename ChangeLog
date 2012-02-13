@@ -1,3 +1,7 @@
+2012-02-13 Steven Beale <steven.beale@physik.uni-muenchen.de>
+    * Updated fastPoolMerge to use the new exit codes
+    * Tagging as PATJobTransforms-00-03-91.
+
 2012-01-26 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Tagging as PATJobTransforms-00-03-90.
 
