@@ -1,3 +1,7 @@
+2012-02-14  Junji Tojo <Junji.Tojo@cern.ch>
+        * Added outputNTUP_SUSYLEPTAU in script/Reco_trf.py
+        * Tagging as PATJobTransforms-00-03-92
+
 2012-02-13 Steven Beale <steven.beale@physik.uni-muenchen.de>
     * Updated fastPoolMerge to use the new exit codes
     * Tagging as PATJobTransforms-00-03-91.
