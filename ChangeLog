@@ -1,3 +1,7 @@
+2012-02-24 Joe Tuggle <jtuggle@uchicago.edu>
+        * Updated default input files to mc11 and 2011 period M data
+        * Tagging as PATJobTransforms-00-03-93
+
 2012-02-14  Junji Tojo <Junji.Tojo@cern.ch>
         * Added outputNTUP_SUSYLEPTAU in script/Reco_trf.py
         * Tagging as PATJobTransforms-00-03-92
