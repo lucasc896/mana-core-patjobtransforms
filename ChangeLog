@@ -1,4 +1,8 @@
 2012-03-12  Junji Tojo <Junji.Tojo@cern.ch>
+        * Fix typos : missing "File" after output_NTUP_XXX in script/Reco_trf.py
+        * Tagging as PATJobTransforms-00-03-96
+
+2012-03-12  Junji Tojo <Junji.Tojo@cern.ch>
         * Added outputNTUP_SUSYBOOSTFile and outputNTUP_SUSY34LEPFile and in script/Reco_trf.py
         * Tagging as PATJobTransforms-00-03-95
 
