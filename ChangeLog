@@ -1,4 +1,8 @@
 2012-03-12  Bjorn Sarrazin <bjorn.sarrazin@cern.ch>
+        * adding more NTUP arguments to MergeNTUP_trf 
+        * Tagging as PATJobTransforms-00-03-98
+
+2012-03-12  Bjorn Sarrazin <bjorn.sarrazin@cern.ch>
         * adding various NTUP arguments to MergeNTUP_trf 
         * Tagging as PATJobTransforms-00-03-97
 
