@@ -82,32 +82,34 @@ class MergingTransform( BaseOfCompositeTrf ):
         ######################
         # Pool Merging
         if(allOK and self.SubStepIsExecuted('merge')):
-            dic=self.dicMergePool.copy()            
-            if(dic.has_key('fastPoolMerge') and  dic['fastPoolMerge'].lower()=='true' ):
-              #Fast merge runs athena just to get the metadata, 
-              #Actual merging of data files is below
-              dic['skipEvents']=10000000
-              print "MergePool dic:", dic
-              mPool = MergePoolJobTransform(dic)
-              mPool.setParent(self)
-              mPool.setJobReportOptions('Summary')
-              reportMergePool = mPool.exeArgDict( dic )
-              mergeOK = ( reportMergePool.exitCode() == 0 )
-              print "mergeOK is ",mergeOK
-              allOK = (allOK and mergeOK)
-              #The actual merging:
-              mPool.fastMerge()
-              report.addReport( reportMergePool )
+            dic=self.dicMergePool.copy()
+            if('fastPoolMerge' in dic and dic['fastPoolMerge'].lower()=='false' ):
+                print "Using slow pool merging (enabled explicitly)"
+                print "MergePool dic:",dic
+                mPool = MergePoolJobTransform(dic)
+                mPool.setParent(self)
+                mPool.setJobReportOptions('Summary')
+                reportMergePool = mPool.exeArgDict( dic )
+                report.addReport( reportMergePool )
+                mergeOK = ( reportMergePool.exitCode() == 0 )
+                print "mergeOK is ",mergeOK
+                allOK = (allOK and mergeOK)
             else:
-              print "MergePool dic:",dic
-              mPool = MergePoolJobTransform(dic)
-              mPool.setParent(self)
-              mPool.setJobReportOptions('Summary')
-              reportMergePool = mPool.exeArgDict( dic )
-              report.addReport( reportMergePool )
-              mergeOK = ( reportMergePool.exitCode() == 0 )
-              print "mergeOK is ",mergeOK
-              allOK = (allOK and mergeOK)
+                # Fast merge runs athena just to get the metadata, 
+                # Actual merging of data files is below
+                dic['skipEvents']=10000000
+                print "Using hybrid (fast) pool merging by default"
+                print "MergePool dic:", dic
+                mPool = MergePoolJobTransform(dic)
+                mPool.setParent(self)
+                mPool.setJobReportOptions('Summary')
+                reportMergePool = mPool.exeArgDict( dic )
+                mergeOK = ( reportMergePool.exitCode() == 0 )
+                print "mergeOK is ",mergeOK
+                allOK = (allOK and mergeOK)
+                # The actual merging:
+                mPool.fastMerge()
+                report.addReport( reportMergePool )
         else:
             print "Skipping MergePool step..."
 

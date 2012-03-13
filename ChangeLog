@@ -1,3 +1,7 @@
+2012-03-13 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * Make fastPoolMerge the default for POOL files in Merging_trf
+    * Tagging as PATJobTransforms-00-03-99
+
 2012-03-12  Bjorn Sarrazin <bjorn.sarrazin@cern.ch>
         * adding more NTUP arguments to MergeNTUP_trf 
         * Tagging as PATJobTransforms-00-03-98
