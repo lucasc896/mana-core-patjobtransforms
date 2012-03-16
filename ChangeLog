@@ -1,5 +1,9 @@
+2012-03-16  Junji Tojo <Junji.Tojo@cern.ch>
+        * Added NTUP_HSG5WHU, NTUP_HSG5WHQ, NTUP_HSG5ZHLLU, NTUP_HSG5ZHMETU in Reco_trf.py and MergeNTUP_trf.py
+        * Tagging as PATJobTransforms-00-04-01
+
 2012-03-13  Junji Tojo <Junji.Tojo@cern.ch>
-        * Fix typos, add/remove NTUPs consistent with Reco_trf.py
+        * Fix typos, add/remove NTUPs in MergeNTUP_trf.py, consistent with Reco_trf.py
         * Tagging as PATJobTransforms-00-04-00
 
 2012-03-13 Graeme Stewart <graeme.andrew.stewart@cern.ch>
