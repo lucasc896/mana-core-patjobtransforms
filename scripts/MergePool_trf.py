@@ -24,47 +24,49 @@ class MergePoolJobTransform( JobTransform ):
         filelist = []
         outputfile = self._outputFiles[0].value()
         for file in self._inputFiles:
-          if file:
-            value = file.value()
-            if type(value).__name__ == 'list':
-              filelist += value
-          else:
-            filelist.append(value)
-        print "Files to Merge: %s" %filelist
+            if file:
+                value = file.value()
+                if type(value).__name__ == 'list':
+                    filelist += value
+            else:
+                filelist.append(value)
+        print "Files to Merge: %s" % filelist
 
-        #1st run mergePOOL.exe to get events.pool
-        cmd = 'mergePOOL.exe -o events.pool.root '
+        # First run mergePOOL.exe to get events.pool
+        cmd = ['mergePOOL.exe', '-o', 'events.pool.root']
         for file in filelist:
-          cmd += '-i %s ' % file
-        cmd += '-e MetaData -e MetaDataHdrDataHeaderForm -e MetaDataHdrDataHeader -e MetaDataHdr'
+            cmd.extend(['-i', file])
+        cmd.extend(['-e', 'MetaData', '-e', 'MetaDataHdrDataHeaderForm', '-e', 'MetaDataHdrDataHeader', '-e', 'MetaDataHdr'])
+        
+        print "Will execute hybrid merge step 1: %s" % cmd
 
-        p = Popen(cmd,shell=True,stdout=PIPE,stderr=PIPE,close_fds=True)
+        p = Popen(cmd, stdout=PIPE, stderr=STDOUT, close_fds=True)
         while p.poll() is None:
-          line = p.stdout.readline()
-          if line:
-            print "mergePOOL.exe Report: %s" % line.strip()
+            line = p.stdout.readline()
+            if line:
+                print "mergePOOL.exe Report: %s" % line.strip()
         rc = p.returncode
         print "1st mergePOOL (event data) finished with code %s" % rc
         if rc == 1:
             print "mergePOOL.exe finished with unknown status"
-        elif rc > 1:
+        elif rc != 0:
             raise TransformError("mergePOOL.exe (event merge) encountered a problem",error='TRF_MERGEERR') 
 
-        #2nd merge with metadata.pool to produce final output
-        cmd = 'mergePOOL.exe -o events.pool.root -i %s ' % outputfile
-        p = Popen(cmd,shell=True,stdout=PIPE,stderr=PIPE,close_fds=True)
+        # Second merge with metadata.pool to produce final output
+        cmd = ['mergePOOL.exe', '-o', 'events.pool.root', '-i', outputfile]
+        p = Popen(cmd, stdout=PIPE, stderr=STDOUT, close_fds=True)
         while p.poll() is None:
-          line = p.stdout.readline()
-          if line:
-            print "mergePOOL.exe Report: %s" % line.strip()
+            line = p.stdout.readline()
+            if line:
+                print "mergePOOL.exe Report: %s" % line.strip()
         rc = p.returncode
         print "2nd mergePOOL (metadata) finished with code %s" % rc
         if rc == 1:
             print "mergePOOL.exe finished with unknown status"
-        elif rc > 1:
+        elif rc != 0:
             raise TransformError("mergePOOL.exe (final merge) encountered a problem",error='TRF_MERGEERR') 
         else:
-          shutil.move('events.pool.root',outputfile)
+            shutil.move('events.pool.root',outputfile)
 
 
 # Python executable
