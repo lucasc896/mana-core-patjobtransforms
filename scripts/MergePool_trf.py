@@ -16,9 +16,27 @@ class MergePoolJobTransform( JobTransform ):
         if not isinstance(inDic,dict):
             raise TypeError("inDic has %s but should be a dictionary." %type(inDic))
 
+
         from PATJobTransforms.ConfigDicUtils import AutoConfigureFromDic
         self.inDic=inDic
+        # Look to see if we should use the fast hybrid POOL merger (default)
+        if self.inDic.get('fastPoolMerge', 'true').lower() == 'true':
+            print "Using hybrid merge - will skip all events"
+            # This needs to become a run option....
+            self.inDic['skipEvents'] = 10000000
+        print self.inDic
         AutoConfigureFromDic(self,inDic)
+                
+        self._addPostRunAction(self, prepend=True)
+
+
+    def postRunAction(self):
+        # Run fast merge as a post run action to the main transform
+        print "Executing postRunActions for MergePoolJobTransform"
+        if self.inDic.get('fastPoolMerge', 'true').lower() == 'true':
+            print "Now doing hybrid event merge"
+            self.fastMerge()
+
 
     def fastMerge(self):
         filelist = []
