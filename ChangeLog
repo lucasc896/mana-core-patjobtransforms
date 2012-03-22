@@ -1,3 +1,8 @@
+2012-03-22 Joao Firmino da Costa <joao.costa@cern.ch>
+	* updating skeleton.DQHistogramMerge_trf.py for hist compression for Sami
+	* Tagging as PATJobTransforms-00-04-02-01
+
+	
 2012-03-21 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Move option for hybrid POOL merger (fastPoolMerge) inside the MergePoolJobTransform itself
     * Ensure that merged file is validated after events have been added
