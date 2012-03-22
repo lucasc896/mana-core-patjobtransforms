@@ -28,7 +28,7 @@ mergeListFile.close()
 import os,subprocess
 #writing in a temp file should allow termination eventually even if parent is killed
 tmpbuff=os.tmpfile()
-dqhistpipe=subprocess.Popen(["DQHistogramMerge.py", "hist_merge_list.txt", runArgs.outputHISTFile, "False"],
+dqhistpipe=subprocess.Popen(["DQHistogramMerge.py","hist_merge_list.txt", runArgs.outputHISTFile,"False", "False", "0", "0"],
                             stdout=tmpbuff, stderr=tmpbuff, shell=False)
 status=dqhistpipe.wait()
 
