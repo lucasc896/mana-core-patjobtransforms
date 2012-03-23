@@ -21,10 +21,11 @@ class MergePoolJobTransform( JobTransform ):
         self.inDic=inDic
         # Look to see if we should use the fast hybrid POOL merger (default)
         if self.inDic.get('fastPoolMerge', 'true').lower() == 'true':
-            print "Using hybrid merge - will skip all events"
-            # This needs to become a run option....
+            print "Using hybrid merge - will skip all events with athena and merge later."
+            # This needs to become a run option, so set it early
             self.inDic['skipEvents'] = 10000000
-        print self.inDic
+            # This must be really set to trigger the correct JO fragments for fast merge 
+            self.inDic['fastPoolMerge'] = 'true'
         AutoConfigureFromDic(self,inDic)
                 
         self._addPostRunAction(self, prepend=True)

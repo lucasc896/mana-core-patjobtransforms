@@ -60,8 +60,8 @@ if rec.doWriteESD:
     else:
         print "StreamESD was not defined, cannot set ExtendProvenanceRecord = False. Check your flags."
 
-# fast merge
-if hasattr(runArgs,"fastPoolMerge"):
+# Fast merge options
+if hasattr(runArgs,"fastPoolMerge") and runArgs.fastPoolMerge == True:
      recoLog.info("Using CopyEventStreamInfo")
      from OutputStreamAthenaPool.OutputStreamAthenaPoolConf import CopyEventStreamInfo
      if rec.doWriteAOD: stream = StreamAOD

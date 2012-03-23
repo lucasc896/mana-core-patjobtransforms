@@ -1,4 +1,8 @@
 2012-03-21 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * Fixes to hybrid POOL merger to ensure correct JO fragments are invoked
+    * Tagging as PATJobTransforms-00-04-03
+
+2012-03-21 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Move option for hybrid POOL merger (fastPoolMerge) inside the MergePoolJobTransform itself
     * Ensure that merged file is validated after events have been added
     * Tagging as PATJobTransforms-00-04-02 
