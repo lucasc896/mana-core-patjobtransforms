@@ -1,3 +1,8 @@
+2012-03-30  David Rousseau  <droussea@voatlas107.cern.ch>
+
+	* share/skeleton.ESDtoDPD_trf.py: disable if doTrigger=False
+    * Tagging as PATJobTransforms-00-04-04
+	
 2012-03-21 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Fixes to hybrid POOL merger to ensure correct JO fragments are invoked
     * Tagging as PATJobTransforms-00-04-03

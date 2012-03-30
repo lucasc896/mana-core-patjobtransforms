@@ -8,7 +8,6 @@
 #Common job options disable most RecExCommon by default. Re-enable below on demand.
 include("PATJobTransforms/CommonSkeletonJobOptions.py")
 rec.doESD=False
-
 from AthenaCommon.Logging import logging
 recoLog = logging.getLogger('esd_to_dpd')
 recoLog.info( '****************** STARTING ESD->DPD MAKING *****************' )
@@ -153,6 +152,11 @@ if hasattr(runArgs,"preExec"):
 if hasattr(runArgs,"preInclude"): 
     for fragment in runArgs.preInclude:
         include(fragment)
+
+# temporary hack (proper fix would be to cleanly protect all DESD building code against missing trigger)
+if not rec.doTrigger:
+    rec.doDPD.set_Value_and_Lock(False)
+    rec.DPDMakerScripts.set_Value_and_Lock([])
 
 #========================================================
 # Central topOptions (this is one is a string not a list)
