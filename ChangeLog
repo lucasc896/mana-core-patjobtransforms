@@ -1,3 +1,9 @@
+2012-04-03 Attila Krasznahorkay <Attila.Krasznahorkay@cern.ch>
+	* Removing the special treatment of the NTUP_MINBIAS output.
+	  Now it is handled in the same way as all the other D3PD
+	  output types.
+	* Tagging as PATJobTransforms-00-04-06
+
 2012-04-02 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Add AddOutputTXT_FTKIPFile as recognised argument/type
     * Add outputTXT_FTKIPFile to Reco_trf ListOfDefaultPositionalKeys

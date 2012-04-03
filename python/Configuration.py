@@ -542,13 +542,6 @@ AddNTUP_PROMPTPHOT.subSteps=['e2d','a2d']
 AddNTUP_PROMPTPHOT.isOutput='root'
 AddToConfigDic('outputNTUP_PROMPTPHOTFile',AddNTUP_PROMPTPHOT)
 
-def AddNTUP_MINBIAS(trf,inDic):
-    trf.add( NtupleFileArg(name='outputNTUP_MINBIASFile',tree_names="MinBiasTree") )
-    return
-AddNTUP_MINBIAS.subSteps=['e2a']
-AddNTUP_MINBIAS.isOutput='root'
-AddToConfigDic('outputNTUP_MINBIASFile',AddNTUP_MINBIAS)
-
 def AddNTUP_TRKVALID(trf,inDic):
     trf.add( NtupleFileArg(name='outputNTUP_TRKVALIDFile',tree_names="Validation/EventToTrackLink") )
     return
