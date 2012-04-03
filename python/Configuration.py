@@ -475,6 +475,14 @@ AddOutputHIST_TRIGEXPERTFile.subSteps=['r2r']
 AddOutputHIST_TRIGEXPERTFile.isOutput='root'
 AddToConfigDic('outputHIST_TRIGEXPERTFile',AddOutputHIST_TRIGEXPERTFile)
 
+def AddOutputTXT_FTKIPFile(trf, inDic):
+    trf.add(OutputFTKIPFileArg(name='outputTXT_FTKIPFile'))
+    return
+AddOutputTXT_FTKIPFile.subSteps=['r2e']
+AddOutputTXT_FTKIPFile.isOutput='txt.bz2'
+AddToConfigDic('outputTXT_FTKIPFile', AddOutputTXT_FTKIPFile)
+
+
 def AddNTUP_BTAG(trf,inDic):
     trf.add( NtupleFileArg(name='outputNTUP_BTAGFile',tree_names="vtuple") )
     return

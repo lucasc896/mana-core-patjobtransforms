@@ -1,5 +1,9 @@
-2012-03-30  David Rousseau  <droussea@voatlas107.cern.ch>
+2012-04-02 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * Add AddOutputTXT_FTKIPFile as recognised argument/type
+    * Add outputTXT_FTKIPFile to Reco_trf ListOfDefaultPositionalKeys
+    * Tagging as PATJobTransforms-00-04-05
 
+2012-03-30  David Rousseau  <droussea@voatlas107.cern.ch>
 	* share/skeleton.ESDtoDPD_trf.py: disable if doTrigger=False
     * Tagging as PATJobTransforms-00-04-04
 	
