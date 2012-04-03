@@ -7,6 +7,7 @@
 2012-04-02 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Add AddOutputTXT_FTKIPFile as recognised argument/type
     * Add outputTXT_FTKIPFile to Reco_trf ListOfDefaultPositionalKeys
+    *** Important: From this tag onwards you require PyJobTransformsCore >= 00-09-17 ***
     * Tagging as PATJobTransforms-00-04-05
 
 2012-03-30  David Rousseau  <droussea@voatlas107.cern.ch>
