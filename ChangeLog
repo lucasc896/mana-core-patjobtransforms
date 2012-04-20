@@ -1,3 +1,7 @@
+2012-04-20  Junji Tojo <Junji.Tojo@cern.ch>
+        * Added NTUP_WPRIMEEN and NTUP_WPRIMEMN in Reco_trf.py and MergeNTUP_trf.py
+        * Tagging as PATJobTransforms-00-04-08
+
 2012-04-03 Attila Krasznahorkay <Attila.Krasznahorkay@cern.ch>
 	* Removing the special treatment of the NTUP_MINBIAS output.
 	  Now it is handled in the same way as all the other D3PD
