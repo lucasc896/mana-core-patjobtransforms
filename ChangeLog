@@ -1,3 +1,7 @@
+2012-04-02 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * Add outputD2AODM_TOPFJETFile as to Reco_trf ListOfDefaultPositionalKeys
+    * Tagging as PATJobTransforms-00-04-09
+
 2012-04-20  Junji Tojo <Junji.Tojo@cern.ch>
         * Added NTUP_WPRIMEEN and NTUP_WPRIMEMN in Reco_trf.py and MergeNTUP_trf.py
         * Tagging as PATJobTransforms-00-04-08
