@@ -286,7 +286,7 @@ AddToConfigDic('inputBSFile',AddInputBSFile)
 def AddInputRDOFile(trf,inDic):    
     trf.add( InputRDOFileArg() )
     return
-AddInputRDOFile.subSteps=['r2e','r2b','mergeRDO']
+AddInputRDOFile.subSteps=['r2e','r2b','mergeRDO','rdo2rdotrig']
 AddInputRDOFile.isInput=True
 AddToConfigDic('inputRDOFile',AddInputRDOFile)
 
@@ -387,7 +387,7 @@ AddToConfigDic('outputHitsFile',AddOutputHITFile)
 def AddOutputRDOFile(trf,inDic):
     trf.add( OutputRDOFileArg() )
     return
-AddOutputRDOFile.subSteps=['h2r','mergeRDO']
+AddOutputRDOFile.subSteps=['h2r','mergeRDO','rdo2rdotrig']
 AddOutputRDOFile.isOutput='pool'
 AddToConfigDic('outputRDOFile',AddOutputRDOFile)
 
@@ -721,10 +721,16 @@ AddToConfigDic('outputNTUP_LARNOISEFile',AddOutputNTUP_LARNOISE)
 ## AddToConfigDic('',)
 
 def AddFastMerge(trf,inDic):
-#    trf.add( BasicStringArg(name='fastmerge'))
-    trf.add( BasicBoolArg(name='fastPoolMerge'))
+    trf.add(BasicBoolArg(name='fastPoolMerge'))
     return
 AddToConfigDic('fastPoolMerge',AddFastMerge)
+
+
+def AddRDOTrigger(trf,inDic):
+    trf.add(BasicBoolArg(name='doRDOTrigger'))
+    return
+AddToConfigDic('doRDOTrigger',AddRDOTrigger)
+
 
 def AddD3PDVal(trf,inDic):
     trf.add( ListOfStringsArg(name='d3pdVal') )
