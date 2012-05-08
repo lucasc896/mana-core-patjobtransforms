@@ -1,3 +1,7 @@
+2012-05-08 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * Enable v0finder in AOD->DPD skeleton if NTUP_TOP* is being produced
+    * Tagging as PATJobTransforms-00-04-12
+
 2012-04-02 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Add rdo2rdotrig substep for input/outputRDOFile to allow RDO->RDOTrigger (Configuration.py)
     * New AddRDOTrigger argument for transform steering (Configuration.py)

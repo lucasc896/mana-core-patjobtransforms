@@ -92,6 +92,10 @@ if hasattr(runArgs,"outputNTUP_TRUTHFile"):
     TruthD3PDFlags.TruthD3PDOutputFileName = runArgs.outputNTUP_TRUTHFile
     include("TruthD3PDMaker/TruthD3PDfromEVGEN_preInclude.py")
 
+# If we have TOP NTUPs switch on V0Finder
+if len([ f for f in dir(runArgs) if f.find('NTUP_TOP') > -1 ]) > 0:
+    InDetFlags.doV0Finder.set_Value_and_Lock(True)
+
 
 if hasattr(runArgs,"outputDAOD_2LHSG2File"):
     #FIXME: input/outputs should configured via job properties instead of directly using the runArgs object
