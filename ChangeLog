@@ -1,3 +1,7 @@
+2012-05-09  Junji Tojo <Junji.Tojo@cern.ch>
+    * Added NTUP_BTAGSLIM, NTUP_BTAGEFF, NTUP_BTAGFULL in Reco_trf.py and MergeNTUP_trf.py
+    * Tagging as PATJobTransforms-00-04-13
+
 2012-05-08 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Enable v0finder in AOD->DPD skeleton if NTUP_TOP* is being produced
     * Tagging as PATJobTransforms-00-04-12
