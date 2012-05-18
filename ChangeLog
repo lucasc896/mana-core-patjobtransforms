@@ -1,3 +1,9 @@
+2012-05-18 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * Apply quotes around the 'echo' of the trf command in ArgDictTools, ensuring that 
+      the command can be copied and pasted properly.
+    * Ditto for commands produced by GetCommand.py
+    * Tagging as PATJobTransforms-00-04-14
+
 2012-05-09  Junji Tojo <Junji.Tojo@cern.ch>
     * Added NTUP_BTAGSLIM, NTUP_BTAGEFF, NTUP_BTAGFULL in Reco_trf.py and MergeNTUP_trf.py
     * Tagging as PATJobTransforms-00-04-13

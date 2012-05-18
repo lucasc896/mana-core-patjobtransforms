@@ -480,9 +480,16 @@ def UpdateDicWithAMI(userDic,amiTag,info):
 def BuildDicFromCommandLine(sysArgv,returnList=False):
     print "###############################"
     print "Original job transform command:"
-    origCmd=""
-    for i in sysArgv:
-        origCmd+=i+" "
+    # Take a bit of care with quotes - argv[0] shouldn't need them, nor should any of the 'keys'
+    # But with the other stuff, we enclose them in single quotes and quote out any existing single
+    # quotes
+    origCmd = sysArgv[0] + ' '
+    for i in sysArgv[1:]:
+        if i.find('=') > -1:
+            key, value = i.split('=', 1)
+            origCmd += key + '=' + "'" + value.replace("'", "'\\''") + "'" + ' '
+        else:
+            origCmd += "'" + i.replace("'", "'\\''") + "'" + ' '
     print origCmd
     print "###############################"
 

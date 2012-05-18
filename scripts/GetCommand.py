@@ -1,10 +1,6 @@
 #!/usr/bin/env python
 import sys
 from PATJobTransforms.ArgDicTools import BuildDicFromCommandLine
-from RecExConfig.RecoFunctions import OverlapLists
-
-#characters that are problematic for the unix shell
-badCharList=[' ','*',';','(',')','{','}','[',']',';']
 
 def HandleDBRelease(DBRel):
     print "***Note: using DBRelease is not mandatory for tests on afs and copies large files on your run directory, you might consider NOT using it."
@@ -17,32 +13,10 @@ def HandleDBRelease(DBRel):
 
 
 def GetKeysAndValues(outDic):
-    print "\n"
     keyAndValue=''
-    for key in outDic.keys():
-        tmp=key
-        value=str(outDic[key])
-        if value!='':
-            if OverlapLists(value,badCharList):
-                cFirst=value[0]
-                cLast=value[len(value)-1]
-                if (cFirst=="'" and cLast=="'") or (cFirst=='"' and cLast=='"'):
-                    pass
-                else:
-                    zeChar="'"
-                    if value.rfind("'")>0:
-                        zeChar='"'
-                        if value.rfind('"')>0:
-                            print "WARNING cannot properly handle value:",value
-                            zeChar=''
-                    
-                oldValue=value
-                value=zeChar+value+zeChar
-                if value!=oldValue: print "INFO: %s=%s has been updated to %s=%s"%(key,oldValue,key,value)
-                pass
-            tmp+=('='+value)
-        tmp+=' '
-        keyAndValue+=tmp
+    for key, value in outDic.iteritems():
+        # Put quotes around all values to make them shell safe
+        keyAndValue += key + '=' + "'" + str(value).replace("'", "'\\''") + "'" + ' '
     return keyAndValue
 
 
