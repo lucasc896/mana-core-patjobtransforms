@@ -56,7 +56,6 @@ class MergePoolJobTransform( JobTransform ):
         for file in filelist:
             cmd.extend(['-i', file])
         cmd.extend(['-e', 'MetaData', '-e', 'MetaDataHdrDataHeaderForm', '-e', 'MetaDataHdrDataHeader', '-e', 'MetaDataHdr'])
-        
         print "Will execute hybrid merge step 1: %s" % cmd
 
         p = Popen(cmd, stdout=PIPE, stderr=STDOUT, close_fds=True)
@@ -67,12 +66,14 @@ class MergePoolJobTransform( JobTransform ):
         rc = p.returncode
         print "1st mergePOOL (event data) finished with code %s" % rc
         if rc == 1:
-            print "mergePOOL.exe finished with unknown status"
+            print "mergePOOL.exe finished with unknown status (upgrade your RootFileTools to a newer version)"
         elif rc != 0:
             raise TransformError("mergePOOL.exe (event merge) encountered a problem",error='TRF_MERGEERR') 
 
         # Second merge with metadata.pool to produce final output
         cmd = ['mergePOOL.exe', '-o', 'events.pool.root', '-i', outputfile]
+        print "Will execute hybrid merge step 2: %s" % cmd
+        
         p = Popen(cmd, stdout=PIPE, stderr=STDOUT, close_fds=True)
         while p.poll() is None:
             line = p.stdout.readline()
@@ -81,7 +82,8 @@ class MergePoolJobTransform( JobTransform ):
         rc = p.returncode
         print "2nd mergePOOL (metadata) finished with code %s" % rc
         if rc == 1:
-            print "mergePOOL.exe finished with unknown status"
+            print "mergePOOL.exe finished with unknown status (upgrade your RootFileTools to a newer version) - assuming all is ok"
+            shutil.move('events.pool.root',outputfile)
         elif rc != 0:
             raise TransformError("mergePOOL.exe (final merge) encountered a problem",error='TRF_MERGEERR') 
         else:

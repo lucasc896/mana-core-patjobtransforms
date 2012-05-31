@@ -84,7 +84,6 @@ class MergingTransform( BaseOfCompositeTrf ):
         # N.B. Option to use hybrid POOL merging has now moved to MergePool_trf itself 
         if(allOK and self.SubStepIsExecuted('merge')):
             dic=self.dicMergePool.copy()
-            print "Using slow pool merging (enabled explicitly)"
             print "MergePool dic:",dic
             mPool = MergePoolJobTransform(dic)
             mPool.setParent(self)
