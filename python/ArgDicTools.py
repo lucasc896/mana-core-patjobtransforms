@@ -4,7 +4,10 @@
 # Usage:
 #   -transform input arguments into a dictionary
 
-import pickle,sys,os
+import os
+import pickle
+from subprocess import Popen, STDOUT, PIPE, CalledProcessError
+import sys
 
 # This function looks for known exceptions occuring when interpreting sysArgs
 def SysArgsExceptionCatcher(sysArgs):
@@ -28,7 +31,7 @@ def KeyExceptionCatcher(key):
     #Unknown exepction... 
     return "ERROR"
 
-#------------------------
+
 def PickleToDico(sysArgv):
     #Expect: Transform.py --argdict=NameOfLocalFile
     #Just get the input dictionary
@@ -42,7 +45,7 @@ def PickleToDico(sysArgv):
     else:
         return False
 
-#-------------------------
+
 def SysArgvToDico(sysArgv):
     #Expect: Transform.py arg1=value1 ... argN=valueN
     #Create an input dictionary from sysArgv
@@ -67,7 +70,7 @@ def SysArgvToDico(sysArgv):
     print "Successfully interpreted command line: method arg=value..."               
     return dic
 
-#----------------------------
+
 def PositionalToDico(sysArgv):
     #Expect: Transform.py value1 ... valueN, with no key names.
     #In this case, let the transform determines its default behavior.
@@ -76,7 +79,7 @@ def PositionalToDico(sysArgv):
     dic['defaultFromPositionalValues']=True
     return dic
 
-#-----------------------------
+
 def DicHasOutputs(aDic):
     from PATJobTransforms.Configuration import ConfigDic
     for key in aDic.keys():
@@ -84,7 +87,7 @@ def DicHasOutputs(aDic):
             return True
     return False
 
-#-----------------------------
+
 def DicInputs(aDic):
     from PATJobTransforms.Configuration import ConfigDic
     for key in aDic.keys():
@@ -92,7 +95,7 @@ def DicInputs(aDic):
             return aDic[key]
     return ""
 
-#-------------------------------
+
 def GetAMIClient(useReplica=False):
     from pyAMI.pyAMIErrors import AMI_Error
     try:
@@ -127,7 +130,7 @@ def GetAMIClient(useReplica=False):
             print "WARNING: The version of pyAMI in this release does not support configuration files (%s)" % e
     return amiclient
 
-#------------------------------------
+
 def BuildDicFromCommandLineIgnoreAMI(sysArgv):
     if SysArgsExceptionCatcher(sysArgv) is "Help":
         inDic={}
@@ -167,7 +170,7 @@ def BuildDicFromCommandLineIgnoreAMI(sysArgv):
     PopSynonyms(inDic)
     return inDic
 
-#-----------------------------------
+
 def GetInfoFromAMIXML(amitag, suppressPass = True):
     #get dics from AMI
         #import pyAMI and luxml
@@ -213,7 +216,6 @@ def GetInfoFromAMIXML(amitag, suppressPass = True):
     return results
 
 
-#-----------------------------------
 def GetInfoFromAMIPython(amitag, suppressPass = True):
     from pyAMI.pyAMIErrors import AMI_Error
     #get dics from AMI
@@ -279,7 +281,7 @@ def GetInfoFromAMI(amiTag):
             raise RuntimeError("Unable to interpret AMI tag!")
     return info
 
-#-----------------------------------
+
 def AppendDic1WithDic2(dic1,dic2):
     pattern='append_'
     for key in dic2.keys():
@@ -295,7 +297,7 @@ def AppendDic1WithDic2(dic1,dic2):
             print "INFO appended key: %s. Original value: %s. New value: %s."%(appKey,orig,dic1[appKey])
     return
 
-#---------------------------------------
+
 def PopSynonyms_DRAWOutput(aDic):
     from PATJobTransforms.TrfFlags import trfFlags
     if trfFlags.KeepFullCommandUntouched():
@@ -320,7 +322,7 @@ def PopSynonyms_DRAWOutput(aDic):
             else:
                 aDic[newKey]=newValue
 
-#---------------------------------------
+
 def PopSynonyms(aDic):
 
     obsoleteArgs={}
@@ -364,7 +366,7 @@ def PopSynonyms(aDic):
         print "INFO extraParamater=%s is removed. This pseudo-argument is stricly internal to ProdSys."%(extraP)
     return
 
-#-----------------------------------
+
 def UpdateDicListWithAMI(userDic,amiTag):
     #the list feature is only used by GetCommand
     if amiTag.startswith('r') or amiTag.startswith('p') or amiTag.startswith('d') or amiTag.startswith('s')  or amiTag.startswith('e'):
@@ -384,7 +386,7 @@ def UpdateDicListWithAMI(userDic,amiTag):
 
     return outList
 
-#-----------------------------------
+
 def UpdateDicWithAMI(userDic,amiTag,info):
     amiInputDic=info['amiInputDic']
     amiOuputDic=info['amiOuputDic']
@@ -475,8 +477,7 @@ def UpdateDicWithAMI(userDic,amiTag,info):
     return outDic,info
 
 
-#-----------------------------------
-#-------------------------------------
+
 def BuildDicFromCommandLine(sysArgv,returnList=False):
     print "###############################"
     print "Original job transform command:"
@@ -509,24 +510,35 @@ def BuildDicFromCommandLine(sysArgv,returnList=False):
         amiTag=inDic.pop('AMI')
         dicList=UpdateDicListWithAMI(inDic,amiTag)
         inDic=dicList[0]['outDic']
-
-        #releaseDic=dicList[0]['Release']
-        #print "INFO release ",releaseDic['Release']
-
-        ##        if not releaseDic.has_key('Release') :
-        ##            print "INFO release ",dicList[0]['Release']
-        ##   print "INFO release ",releaseDic['Release']
-        ##else :
-        ##    print "INFO release ",releaseDic['Release']
-
-
-##         print "###############################"
-##         print "Updated job transform command downloaded from AMI:"
-##         newCmd=""
-##         for i in inDic.keys():
-##             newCmd+=i+" "
-##         print newCmd
-##         print "###############################"
+    
+    # Short report on atlas setup
+    print "###############################"
+    print 'Atlas Setup Report:'
+    for eVar in ('AtlasVersion', 'AtlasPatch', 'AtlasPatchVersion', 'CMTCONFIG','TestArea'):
+        if eVar in os.environ:
+            print '\t%s=%s' % (eVar, os.environ[eVar])
+        else:
+            print '\t%s undefined' % eVar
+    # Look for patches so that the job can be rerun 
+    if 'TestArea' in os.environ and os.access(os.environ['TestArea'], os.R_OK):
+        print "Patch packages are:"
+        try:
+            cmd = ['cmt', 'show', 'packages', os.environ['TestArea']]
+            cmtProc = Popen(cmd, shell = False, stdout = PIPE, stderr = STDOUT, bufsize = 1)
+            cmtOut = cmtProc.communicate()[0] 
+            for line in cmtOut.split('\n'):
+                try:
+                    if line.strip() == '':
+                        continue
+                    (package, packageVersion, packagePath) = line.split()
+                    print '\t%s' % (packageVersion)
+                except ValueError:
+                    print "Warning, unusual output from cmt: %s" % line 
+        except (CalledProcessError, OSError), e:
+            print 'Execution of CMT failed: %s' % e
+    else:
+        print "No readable patch area found"
+    print "###############################"
 
 
     PopSynonyms_DRAWOutput(inDic) #Call a second time to make sure it's executed even if no input comes from AMI
@@ -543,7 +555,7 @@ def BuildDicFromCommandLine(sysArgv,returnList=False):
 
     return inDic
 
-#-------------------------------------------------------
+
 def addDefaultArgumentFromPositionalValue(dic,key,value):
     #in itself this method is trivial, but it's required for Tier1-style trf introspection with grep (see e.g. Reco_trf)
     if not dic.has_key(key):
@@ -559,7 +571,7 @@ def addDefaultArgumentFromPositionalValue(dic,key,value):
         raise RuntimeError("dic key '%s' is already defined. Forbidden!"%key)
     return
 
-#-------------------------------------------------------
+
 def DefaultConfigFromSysArgv(ListOfDefaultPositionalKeys,dic):
     dic.clear()
     #Configure default with positional values from sys.argv

@@ -1,3 +1,8 @@
+2012-06-01 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * Patch ArgDictTools to print setup info and packages from $TestArea
+    * Cosmetic improvements to ArgDictTools.py
+    * Tagging as PATJobTransforms-00-04-16
+
 2012-05-31 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Fix for hybrid merger (MergePoolJobTransform) to work correctly
       with old mergePOOL.exe, which always has rc=1
