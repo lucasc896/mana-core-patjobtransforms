@@ -6,6 +6,8 @@ from PyJobTransformsCore.trf import *
 from PyJobTransformsCore.full_trfarg import *
 from PyJobTransformsCore.trfutil import *
 
+from subprocess import Popen, PIPE, STDOUT, check_call, CalledProcessError
+
 class MergePoolJobTransform( JobTransform ):
     def __init__(self,inDic):
         JobTransform.__init__(self,
@@ -83,12 +85,30 @@ class MergePoolJobTransform( JobTransform ):
         print "2nd mergePOOL (metadata) finished with code %s" % rc
         if rc == 1:
             print "mergePOOL.exe finished with unknown status (upgrade your RootFileTools to a newer version) - assuming all is ok"
-            shutil.move('events.pool.root',outputfile)
         elif rc != 0:
             raise TransformError("mergePOOL.exe (final merge) encountered a problem",error='TRF_MERGEERR') 
-        else:
-            shutil.move('events.pool.root',outputfile)
 
+        # Finish hybrid merge by moving the full file to the final output location
+        shutil.move('events.pool.root', outputfile)
+
+        # Now fix the metadata, which has been left by POOL as the _stub_ file's metadata
+        # so it has the wrong GUID in the PFC
+        print 'Now fixing metadata in PFC for %s' % outputfile
+        try:
+            check_call(['FCdeletePFN', '-p', outputfile])
+            correctGUID = None
+            p = Popen(['pool_extractFileIdentifier.py', outputfile], stdout=PIPE, stderr=STDOUT, close_fds=True, bufsize=1)
+            while p.poll() is None:
+                line = p.stdout.readline()
+                words = line.split()
+                if len(words) >= 2 and outputfile in words[1]:
+                    correctGUID = words[0]
+            if correctGUID == None or p.returncode != 0:
+                raise TransformError("pool_extractFileIdentifier.py failed to get merged file GUID", error='TRF_MERGEERR')
+            print 'GUID is %s' % correctGUID
+            check_call(['FCregisterPFN', '-p', outputfile, '-t', 'ROOT_All', '-g', correctGUID]) 
+        except CalledProcessError, e:
+            print 'Attempt to fix PFC with new merged file information failed: %s' % e
 
 # Python executable
 if __name__ == '__main__':
