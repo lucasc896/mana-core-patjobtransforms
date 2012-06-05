@@ -1,3 +1,6 @@
+2012-06-05 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * Also add AtlasVersion to the setup info printout
+
 2012-06-02 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Fix for hybrid POOL merger to get correct GUID for merged files and add it to the PFC (MergePool_trf.py)
     * Tagging as PATJobTransforms-00-04-17    

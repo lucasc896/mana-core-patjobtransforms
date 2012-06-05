@@ -514,7 +514,7 @@ def BuildDicFromCommandLine(sysArgv,returnList=False):
     # Short report on atlas setup
     print "###############################"
     print 'Atlas Setup Report:'
-    for eVar in ('AtlasVersion', 'AtlasPatch', 'AtlasPatchVersion', 'CMTCONFIG','TestArea'):
+    for eVar in ('AtlasVersion', 'AtlasProject','AtlasPatch', 'AtlasPatchVersion', 'CMTCONFIG','TestArea'):
         if eVar in os.environ:
             print '\t%s=%s' % (eVar, os.environ[eVar])
         else:
