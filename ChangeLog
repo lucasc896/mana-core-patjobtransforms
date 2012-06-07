@@ -1,7 +1,7 @@
 2012-06-07 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Add outputTXT_JIVEXMLTGZFile as recognised argument
     *** Important: From this tag onwards you require PyJobTransformsCore >= 00-09-21 ***
-    * Tagging as PATJobTransforms-00-04-05
+    * Tagging as PATJobTransforms-00-04-18
 
 2012-06-05 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Also add AtlasVersion to the setup info printout
