@@ -482,6 +482,11 @@ AddOutputTXT_FTKIPFile.subSteps=['r2e']
 AddOutputTXT_FTKIPFile.isOutput='txt.bz2'
 AddToConfigDic('outputTXT_FTKIPFile', AddOutputTXT_FTKIPFile)
 
+def AddOutputTXT_JIVEXMLTGZFile(trf, inDic):
+    trf.add(OutputJiveXMLTGZFileArg(name='outputTXT_JIVEXMLTGZFile'))
+AddOutputTXT_JIVEXMLTGZFile.subSteps=['r2e', 'e2a']
+AddOutputTXT_JIVEXMLTGZFile.isOutput='XML.tar.gz'
+AddToConfigDic('outputTXT_JIVEXMLTGZFile', AddOutputTXT_JIVEXMLTGZFile)
 
 def AddNTUP_BTAG(trf,inDic):
     trf.add( NtupleFileArg(name='outputNTUP_BTAGFile',tree_names="vtuple") )
