@@ -7,7 +7,7 @@ import subprocess
 from PATJobTransforms.BaseOfBasicTrf import BaseOfBasicTrf
 from PyJobTransformsCore.trf import Author
 
-ListOfDefaultPositionalKeys=['maxEvents','inputFile','preInclude','postInclude','preExec','postExec','--ignoreerros']
+ListOfDefaultPositionalKeys=['maxEvents','inputFile','preInclude','postInclude','preExec','postExec','--ignoreerrors','d3pdVal','outputNTUP_PHYSVALFile']
 
 #List of root files created by the transform (for merging)
 rootfiles= [ 'PhysVal_InDetPerf.root', 'PhysVal_BackTracking.root', 'PhysVal_MissingET.root', 'PhysVal_Jets.root', 'PhysVal_Tau.root', 'PhysVal_Electrons.root','PhysVal_MUONSPLACEHOLDER.root','PhysVal_Btag.root', 'PhysVal_SUSY.root', 'PhysVal_MonTop.root', 'PhysVal_Zee.root', 'PhysVal_Exotics.root', 'PhysVal_HSG6.root'] 
@@ -15,23 +15,31 @@ rootfiles= [ 'PhysVal_InDetPerf.root', 'PhysVal_BackTracking.root', 'PhysVal_Mis
 class ValidationD3PDJobTransform( BaseOfBasicTrf ):
     def __init__(self,inDic):
         BaseOfBasicTrf.__init__(self,inDic,
-                              authors = [ Author('Steven Beale','Steven.Beale@cern.ch') ],
-                              skeleton='PATJobTransforms/skeleton.ValidateD3PD_trf.py' ,
-                              help = __doc__ )
-        #add the postRunAction associated with the transform.
-        self._addPostRunAction(self)
+                                # Original author Steven Beale
+                                authors = [ Author('Graeme Stewart','graeme.andrew.stewart@cern.ch') ],
+                                skeleton='PATJobTransforms/skeleton.ValidateD3PD_trf.py' ,
+                                help = __doc__ )
+        
+        # Add the postRunAction associated with the transform.
+        self._addPostRunAction(self, prepend=True)
 
     def postRunAction(self):
+        # Merge the individual perf NTUPs into one
         inlist = [ ]
         for file in rootfiles:
             if os.path.exists(file):
                 inlist.append(file)
   
-        print "Merging root files: %s" % inlist 
-      
-        cmd = ['hadd' , 'PhysVal.root']
+        if 'outputNTUP_PHYSVALFile' in self.inDic:
+            cmd = ['hadd', self.inDic['outputNTUP_PHYSVALFile']]
+        else:
+            print 'WARNING: No outputNTUP_PHYSVALFile name given - falling back to "PhysVal.root"'
+            cmd = ['hadd' , 'PhysVal.root'] 
         cmd.extend(inlist)
-        proc = subprocess.Popen(args = cmd,bufsize = 1, shell = False,stdout = subprocess.PIPE, stderr = subprocess.STDOUT )
+
+        print "Merging root files: '%s'" % cmd 
+
+        proc = subprocess.Popen(args = cmd,bufsize = 1, shell = False, stdout = subprocess.PIPE, stderr = subprocess.STDOUT)
         while proc.poll() is None:
             line = proc.stdout.readline()
             if line:

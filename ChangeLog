@@ -1,3 +1,9 @@
+2012-06-11 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * Add outputNTUP_PHYSVALFile as recognised argument in Configuration.py
+    * Add d3pdVal, outputNTUP_PHYSVALFile to LODPK in ValidateD3PD_trf and correct typo for --ignoreerrors
+    * Improve ValidateD3PD_trf comments
+    * Tagging as PATJobTransforms-00-04-19    
+
 2012-06-07 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Add outputTXT_JIVEXMLTGZFile as recognised argument
     *** Important: From this tag onwards you require PyJobTransformsCore >= 00-09-21 ***

@@ -704,7 +704,7 @@ AddOutputDAOD_WMUNUFile.subSteps=['none']
 AddOutputDAOD_WMUNUFile.isOutput='pool'
 AddToConfigDic('outputDAOD_WMUNUFile',AddOutputDAOD_WMUNUFile)
 
-
+# Note that FASTMON and PHYSVAL have no well defined event count
 def AddOutputNTUP_FASTMONFile(trf,inDic):
     #trf.add(MonitorHistArg(name='outputNTUP_FASTMONFile') )
     trf.add(NtupleFileArg(name='outputNTUP_FASTMONFile', tree_names="") )
@@ -712,6 +712,12 @@ def AddOutputNTUP_FASTMONFile(trf,inDic):
 AddOutputNTUP_FASTMONFile.subSteps=['a2t','a2d','e2a']
 AddOutputNTUP_FASTMONFile.isOutput='root'
 AddToConfigDic('outputNTUP_FASTMONFile',AddOutputNTUP_FASTMONFile)
+
+def AddNTUP_PHYSVAL(trf,inDic):
+    trf.add(NtupleFileArg(name='outputNTUP_PHYSVALFile',tree_names=""))
+AddNTUP_PHYSVAL.subSteps=['e2d', 'a2d']
+AddNTUP_PHYSVAL.isOutput='root'
+AddToConfigDic('outputNTUP_PHYSVALFile', AddNTUP_PHYSVAL)
 
 
 def AddOutputNTUP_LARNOISE(trf,inDic):
