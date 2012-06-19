@@ -1,3 +1,8 @@
+2012-06-19 Attila Krasznahorkay <Attila.Krasznahorkay@cern.ch>
+	* Adding the NTUP_TAU type to Reco_trf.py for the production
+	  system to know about it.
+	* Tagging as PATJobTransforms-00-04-20
+
 2012-06-11 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Add outputNTUP_PHYSVALFile as recognised argument in Configuration.py
     * Add d3pdVal, outputNTUP_PHYSVALFile to LODPK in ValidateD3PD_trf and correct typo for --ignoreerrors
