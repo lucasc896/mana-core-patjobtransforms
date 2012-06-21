@@ -118,13 +118,6 @@ try:
 except:
   print "No accept algs indicated in VetoList"
 
-# Copy InFile MetaData using MetaDataTools
-from AthenaServices.AthenaServicesConf import AthenaOutputStream
-StreamHITS_FH = AthenaOutputStream( "StreamHITS_FH" )
-StreamHITS_FH.ItemList += [ "IOVMetaDataContainer#*" ]
-
-#from IOVDbMetaDataTools.IOVDbMetaDataToolsConf import IOVDbMetaDataTool
-#ServiceMgr.MetaDataSvc.MetaDataTools += [ "IOVDbMetaDataTool" ] ## 'IOVDbMetaDataTool' already in list at this point
 
 MessageSvc = ServiceMgr.MessageSvc
 MessageSvc.OutputLevel = INFO
