@@ -1,3 +1,7 @@
+2012-06-22 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * Move pickled arg list into share area with sensible name/path (requirements)
+    * Improvements to mk-trf-argpickle 
+
 2012-06-21 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Remove unnecessary job options in merging skeletons for HITS and RDO (r17 compatible only)
     * Tagging as PATJobTransforms-00-04-21
