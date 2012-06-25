@@ -36,14 +36,23 @@ if inFileArgs!=1:
 if inKey.lstrip('input') != outKey.lstrip('output'):
     raise TransformArgumentError(message='Using different input and output types: {0:s} and {0:s}. Stopping!'.format(inKey, outKey ))
 
-cmd = ['hadd', outFile ]
+# If we have the mergeChunks parameter, then we will use rhadd instead of hadd (due to memory leaks) 
+if hasattr(runArgs,'mergeChunks'):
+    chunks=getattr(runArgs,'mergeChunks')
+    cmd=['rhadd.py','-n','%s'%(chunks)]
+else:
+    cmd=['hadd']
+
+cmd.append(outFile)
 cmd.extend(inFile)
+
+print 'Will merge using: %s' % cmd
 proc=subprocess.Popen( args=cmd, bufsize = 1, shell = False,stdout = subprocess.PIPE, stderr = subprocess.STDOUT )
 
 while proc.poll() is None:
     line = proc.stdout.readline()
     if line:
-        print line
+        print line.rstrip()
 
 rc=proc.returncode
 

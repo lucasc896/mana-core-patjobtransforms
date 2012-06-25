@@ -152,6 +152,12 @@ def AddMaxEvents(trf,inDic):
     return
 AddToConfigDic('maxEvents',AddMaxEvents)
 
+# It is a hack to clone this from SkipEventsArg, but we're close to deprecation of this code...
+def AddMergeChunks(trf,inDic):
+    trf.add( SkipEventsArg(name='mergeChunks') )
+    return
+AddToConfigDic('mergeChunks',AddMergeChunks)
+
 def AddDBRelease(trf,inDic):
     trf.add( DBReleaseArg() )
     return

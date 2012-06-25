@@ -1,3 +1,9 @@
+2012-06-25 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * Add mergeChunks argument for recursive merging (Configuration.py, MergeNTUP_trf.py)
+    * Add rhadd.py to manage recursive merging
+    * Switch to rhadd.py if mergeChunks is defined in skeleton.MergeNTUP_trf.py
+    * Tagging as PATJobTransforms-00-04-22    
+
 2012-06-22 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Move pickled arg list into share area with sensible name/path (requirements)
     * Improvements to mk-trf-argpickle 
