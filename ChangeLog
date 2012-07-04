@@ -1,3 +1,7 @@
+2012-07-05 Nurcan Ozturk <nurcan@uta.eduh>
+        * Corrected 'Outputntup_TAUMEDIUMFile' to 'outputNTUP_TAUMEDIUMFile' in MergeNTUP_trf.py
+        * Tagging as PATJobTransforms-00-04-25
+
 2012-06-29 Nurcan Ozturk <nurcan@uta.eduh>
         * Added NTUP_TAU and NTUP_TAUFULL D3PD formats to MergeNTUP_trf.py
         * Tagging as PATJobTransforms-00-04-24
