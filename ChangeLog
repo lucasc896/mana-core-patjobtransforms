@@ -1,3 +1,7 @@
+2012-07-06 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * Add PATJobTransformsSignatures.pickle dummy file (avoid CMT warning)
+    * Give correct location for PATJobTransformsSignatures.pickle in requirements (../share)
+    
 2012-07-05 Nurcan Ozturk <nurcan@uta.eduh>
         * Corrected 'Outputntup_TAUMEDIUMFile' to 'outputNTUP_TAUMEDIUMFile' in MergeNTUP_trf.py
         * Tagging as PATJobTransforms-00-04-25
