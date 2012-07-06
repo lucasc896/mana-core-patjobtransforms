@@ -103,10 +103,8 @@ class haddStep(object):
         for job in range(nMerges):
             # Try to ensure we have ~equal numbers of files in each merge
             fileCounter = len(self._inputFiles) * float(job+1) / nMerges
+            # Add 0.5 to ensure that rounding errors don't lose a file off the back... (very unlikely!)
             lastFile = int(fileCounter + 0.5)
-            # This code is just belt 'n' braces to ensure that rounding errors don't lose a file off the back...
-            if job+1 == nMerges and lastFile+1 != len(self._inputFiles):
-                lastFile = len(self._inputFiles)
             tempOutput = mkstemp(dir='.')
             os.close(tempOutput[0])
             logging.debug('Intermediate merge job %d: %s -> %s' % (job, self._inputFiles[nextFile:lastFile], tempOutput[1]))
@@ -114,7 +112,7 @@ class haddStep(object):
             nextFile = lastFile
         
         
-    def executeAll(self, parallel = None):
+    def executeAll(self, parallel = 1):
         if parallel > 1:
             # Funky parallel processing
             logging.info('Starting merge using up to %d hadd processes in parallel' % parallel)
@@ -124,24 +122,26 @@ class haddStep(object):
             for job in self._haddJobArray:
                 parallelResultsArray.append(pool.apply_async(job, ()))
             pool.close()
+            # The next two lines will stick until all the worker processes are finished
+            # Really one needs a progress loop monitor with a timeout... 
             pool.join()
             
             # Update our hadd exit codes to the parallel processed return code, because the copy of the 
-            # instance held by the worker was the only one where the exe method was actually called
+            # instance held by the worker was the one where the exe method was actually called
             for i, job in enumerate(self._haddJobArray):
                 job.exitCode = parallelResultsArray[i].get(timeout=0)
             
             for job in self._haddJobArray:
                 if job.exitCode != 0:
                     logging.error('Merging job %s failed, exit code %s' % (job, job.exitCode))
-                    sys.exit(2)
+                    sys.exit(1)
         else:
             # Safe and slow serial processing
             for job in self._haddJobArray:
                 job.exe()
                 if job.exitCode != 0:
                     logging.error('Merging job %s failed, exit code %s' % (job, job.exitCode))
-                    sys.exit(2)
+                    sys.exit(1)
 
 
     @property
@@ -153,11 +153,12 @@ class haddStep(object):
         return len(self._haddJobArray)
     
     def __str__(self):
-        return 'Merging level %s: ' % self._level + str([ str(job) for job in self._haddJobArray ])
+        return 'Merging level %s: %s' % (self._level, str([ str(job) for job in self._haddJobArray ]))
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Recursive wrapper around the ROOT hadd script.')
+    parser = argparse.ArgumentParser(description='Recursive wrapper around the ROOT hadd script.',
+                                     epilog='Return codes: 0 All OK; 1 Problem with hadd; 2 Invalid arguments')
     parser.add_argument('outputFile', help='Single merged output file')
     parser.add_argument('inputFiles', nargs='+', help='Input files to merge')
     parser.add_argument('-n', '--bunchNumber', type=int, help='File batching number for single hadds', default=10)
@@ -171,11 +172,12 @@ def main():
     # Sanity checks
     if args['bunchNumber'] <= 1:
         logging.error('bunchNumber parameter must be greater than 1')
-        sys.exit(1)
-        
-    if len(args['inputFiles']) < 1:
-        logging.error('No input files given')
-        sys.exit(1)
+        sys.exit(2)
+
+    if args['parallelMerge'] < 1:
+        logging.error('parallelMerge parameter must be greater than 1')
+        sys.exit(2)
+
         
     doRecursiveMerge(args)
     

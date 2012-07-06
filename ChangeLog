@@ -1,4 +1,12 @@
 2012-07-06 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * Remove unnecessary padding code in rhadd.py; cosmetic improvements
+    * Add mergeParallel argument to enable parallel rhadd.py merges from transform
+    * Convert mergeParallel and mergeChunks to BasicIntArg
+    * Add asetup argument for switching release before running athena; added to LODPK for Reco_trf
+    *** Important: From this tag onwards you require PyJobTransformsCore >= 00-09-24 ***
+    * Tagging as PATJobTransforms-00-04-26
+
+2012-07-06 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Add PATJobTransformsSignatures.pickle dummy file (avoid CMT warning)
     * Give correct location for PATJobTransformsSignatures.pickle in requirements (../share)
     

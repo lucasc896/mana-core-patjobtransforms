@@ -36,10 +36,12 @@ if inFileArgs!=1:
 if inKey.lstrip('input') != outKey.lstrip('output'):
     raise TransformArgumentError(message='Using different input and output types: {0:s} and {0:s}. Stopping!'.format(inKey, outKey ))
 
-# If we have the mergeChunks parameter, then we will use rhadd instead of hadd (due to memory leaks) 
+# If we have the mergeChunks parameter, then we will use rhadd instead of hadd (due to memory leaks)
+# Parallel merge can be considerably faster
 if hasattr(runArgs,'mergeChunks'):
-    chunks=getattr(runArgs,'mergeChunks')
-    cmd=['rhadd.py','-n','%s'%(chunks)]
+    cmd=['rhadd.py', '-n', str(getattr(runArgs,'mergeChunks'))]
+    if hasattr(runArgs,'mergeParallel'):
+        cmd.extend(['-p', str(getattr(runArgs, 'mergeParallel'))])
 else:
     cmd=['hadd']
 

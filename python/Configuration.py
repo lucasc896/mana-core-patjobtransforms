@@ -152,11 +152,15 @@ def AddMaxEvents(trf,inDic):
     return
 AddToConfigDic('maxEvents',AddMaxEvents)
 
-# It is a hack to clone this from SkipEventsArg, but we're close to deprecation of this code...
 def AddMergeChunks(trf,inDic):
-    trf.add( SkipEventsArg(name='mergeChunks') )
+    trf.add( BasicIntArg(name='mergeChunks') )
     return
 AddToConfigDic('mergeChunks',AddMergeChunks)
+
+def AddMergeParallel(trf,inDic):
+    trf.add( BasicIntArg(name='mergeParallel') )
+    return
+AddToConfigDic('mergeParallel',AddMergeParallel)
 
 def AddDBRelease(trf,inDic):
     trf.add( DBReleaseArg() )
@@ -169,6 +173,10 @@ def AddSQLite(trf,inDic):
     return
 AddToConfigDic('useSQLite',AddSQLite)
 
+def AddAsetup(trf, inDic):
+    trf.add(AsetupArg())
+    return
+AddToConfigDic('asetup', AddAsetup)
 
 ## New optional config
 def AddBeamType(trf,inDic):
