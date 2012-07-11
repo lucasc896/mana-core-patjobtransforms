@@ -8,10 +8,6 @@ import os
 import pickle
 import sys
 
-## Change dir to $pkgroot/share
-import os
-os.chdir("../share")
-
 ProdSysDic={} 
 noProblem=True
 
@@ -35,9 +31,20 @@ except Exception, e:
     print "WARNING: unable to generate ProdSysDic entry for Merging_trf (%s)" % e
     noProblem=False
 
+# MergeNTUP_trf
+#try:
+#    from PATJobTransforms.Merging_trf import MergeNTUPJobTransform
+#    MergeNTUPTrf = MergeNTUPJobTransform({})
+#    ProdSysDic['MergeNTUP_trf.py']=MergeNTUPTrf.getPotentialArgs()
+#    del MergeNTUPTrf
+#except Exception, e:
+#    print "WARNING: unable to generate ProdSysDic entry for Merging_trf (%s)" % e
+#    noProblem=False
+
+
 # Output pickle file
 try:
-    outFileName=sys.argv[1] + 'Signatures.pickle'
+    outFileName=sys.argv[1]
     f = open(outFileName, 'w')
     pickle.dump(ProdSysDic, f)
     f.close()

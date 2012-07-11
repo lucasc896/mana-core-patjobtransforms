@@ -1,3 +1,8 @@
+2012-07-11 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * Correct CMT requirements and remove dummy pickle file
+    * Minor changes to mk-trf-pickle script
+    * Tagging as PATJobTransforms-00-04-27    
+
 2012-07-06 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Remove unnecessary padding code in rhadd.py; cosmetic improvements
     * Add mergeParallel argument to enable parallel rhadd.py merges from transform

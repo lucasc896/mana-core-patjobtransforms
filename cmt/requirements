@@ -13,10 +13,12 @@ alias Merging_trf  Merging_trf.py
 apply_pattern declare_python_modules files="*.py"
 apply_pattern declare_jobtransforms trfs='*_trf.py' jo='*.py'
 
+
 apply_pattern generic_declare_for_link kind=pickle files="../share/$(package)Signatures.pickle" prefix=share/JobTransforms
 
-
 private
-action mktrfargpickle "$(PATJobTransforms_root)/share/mk-trf-argpickle $(package)"
-macro_append mktrfargpickle_dependencies " install_trfs_jop "
-macro_append all_dependencies " mktrfargpickle "
+action makeTrfSignatures "../share/mk-trf-argpickle ../share/$(package)Signatures.pickle"
+macro_append makeTrfSignatures_dependencies " install_trfs_jop "
+macro_append all_dependencies " makeTrfSignatures "
+macro_append install_pickle_dependencies " makeTrfSignatures "
+
