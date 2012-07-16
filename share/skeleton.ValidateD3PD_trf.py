@@ -8,8 +8,16 @@
 # ==============================================================================
 # Load your input file that you want to process
 # ==============================================================================
-from AthenaCommon.AthenaCommonFlags import jobproperties as jp
-jp.AthenaCommonFlags.FilesInput.set_Value_and_Lock(runArgs.inputFile)
+include("PATJobTransforms/CommonSkeletonJobOptions.py")
+
+if hasattr(runArgs,"inputESDFile"):
+    rec.readESD.set_Value_and_Lock( True )
+    athenaCommonFlags.PoolESDInput.set_Value_and_Lock( runArgs.inputESDFile )
+elif hasattr(runArgs,"inputAODFile"):
+    rec.readAOD.set_Value_and_Lock( True )
+    athenaCommonFlags.PoolAODInput.set_Value_and_Lock( runArgs.inputAODFile )
+else:
+    raise RuntimeError('No input file argument given (ESD or AOD input required)')
 
 #Default 'do' list:
 doPhysInDetPerf     = True #!!
@@ -40,11 +48,6 @@ if hasattr(runArgs,"d3pdVal"):
 
 
 # ==============================================================================
-# Set the number of events that you want to process or skip
-# ==============================================================================
-jp.AthenaCommonFlags.EvtMax.set_Value_and_Lock(runArgs.maxEvents)
-
-# ==============================================================================
 # Configure RecExCommon (the mother of all job options in Athena) 
 # and schedule your DPD making.
 # Unfortunately, for now, you still have to turn OFF some things by hand
@@ -54,7 +57,6 @@ from InDetRecExample.InDetKeys import InDetKeys
 InDetKeys.UnslimmedTracks.set_Value_and_Lock('Tracks')
 InDetKeys.UnslimmedTracksTruth.set_Value_and_Lock('TrackTruthCollection')
 
-from RecExConfig.RecFlags import rec
 rec.doHist.set_Value_and_Lock(True)
 rec.doWriteTAG.set_Value_and_Lock(False)
 rec.doWriteAOD.set_Value_and_Lock(False)
