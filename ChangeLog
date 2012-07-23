@@ -1,3 +1,10 @@
+2012-07-23 Attila Krasznahorkay <Attila.Krasznahorkay@cern.ch>
+	* Moved the NTUP_TRKVALID creation from the R2E step to the
+	  E2D one. This was on the request of Stephane Willocq,
+	  and should be harmless. (NTUP_TRKVALID is not made
+	  centrally.)
+	* Tagging as PATJobTransforms-00-04-28
+
 2012-07-14 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Update ValidateD3PD skeleton and LODPK to accept inputAODFile and inputESDFile 
         (corrects problem with prodsys [a,b,c] notation).
