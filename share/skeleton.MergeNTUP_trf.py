@@ -36,6 +36,25 @@ if inFileArgs!=1:
 if inKey.lstrip('input') != outKey.lstrip('output'):
     raise TransformArgumentError(message='Using different input and output types: {0:s} and {0:s}. Stopping!'.format(inKey, outKey ))
 
+
+if not (hasattr(runArgs,"sortInputFiles") and not runArgs.sortInputFiles):
+    inFileSorted=[]
+    inFileWithoutEvents=[]
+    for file in inFile:
+        print "Determing number of events of file", file
+        myset=set()
+        ConfigDic[inKey](trf=myset,inDic={})
+        for x in myset:
+            x.setValue(file)
+            nevents=x.eventCount()
+            print "Number of events is", nevents
+            if nevents>0:
+                inFileSorted.append(file)
+            else:    
+                inFileWithoutEvents.append(file)
+    inFileSorted.extend(inFileWithoutEvents);
+    inFile=inFileSorted
+
 # If we have the mergeChunks parameter, then we will use rhadd instead of hadd (due to memory leaks)
 # Parallel merge can be considerably faster
 if hasattr(runArgs,'mergeChunks'):

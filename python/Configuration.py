@@ -756,6 +756,10 @@ def AddRDOTrigger(trf,inDic):
     return
 AddToConfigDic('doRDOTrigger',AddRDOTrigger)
 
+def AddSortInputFiles(trf,inDic):
+    trf.add(BasicBoolArg(name='sortInputFiles'))
+    return
+AddToConfigDic('sortInputFiles',AddSortInputFiles)
 
 def AddD3PDVal(trf,inDic):
     trf.add( ListOfStringsArg(name='d3pdVal') )
