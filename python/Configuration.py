@@ -564,7 +564,7 @@ AddToConfigDic('outputNTUP_PROMPTPHOTFile',AddNTUP_PROMPTPHOT)
 def AddNTUP_TRKVALID(trf,inDic):
     trf.add( NtupleFileArg(name='outputNTUP_TRKVALIDFile',tree_names="Validation/EventToTrackLink") )
     return
-AddNTUP_TRKVALID.subSteps=['e2d']
+AddNTUP_TRKVALID.subSteps=['r2e']
 AddNTUP_TRKVALID.isOutput='root'
 AddToConfigDic('outputNTUP_TRKVALIDFile',AddNTUP_TRKVALID)
 

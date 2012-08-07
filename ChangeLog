@@ -1,3 +1,10 @@
+2012-08-07 Attila Krasznahorkay <Attila.Krasznahorkay@cern.ch>
+	* Reverting the NTUP_TRKVALID change for now for security
+	  reasons. (Causes problems in devval, may cause problems
+	  in 17.2.X.Y(.Z) as well.)
+	* Tagging Brjorn's changes in MergeNTUP_trf.
+	* Tagging as PATJobTransforms-00-04-29
+
 2012-03-12  Bjorn Sarrazin <bjorn.sarrazin@cern.ch>
 	* sort input files in MergeNTUP_trf such that files with 0 events are at the end of the list
 	* add argument sortInputFiles to Configuration.py in order do be able switch above feature off
