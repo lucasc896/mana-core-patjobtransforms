@@ -31,6 +31,22 @@ DetDescrVersion = runArgs.geometryVersion
 from AthenaCommon.GlobalFlags import globalflags
 globalflags.DetDescrVersion.set_Value_and_Lock( runArgs.geometryVersion )
 
+#==============================================================
+# Job Configuration parameters:
+#==============================================================
+## Pre-exec
+if hasattr(runArgs,"preExec"):
+    merHitLog.info("transform pre-exec")
+    for cmd in runArgs.preExec:
+        merHitLog.info(cmd)
+        exec(cmd)
+
+## Pre-include
+if hasattr(runArgs,"preInclude"): 
+    for fragment in runArgs.preInclude:
+        include(fragment)
+
+
 #--------------------------------------------------------------
 # Load POOL support
 #--------------------------------------------------------------
@@ -53,20 +69,6 @@ GeoModelSvc.IgnoreTagDifference=True
 # set up all detector description stuff 
 include( "RecExCond/AllDet_detDescr.py" )
 
-#==============================================================
-# Job Configuration parameters:
-#==============================================================
-## Pre-exec
-if hasattr(runArgs,"preExec"):
-    merHitLog.info("transform pre-exec")
-    for cmd in runArgs.preExec:
-        merHitLog.info(cmd)
-        exec(cmd)
-
-## Pre-include
-if hasattr(runArgs,"preInclude"): 
-    for fragment in runArgs.preInclude:
-        include(fragment)
 
 #--------------------------------------------------------------
 # Setup Input

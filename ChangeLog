@@ -1,3 +1,7 @@
+2012-08-09 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * Change skeleton.MergeHIT.py to move preExec/preInclude before detector description 
+      set-up to allow the TRT to be switched off (original change by John Chapman in 00-04-27-01).
+
 2012-08-07 Attila Krasznahorkay <Attila.Krasznahorkay@cern.ch>
 	* Reverting the NTUP_TRKVALID change for now for security
 	  reasons. (Causes problems in devval, may cause problems
