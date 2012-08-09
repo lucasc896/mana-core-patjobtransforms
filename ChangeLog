@@ -1,3 +1,12 @@
+2012-08-09  John Chapman  <John.Chapman@cern.ch>
+    * share/skeleton.MergeHIT.py - move preExec/preInclude before
+    detector description set-up to allow the TRT to be switched off.
+    * Tagging as PATJobTransforms-00-04-27-01
+
+2012-08-09  John Chapman  <John.Chapman@cern.ch>
+    * For Merging_trf.py tweak for upgrade releases
+    * PATJobTransforms-00-04-27-branch 
+
 2012-07-11 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Correct CMT requirements and remove dummy pickle file
     * Minor changes to mk-trf-pickle script
