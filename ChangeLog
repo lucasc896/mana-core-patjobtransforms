@@ -1,3 +1,6 @@
+2012-09-19 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * Get logfile GUIDs using uuid.uuid4() instead of uuidgen external call
+
 2012-08-13 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Add outputNTUP_TOPFJETFile to Reco_trf, MergeNTUP_trf LODPK.
     * Tagging as PATJobTransforms-00-04-30    

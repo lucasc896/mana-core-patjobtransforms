@@ -6,6 +6,8 @@
 #   -define the configuration functions to be executed by each input argument
 #   -associate allowed input and config functions in ConfigDic
 
+import uuid
+
 from PyJobTransformsCore.full_trfarg import *
 
 #Note, each function in ConfigDic must accept arguments (transform_to_configure, input_dictionary)
@@ -335,14 +337,8 @@ class LogsFile( FileType ):
         print "Checking!! LogsFile.getGUID"
         if TRF_SETTING[ 'testrun' ]:
             return None
-##         guid = getCachedFileInfo( filename, 'file_guid' )
-##         if guid is not None:
-##             return guid
-        cmd = 'uuidgen'
-        status,guid = commands.getstatusoutput(cmd)
-        if status != 0: 
-            return None
-        print "GUID retrieval: %s (%s) generated with %s" % ( guid, filename, cmd )
+        guid = str(uuid.uuid4()).upper()
+        print "GUID retrieval: %s (%s) generated with uuid.uuid4()" % ( guid, filename )
         return guid
  
 
