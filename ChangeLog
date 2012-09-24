@@ -1,6 +1,7 @@
 2012-09-24 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Patch for Reco_trf to automatically add tmpESD when input is BS/RDO
-      and final outputs are made from ESD, but no output or tmpESD was specified.
+      and final outputs are made from ESD, but no output or tmpESD was specified
+    * Small update to tmpESD filename (tmp.ESD.pool.root, consistent with DigiMReco_trf)
 
 2012-09-19 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Get logfile GUIDs using uuid.uuid4() instead of uuidgen external call
