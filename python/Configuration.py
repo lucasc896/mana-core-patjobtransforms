@@ -6,6 +6,8 @@
 #   -define the configuration functions to be executed by each input argument
 #   -associate allowed input and config functions in ConfigDic
 
+import uuid
+
 from PyJobTransformsCore.full_trfarg import *
 
 #Note, each function in ConfigDic must accept arguments (transform_to_configure, input_dictionary)
@@ -261,6 +263,11 @@ def AddConditionsTag(trf,inDic):
     return
 AddToConfigDic('conditionsTag',AddConditionsTag)
 
+def AddEventSelectorQuery(trf, inDic):
+    trf.add(EventSelectorQueryArg(name='eventSelectorQuery'))
+    return
+AddToConfigDic('eventSelectorQuery', AddEventSelectorQuery)
+
 #######################
 # Mandatory input files
 def AddInputFile(trf,inDic):    
@@ -275,6 +282,13 @@ def AddInputTAGFile(trf,inDic):
 AddInputTAGFile.subSteps=['e2d','a2d']
 AddInputTAGFile.isInput=True
 AddToConfigDic('inputTAGFile',AddInputTAGFile)
+
+def AddInputTAG_AODFile(trf,inDic):    
+    trf.add( ListOfStringsArg(name='inputTAG_AODFile') )
+    return
+AddInputTAG_AODFile.subSteps=['a2d','a2a']
+AddInputTAG_AODFile.isInput=True
+AddToConfigDic('inputTAG_AODFile',AddInputTAG_AODFile)
 
 def AddInputEvgenFile(trf,inDic):    
     trf.add( InputEvgenFileArg() )
@@ -335,14 +349,8 @@ class LogsFile( FileType ):
         print "Checking!! LogsFile.getGUID"
         if TRF_SETTING[ 'testrun' ]:
             return None
-##         guid = getCachedFileInfo( filename, 'file_guid' )
-##         if guid is not None:
-##             return guid
-        cmd = 'uuidgen'
-        status,guid = commands.getstatusoutput(cmd)
-        if status != 0: 
-            return None
-        print "GUID retrieval: %s (%s) generated with %s" % ( guid, filename, cmd )
+        guid = str(uuid.uuid4()).upper()
+        print "GUID retrieval: %s (%s) generated with uuid.uuid4()" % ( guid, filename )
         return guid
  
 
@@ -422,7 +430,7 @@ AddToConfigDic('outputESDFile',AddOutputESDFile)
 def AddOutputAODFile(trf,inDic):
     trf.add( OutputAODFileArg() )
     return
-AddOutputAODFile.subSteps=['e2a','merge']
+AddOutputAODFile.subSteps=['e2a','merge','a2d']
 AddOutputAODFile.isOutput='pool'
 AddToConfigDic('outputAODFile',AddOutputAODFile)
 

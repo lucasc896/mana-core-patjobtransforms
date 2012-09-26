@@ -285,8 +285,15 @@ class FlexibleRecoTransform( BaseOfCompositeTrf ):
 
         #RAW->ESD->AOD+DPD
         outESD=None
-        if self.dicRAWToESD.has_key('outputESDFile'): outESD=self.dicRAWToESD['outputESDFile']
-        elif self.dicRAWToESD.has_key('tmpESD'): outESD=self.dicRAWToESD['tmpESD']
+        if self.dicRAWToESD.has_key('outputESDFile'): 
+            outESD=self.dicRAWToESD['outputESDFile']
+        elif self.dicRAWToESD.has_key('tmpESD'): 
+            outESD=self.dicRAWToESD['tmpESD']
+        elif self.hasInput(self.dicRAWToESD) and (self.hasOutput(self.dicESDToDPD) or self.hasOutput(self.dicESDToAOD)):
+            # Look for a configuration where input BS/RDO is used, and the final outputs
+            # require ESD as an intermediate step.
+            print 'Found input for RAWtoESD, but no output - adding tmpESD to argument dictionary'
+            outESD = self.dicRAWToESD['tmpESD'] = 'tmp.ESD.pool.root'
         if self.runRAWtoESD() and outESD!=None:
             if self.hasOutput(self.dicESDToAOD):
                 if not self.hasInput(self.dicESDToAOD):

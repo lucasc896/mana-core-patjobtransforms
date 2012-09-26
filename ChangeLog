@@ -1,3 +1,21 @@
+2012-09-26 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * Add eventSelectorQuery and inputTAG_AODFile to Configuration.py
+    * Recognise and handle eventSelectorQuery and inputTAG_AODFile in AODtoDPD skeleton
+    * Allow AOD to be recognised as an output of the a2d step in Configuration.py (allows for AOD skimming)
+    * Tagging as PATJobTransforms-00-04-32-branch
+
+2012-09-25 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * Tagging as PATJobTransforms-00-04-32
+
+2012-09-24 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * Patch for Reco_trf to automatically add tmpESD when input is BS/RDO
+      and final outputs are made from ESD, but no output or tmpESD was specified
+    * Small update to tmpESD filename (tmp.ESD.pool.root, consistent with DigiMReco_trf)
+
+2012-09-19 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * Get logfile GUIDs using uuid.uuid4() instead of uuidgen external call
+    * Tagging as PATJobTransforms-00-04-31
+    
 2012-08-13 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Add outputNTUP_TOPFJETFile to Reco_trf, MergeNTUP_trf LODPK.
     * Tagging as PATJobTransforms-00-04-30    
