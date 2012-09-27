@@ -1,3 +1,7 @@
+2012-09-28 Maarten Boonekamp
+	* adding NTUP_SMLIGHT to Reco_trf, MergeNTUP_trf
+	* Tagging as PATJobTransforms-00-04-33
+		
 2012-09-25 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Tagging as PATJobTransforms-00-04-32
 
