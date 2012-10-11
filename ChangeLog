@@ -1,3 +1,7 @@
+2012-10-11 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * Add inputNTUP_TOPFJETFile to MergeNTUP_trf LODPK.
+    * Tagging as PATJobTransforms-00-04-34
+
 2012-09-28 Maarten Boonekamp
 	* adding NTUP_SMLIGHT to Reco_trf, MergeNTUP_trf
 	* Tagging as PATJobTransforms-00-04-33
