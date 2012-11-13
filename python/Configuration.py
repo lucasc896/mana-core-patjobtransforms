@@ -263,6 +263,11 @@ def AddConditionsTag(trf,inDic):
     return
 AddToConfigDic('conditionsTag',AddConditionsTag)
 
+def AddEventSelectorQuery(trf, inDic):
+    trf.add(EventSelectorQueryArg(name='eventSelectorQuery'))
+    return
+AddToConfigDic('eventSelectorQuery', AddEventSelectorQuery)
+
 #######################
 # Mandatory input files
 def AddInputFile(trf,inDic):    
@@ -277,6 +282,13 @@ def AddInputTAGFile(trf,inDic):
 AddInputTAGFile.subSteps=['e2d','a2d']
 AddInputTAGFile.isInput=True
 AddToConfigDic('inputTAGFile',AddInputTAGFile)
+
+def AddInputTAG_AODFile(trf,inDic):    
+    trf.add( ListOfStringsArg(name='inputTAG_AODFile') )
+    return
+AddInputTAG_AODFile.subSteps=['a2d','a2a']
+AddInputTAG_AODFile.isInput=True
+AddToConfigDic('inputTAG_AODFile',AddInputTAG_AODFile)
 
 def AddInputEvgenFile(trf,inDic):    
     trf.add( InputEvgenFileArg() )
@@ -418,7 +430,7 @@ AddToConfigDic('outputESDFile',AddOutputESDFile)
 def AddOutputAODFile(trf,inDic):
     trf.add( OutputAODFileArg() )
     return
-AddOutputAODFile.subSteps=['e2a','merge']
+AddOutputAODFile.subSteps=['e2a','merge','a2d']
 AddOutputAODFile.isOutput='pool'
 AddToConfigDic('outputAODFile',AddOutputAODFile)
 

@@ -1,3 +1,10 @@
+2012-11-13 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * Merge PATJobTransforms-00-04-32-branch:
+        * Add eventSelectorQuery and inputTAG_AODFile to Configuration.py
+        * Recognise and handle eventSelectorQuery and inputTAG_AODFile in AODtoDPD skeleton
+        * Allow AOD to be recognised as an output of the a2d step in Configuration.py (allows for AOD skimming)
+    * Tagging as PATJobTransforms-00-04-35
+
 2012-10-11 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Add inputNTUP_TOPFJETFile to MergeNTUP_trf LODPK.
     * Tagging as PATJobTransforms-00-04-34
@@ -17,7 +24,7 @@
 2012-09-19 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Get logfile GUIDs using uuid.uuid4() instead of uuidgen external call
     * Tagging as PATJobTransforms-00-04-31
-    
+
 2012-08-13 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Add outputNTUP_TOPFJETFile to Reco_trf, MergeNTUP_trf LODPK.
     * Tagging as PATJobTransforms-00-04-30    

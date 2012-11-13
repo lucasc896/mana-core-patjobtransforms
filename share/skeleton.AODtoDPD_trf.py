@@ -54,13 +54,17 @@ if hasattr(runArgs,"inputAODFile"):
     rec.readAOD.set_Value_and_Lock( True )
     rec.readRDO.set_Value_and_Lock( False )
     athenaCommonFlags.PoolAODInput.set_Value_and_Lock( runArgs.inputAODFile )
-if hasattr(runArgs,"inputTAGFile"):
+if hasattr(runArgs,"inputTAGFile") or hasattr(runArgs,"inputTAG_AODFile"):
     #for TAG->AOD->skimmedAOD
     rec.readTAG.set_Value_and_Lock( True )
     rec.readAOD.set_Value_and_Lock( True )
     rec.doAOD.set_Value_and_Lock( False )
     rec.TAGFromRDO.set_Value_and_Lock( False )
-    athenaCommonFlags.FilesInput.set_Value_and_Lock( runArgs.inputTAGFile )
+        
+    if hasattr(runArgs,"inputTAGFile"):
+        athenaCommonFlags.FilesInput.set_Value_and_Lock( runArgs.inputTAGFile )
+    else:
+        athenaCommonFlags.FilesInput.set_Value_and_Lock( runArgs.inputTAG_AODFile )
 
 ## Outputs
 if hasattr(runArgs,"outputAODFile"):
@@ -152,6 +156,14 @@ if hasattr(runArgs,"preInclude"):
 #========================================================
 if hasattr(runArgs,"topOptions"): include(runArgs.topOptions)
 else: include( "RecExCommon/RecExCommon_topOptions.py" )
+
+
+# Skimming options
+if hasattr(runArgs,"eventSelectorQuery"):
+    svcMgr.EventSelector.RefName= "StreamAOD"
+    svcMgr.EventSelector.CollectionType="ExplicitROOT"
+    svcMgr.EventSelector.Query=runArgs.eventSelectorQuery
+
 
 ## Make "old style" D3PDs.
 for c in SetupOutputDPDs(runArgs, [oldProdFlags]): c()
