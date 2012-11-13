@@ -4,6 +4,8 @@
         * Recognise and handle eventSelectorQuery and inputTAG_AODFile in AODtoDPD skeleton
         * Allow AOD to be recognised as an output of the a2d step in Configuration.py (allows for AOD skimming)
     * Tagging as PATJobTransforms-00-04-35
+    *** Important: From this tag onwards you require PyJobTransformsCore >= 00-09-33 ***
+
 
 2012-10-11 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Add inputNTUP_TOPFJETFile to MergeNTUP_trf LODPK.
