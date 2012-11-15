@@ -4,6 +4,7 @@
     * Allow BaseOfBasic and BaseOfComposite to accept the lastInChain parameter
     * Modify Merging_trf, Reco_trf to set lastInChain=False for all substeps
         * Final jobReport.gpickle will be written by parent transform
+    * Tagging as PATJobTransforms-00-04-36
     *** Important: From this tag onwards you require RecJobTransforms >= 00-09-13 ***
 
 2012-11-13 Graeme Stewart <graeme.andrew.stewart@cern.ch>
