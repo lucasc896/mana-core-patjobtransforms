@@ -3,8 +3,8 @@
 from PyJobTransformsCore.trf import JobTransform
 
 class BaseOfBasicTrf( JobTransform ):
-    def __init__(self,inDic,authors,skeleton,help,name="default"):
-        JobTransform.__init__(self, name=name, authors=authors, skeleton=skeleton, help=help)
+    def __init__(self,inDic,authors,skeleton,help,name="default",lastInChain=True):
+        JobTransform.__init__(self, name=name, authors=authors, skeleton=skeleton, help=help,lastInChain=lastInChain)
 
         if not isinstance(inDic,dict):
             raise TypeError("inDic has type '%s' but should be a dictionary." %type(inDic))

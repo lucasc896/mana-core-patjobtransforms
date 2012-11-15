@@ -6,12 +6,12 @@ from PATJobTransforms.BaseOfBasicTrf import BaseOfBasicTrf
 from PyJobTransformsCore.trf import Author
 
 class MergeHITSJobTransform( BaseOfBasicTrf ):
-    def __init__(self,inDic):
+    def __init__(self,inDic,lastInChain=True):
         BaseOfBasicTrf.__init__(self,inDic,
                               authors = [ Author('Jack Cranshaw','Jack.Cranshaw@cern.ch'),
                                           Author('Borut Kersevan', 'Borut.Kersevan@cern.ch') ] ,
                               skeleton='PATJobTransforms/skeleton.MergeHIT.py' ,
-                              help = __doc__ )
+                              help = __doc__, lastInChain=lastInChain )
 
 ##         #add arguments
 ##         self.add( InputHitsFileArg() )

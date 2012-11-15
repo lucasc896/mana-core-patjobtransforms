@@ -6,11 +6,11 @@ from PATJobTransforms.BaseOfBasicTrf import BaseOfBasicTrf
 from PyJobTransformsCore.trf import Author
 
 class DQHistogramMergeJobTransform( BaseOfBasicTrf ):
-    def __init__(self,inDic):
+    def __init__(self,inDic,lastInChain=True):
         BaseOfBasicTrf.__init__(self,inDic,
                                 authors = [ Author('David Cote', 'David.Cote@cern.ch')],
                                 skeleton='PATJobTransforms/skeleton.DQHistogramMerge_trf.py',
-                                help = __doc__ )
+                                help = __doc__,lastInChain=lastInChain)
 
     def matchEvents(self):
         self.logger().info("MatchEvents is not executed for DQHistogramMerge.")

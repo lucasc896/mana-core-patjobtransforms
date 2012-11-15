@@ -6,8 +6,8 @@ from PATJobTransforms.ArgDicTools import DefaultConfigFromSysArgv
 BasicCommonSteps=["any","none","first"]
 
 class BaseOfCompositeTrf( JobTransform ):
-    def __init__(self,inputDic,ProdSysKeys,name,authors,help):
-        JobTransform.__init__(self, name=name, authors=authors, help=help, lastInChain=True)
+    def __init__(self,inputDic,ProdSysKeys,name,authors,help,lastInChain=True):
+        JobTransform.__init__(self, name=name, authors=authors, help=help, lastInChain=lastInChain)
 
         if not isinstance(inputDic,dict):
             raise TypeError("inputDic has %s but should be a dictionary." %type(inputDic))

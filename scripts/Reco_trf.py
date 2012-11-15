@@ -81,7 +81,7 @@ class FlexibleRecoTransform( BaseOfCompositeTrf ):
         if (allOK and self.SubStepIsExecuted('r2b')):
             dic=self.dicRDOToBS.copy()
             print "RDOtoBS dic:",dic
-            BS = RDOtoBSJobTransform(dic)
+            BS = RDOtoBSJobTransform(dic,lastInChain=False)
             BS._lastInChain=False
             BS.setParent(self)
             BS.setJobReportOptions('Summary')
@@ -102,7 +102,7 @@ class FlexibleRecoTransform( BaseOfCompositeTrf ):
             print self.dicRAWToRAWHLT
             dic=self.dicRAWToRAWHLT.copy()
             print "RAWToRAWHLT dic:",dic
-            RAW = RAWtoRAWHLTJobTransform(dic)
+            RAW = RAWtoRAWHLTJobTransform(dic,lastInChain=False)
             RAW._lastInChain=False
             RAW.setParent(self)
             RAW.setJobReportOptions('Summary')
@@ -120,7 +120,7 @@ class FlexibleRecoTransform( BaseOfCompositeTrf ):
         if (allOK and self.SubStepIsExecuted('r2e')):
             dic=self.dicRAWToESD.copy()
             print "RAWtoESD dic:",dic
-            ESD = RAWtoESDJobTransform(dic)
+            ESD = RAWtoESDJobTransform(dic,lastInChain=False)
             ESD._lastInChain=False
             ESD.setParent(self)
             ESD.setJobReportOptions('Summary')
@@ -137,7 +137,7 @@ class FlexibleRecoTransform( BaseOfCompositeTrf ):
         if(allOK and self.SubStepIsExecuted('e2e')):
             doMerge=True
             dic=self.dicESDToESD.copy()
-            ESD = MergePoolJobTransform(dic)
+            ESD = MergePoolJobTransform(dic,lastInChain=False)
             ESD._lastInChain=False
             ESD.setParent(self)
             ESD.setJobReportOptions('Summary')
@@ -154,7 +154,7 @@ class FlexibleRecoTransform( BaseOfCompositeTrf ):
         if(allOK and self.SubStepIsExecuted('e2a')):
             dic=self.dicESDToAOD.copy()
             print "ESDtoAOD dic:",dic
-            AOD = ESDtoAODJobTransform(dic)
+            AOD = ESDtoAODJobTransform(dic,lastInChain=False)
             AOD._lastInChain=False
             AOD.setParent(self)
             AOD.setJobReportOptions('Summary')
@@ -171,7 +171,7 @@ class FlexibleRecoTransform( BaseOfCompositeTrf ):
         if(allOK and self.SubStepIsExecuted('e2d')):
             dic=self.dicESDToDPD.copy()            
             print "ESDtoDPD dic:",dic
-            dpdESD = ESDtoDPDJobTransform(dic)        
+            dpdESD = ESDtoDPDJobTransform(dic,lastInChain=False)        
             dpdESD._lastInChain=False
             dpdESD.setParent(self)
             dpdESD.setJobReportOptions('Summary')            
@@ -188,7 +188,7 @@ class FlexibleRecoTransform( BaseOfCompositeTrf ):
         if(allOK and self.SubStepIsExecuted('a2d')):
             dic=self.dicAODToDPD.copy()
             print "AODtoDPD dic:",dic            
-            dpdAOD = AODtoDPDJobTransform(dic)
+            dpdAOD = AODtoDPDJobTransform(dic,lastInChain=False)
             dpdAOD._lastInChain=False
             dpdAOD.setParent(self)
             dpdAOD.setJobReportOptions('Summary')
@@ -205,7 +205,7 @@ class FlexibleRecoTransform( BaseOfCompositeTrf ):
         if(allOK and self.SubStepIsExecuted('a2t')):
             dic=self.dicAODToTAG.copy()            
             print "AODtoTAG dic:",dic
-            tagAOD = AODtoTAGJobTransform(dic)
+            tagAOD = AODtoTAGJobTransform(dic,lastInChain=False)
             tagAOD._lastInChain=False
             tagAOD.setParent(self)
             tagAOD.setJobReportOptions('Summary')
@@ -226,7 +226,7 @@ class FlexibleRecoTransform( BaseOfCompositeTrf ):
             if self.runESDtoAOD() and self.dicESDToAOD.has_key('outputDQMonitorFile'): dic['inputFile'].append(self.dicESDToAOD['outputDQMonitorFile'])
             dic['outputHISTFile']=self.inDic['outputHISTFile']
             print "DQHistogramMerg dic:",dic
-            DQMerge = DQHistogramMergeJobTransform(dic)
+            DQMerge = DQHistogramMergeJobTransform(dic,lastInChain=False)
             DQMerge._lastInChain=False
             DQMerge.setParent(self)
             DQMerge.forceSingleProcess()

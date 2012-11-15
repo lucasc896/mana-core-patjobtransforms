@@ -9,11 +9,12 @@ from PyJobTransformsCore.trfutil import *
 from subprocess import Popen, PIPE, STDOUT, check_call, CalledProcessError
 
 class MergePoolJobTransform( JobTransform ):
-    def __init__(self,inDic):
+    def __init__(self,inDic,lastInChain=True):
         JobTransform.__init__(self,
                               authors = [ Author('David Cote', 'david.cote@cern.ch') ] ,
                               skeleton='PATJobTransforms/skeleton.MergePool.py' ,
-                              help = __doc__ )
+                              help = __doc__ ,
+                              lastInChain=lastInChain)
 
         if not isinstance(inDic,dict):
             raise TypeError("inDic has %s but should be a dictionary." %type(inDic))

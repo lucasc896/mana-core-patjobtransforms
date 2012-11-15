@@ -1,3 +1,11 @@
+2012-11-15 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * Allow all single step transform classes to accept the lastInChain parameter and
+      pass it on to their parent classes
+    * Allow BaseOfBasic and BaseOfComposite to accept the lastInChain parameter
+    * Modify Merging_trf, Reco_trf to set lastInChain=False for all substeps
+        * Final jobReport.gpickle will be written by parent transform
+    *** Important: From this tag onwards you require RecJobTransforms >= 00-09-13 ***
+
 2012-11-13 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Merge PATJobTransforms-00-04-32-branch:
         * Add eventSelectorQuery and inputTAG_AODFile to Configuration.py
@@ -5,7 +13,6 @@
         * Allow AOD to be recognised as an output of the a2d step in Configuration.py (allows for AOD skimming)
     * Tagging as PATJobTransforms-00-04-35
     *** Important: From this tag onwards you require PyJobTransformsCore >= 00-09-33 ***
-
 
 2012-10-11 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Add inputNTUP_TOPFJETFile to MergeNTUP_trf LODPK.

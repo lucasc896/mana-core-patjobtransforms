@@ -52,7 +52,7 @@ class MergingTransform( BaseOfCompositeTrf ):
         if(allOK and self.SubStepIsExecuted('mergeHITS')):
             dic=self.dicMergeHITS.copy()            
             print "MergeHITS dic:",dic
-            mHITS = MergeHITSJobTransform(dic)
+            mHITS = MergeHITSJobTransform(dic,lastInChain=False)
             mHITS.setParent(self)
             mHITS.setJobReportOptions('Summary')
             reportMergeHITS = mHITS.exeArgDict( dic )
@@ -68,7 +68,7 @@ class MergingTransform( BaseOfCompositeTrf ):
         if(allOK and self.SubStepIsExecuted('mergeRDO')):
             dic=self.dicMergeRDO.copy()
             print "MergeRDO dic:",dic
-            mRDO = MergeRDOJobTransform(dic)
+            mRDO = MergeRDOJobTransform(dic,lastInChain=False)
             mRDO.setParent(self)
             mRDO.setJobReportOptions('Summary')
             reportMergeRDO = mRDO.exeArgDict(dic)
@@ -85,7 +85,7 @@ class MergingTransform( BaseOfCompositeTrf ):
         if(allOK and self.SubStepIsExecuted('merge')):
             dic=self.dicMergePool.copy()
             print "MergePool dic:",dic
-            mPool = MergePoolJobTransform(dic)
+            mPool = MergePoolJobTransform(dic,lastInChain=False)
             mPool.setParent(self)
             mPool.setJobReportOptions('Summary')
             reportMergePool = mPool.exeArgDict( dic )
@@ -101,7 +101,7 @@ class MergingTransform( BaseOfCompositeTrf ):
         if(allOK and self.SubStepIsExecuted('a2d')):
             dic=self.dicAODToDPD.copy()            
             print "AODtoDPD dic:",dic
-            dpdAOD = AODtoDPDJobTransform(dic)
+            dpdAOD = AODtoDPDJobTransform(dic,lastInChain=False)
             dpdAOD._lastInChain=False
             dpdAOD.setParent(self)
             dpdAOD.setJobReportOptions('Summary')
@@ -118,7 +118,7 @@ class MergingTransform( BaseOfCompositeTrf ):
         if(allOK and self.SubStepIsExecuted('a2t')):
             dic=self.dicAODToTAG.copy()            
             print "AODtoTAG dic:",dic
-            tagAOD = AODtoTAGJobTransform(dic)
+            tagAOD = AODtoTAGJobTransform(dic,lastInChain=False)
             tagAOD.setParent(self)
             tagAOD.setJobReportOptions('Summary')
             reportTagAod = tagAOD.exeArgDict( dic )

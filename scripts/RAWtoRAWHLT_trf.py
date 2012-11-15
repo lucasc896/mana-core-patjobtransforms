@@ -9,11 +9,11 @@ from PATJobTransforms.BSutils import BSutils
 import os
 
 class RAWtoRAWHLTJobTransform( JobTransform ):
-    def __init__(self,inDic):
+    def __init__(self,inDic,lastInChain=True):
         JobTransform.__init__(self,
                               authors=[Author('Simon George','S.George@rhul.ac.uk')],
                               skeleton='PATJobTransforms/skeleton.runHLT.py' ,
-                              help = __doc__ )
+                              help = __doc__,lastInChain=lastInChain)
 
         if not isinstance(inDic,dict):
             raise TypeError("inDic has %s but should be a dictionary." %type(inDic))

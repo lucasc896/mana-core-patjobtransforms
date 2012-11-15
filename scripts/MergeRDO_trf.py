@@ -6,12 +6,12 @@ from PATJobTransforms.BaseOfBasicTrf import BaseOfBasicTrf
 from PyJobTransformsCore.trf import Author
 
 class MergeRDOJobTransform( BaseOfBasicTrf ):
-    def __init__(self,inDic):
+    def __init__(self,inDic,lastInChain=True):
         BaseOfBasicTrf.__init__(self,inDic,
                               authors = [ Author('Steven Beale','Steven.Beale@cern.ch'),
                                           Author('John Chapman', '@cern.ch') ] ,
                               skeleton='PATJobTransforms/skeleton.MergeRDO.py' ,
-                              help = __doc__ )
+                              help = __doc__, lastInChain=lastInChain )
 
 # execute transform it if not imported
 if __name__ == '__main__':

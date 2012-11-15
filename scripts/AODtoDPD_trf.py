@@ -6,11 +6,11 @@ from PATJobTransforms.BaseOfBasicTrf import BaseOfBasicTrf
 from PyJobTransformsCore.trf import Author
 
 class AODtoDPDJobTransform( BaseOfBasicTrf ):
-    def __init__(self,inDic):
+    def __init__(self,inDic,lastInChain=True):
         BaseOfBasicTrf.__init__(self,inDic,
                                 authors=[Author('David Cote','david.cote@cern.ch')],
                                 skeleton='PATJobTransforms/skeleton.AODtoDPD_trf.py',
-                                help = __doc__ )
+                                help = __doc__ , lastInChain=lastInChain)
 
     def matchEvents(self):
         self.logger().info("MatchEvents is not executed for DPD outputs.")
