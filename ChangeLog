@@ -1,3 +1,8 @@
+2012-11-16  Karsten Koeneke  <karsten.koeneke@cern.ch>
+
+	* scripts/Reco_trf.py (ListOfDefaultPositionalKeys): Adding stream
+	* Tagging as PATJobTransforms-00-04-37
+
 2012-11-15 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Allow all single step transform classes to accept the lastInChain parameter and
       pass it on to their parent classes
@@ -22,7 +27,7 @@
 2012-09-28 Maarten Boonekamp
 	* adding NTUP_SMLIGHT to Reco_trf, MergeNTUP_trf
 	* Tagging as PATJobTransforms-00-04-33
-		
+
 2012-09-25 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Tagging as PATJobTransforms-00-04-32
 
