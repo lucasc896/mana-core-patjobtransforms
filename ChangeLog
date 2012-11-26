@@ -1,3 +1,8 @@
+2012-11-26 Attila Krasznahorkay <Attila.Krasznahorkay@cern.ch>
+	* Removed NTUP_TOPFJET from all transformations on the request
+	  of Kevin Finelli. (Type now merged with NTUP_TOPJET.)
+	* Tagging as PATJobTransforms-00-04-39
+
 2012-11-16  Susumu Oda  <Susumu.Oda@cern.ch>
 	* adding NTUP_2L2QHSG, NTUP_4LHSG2 to Reco_trf, MergeNTUP_trf 
 	* Tagging as PATJobTransforms-00-04-38
