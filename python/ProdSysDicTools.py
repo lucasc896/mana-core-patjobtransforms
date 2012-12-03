@@ -104,7 +104,8 @@ def GetPANDAClient(amitag):
 #-------------------------------
 # Macro provided by Pavel
 def ReadablePANDA(s):
-    return s.replace('%0B',' ').replace('%9B','; ').replace('%8B','"').replace('%3B',';').replace('%2C',',')
+    # This a a mess - panda is encoding the tag in some sort of HTML escaped form, so we need to un-escape it here
+    return s.replace('%0B',' ').replace('%9B','; ').replace('%8B','"').replace('%3B',';').replace('%2C',',').replace('%2B','+')
 
 
 #-----------------------------------
