@@ -5,10 +5,11 @@ __doc__ = """Merge several input pool files into a single output file."""
 from PyJobTransformsCore.trf import *
 from PyJobTransformsCore.full_trfarg import *
 from PyJobTransformsCore.trfutil import *
+from PATJobTransforms.BaseOfBasicTrf import BaseOfBasicTrf
 
 from subprocess import Popen, PIPE, STDOUT, check_call, CalledProcessError
 
-class MergePoolJobTransform( JobTransform ):
+class MergePoolJobTransform( BaseOfBasicTrf ):
     def __init__(self,inDic,lastInChain=True):
         JobTransform.__init__(self,
                               authors = [ Author('David Cote', 'david.cote@cern.ch') ] ,
@@ -110,6 +111,15 @@ class MergePoolJobTransform( JobTransform ):
             check_call(['FCregisterPFN', '-p', outputfile, '-t', 'ROOT_All', '-g', correctGUID]) 
         except CalledProcessError, e:
             print 'Attempt to fix PFC with new merged file information failed: %s' % e
+
+
+    def matchEvents(self):
+        # Switch between ESD and AOD merging 
+        if 'outputAODFile' in self.inDic:
+            return self.matchEventsExpectEqual("inputAODFile","outputAODFile")
+        if 'outputESDFile' in self.inDic:
+            return self.matchEventsExpectEqual("inputESDFile","outputESDFile")
+
 
 # Python executable
 if __name__ == '__main__':

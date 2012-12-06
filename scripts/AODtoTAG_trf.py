@@ -14,8 +14,7 @@ class AODtoTAGJobTransform( BaseOfBasicTrf ):
                                 help = __doc__, lastInChain=lastInChain)
 
     def matchEvents(self):
-        self.logger().info("MatchEvents is not executed for AOD->TAG.")
-        return
+        return self.matchEventsExpectEqual("inputAODFile","outputTAGFile")
 
 #----------------------------------------------------------------------
 if __name__ == '__main__':    
