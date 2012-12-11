@@ -1,5 +1,8 @@
 2012-12-11 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * skeleton.MergePool.py Remove SkipBadFiles=True flag (causes undetected event loss!)
+    * Reco_trf.py Add outputNTUP_TPHSG2File to LODPK (from Susumu Oda)
+    * MergeNTUP_trf.py Add inputNTUP_TPHSG2File, outputNTUP_TPHSG2File to LODPK (from Susumu Oda)
+    * Tagging as PATJobTransforms-00-04-42
 
 2012-12-06 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * AODtoTAG_trf.py Implement event check for inputAODFile and outputTAGFile
