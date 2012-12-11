@@ -46,7 +46,6 @@ rec.doAOD.lock()
 rec.doESD.lock()
 
 include( "RecExCommon/RecExCommon_topOptions.py" )
-ServiceMgr.EventSelector.SkipBadFiles = True
 
 if rec.doWriteAOD:
     if rec.readAOD(): 
