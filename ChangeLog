@@ -1,6 +1,7 @@
 2013-01-11 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * ProdSysDicTools.py Correct bad panda data format of HITS, changing to Hits
     * ArgDictTools.py 'a' tags should be interpreted from panda
+    * Tagging as PATJobTransforms-00-04-43-01
 
 2012-12-13 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Reco_trf.py Add DAOD_JPSIMUMU and DAOD_UPSIMUMU outputs to LODPK (from James Catmore)
