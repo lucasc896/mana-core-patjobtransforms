@@ -202,14 +202,19 @@ def GetInfoFromPANDA(amitag):
                     OutputDicPANDA[key]={'dstype': tmpfmt[j]}
 
         elif trf[i]=='Merging_trf.py':
-            fmt=fmt.replace('.',' ') 
+            print fmt
+            fmt=fmt.replace('.',' ').replace('HITS','Hits')
             tmpfmt = string.split(fmt)
             items = len(tmpfmt)
             print " fmt in merging loop : ",fmt," and items : ",items
             for j in range(0,items):
                 inkey='input'+tmpfmt[j]+'File'
-                input[inkey]=DefaultInputs[inkey]
-                outkey='output'+tmpfmt[i]+'File'
+                try:
+                    input[inkey]=DefaultInputs[inkey]
+                    outkey='output'+tmpfmt[i]+'File'
+                except KeyError:
+                    print 'Warning: no default value for {0}. Probably TAG is incorrectly stored'.format(inkey)
+                    sys.exit(1)
                 OutputDicPANDA[outkey]={'dstype': tmpfmt[j]}
                 
         elif trf[i]=='DigiMReco_trf.py':
