@@ -1,4 +1,14 @@
-2012-01-09 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+2013-01-19 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * Reintegrate PATJobTransforms-00-04-43-branch
+    * Tagging as PATJobTransforms-00-05-01
+    *** Trunk is now the main development branch again
+
+2013-01-11 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * ProdSysDicTools.py Correct bad panda data format of HITS, changing to Hits
+    * ArgDictTools.py 'a' tags should be interpreted from panda
+    * Tagging as PATJobTransforms-00-04-43-01
+
+2013-01-09 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * ArgDicTools.py Update to PyAMI client version 4
     *** Important: Until PyAMI changes are accepted into the release *you* are targetting
         you will need to make PATJobTransforms-00-04-43-XX tags for releases using PyAMI 2.

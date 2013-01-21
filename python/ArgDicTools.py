@@ -341,8 +341,8 @@ def PopSynonyms(aDic):
 
 
 def UpdateDicListWithAMI(userDic,amiTag):
-    #the list feature is only used by GetCommand
-    if amiTag.startswith('r') or amiTag.startswith('p') or amiTag.startswith('d') or amiTag.startswith('s')  or amiTag.startswith('e'):
+    # Check for tags handled by panda, not AMI
+    if amiTag[0] in 'rpdsea':
         from PATJobTransforms.ProdSysDicTools import GetInfoFromPANDA
         infoList=GetInfoFromPANDA(amiTag) 
     else:
