@@ -1,3 +1,9 @@
+2013-02-04  Sebastien Binet  <binet@cern.ch>
+
+	* tagging as PATJobTransforms-00-05-02
+	* adding wscript file for hwaf
+	* A wscript
+
 2013-01-19 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Reintegrate PATJobTransforms-00-04-43-branch
     * Tagging as PATJobTransforms-00-05-01
