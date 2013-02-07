@@ -1,3 +1,9 @@
+2013-02-07  Sebastien Binet  <binet@cern.ch>
+
+	* tagging as PATJobTransforms-00-05-03
+	* proper python module structure
+	* A python/__init__.py
+
 2013-02-04  Sebastien Binet  <binet@cern.ch>
 
 	* tagging as PATJobTransforms-00-05-02
