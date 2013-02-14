@@ -1,3 +1,10 @@
+2013-02-14  John Chapman  <John.Chapman@cern.ch>
+	
+	* tagging as PATJobTransforms-00-05-04
+	* share/skeleton.MergeHIT.py - add code to configure DetFlags
+	based on available SimHit containers. Should fix problems seen in
+	merging of upgrade layout without the TRT and also AFII RTT jobs.
+
 2013-02-07  Sebastien Binet  <binet@cern.ch>
 
 	* tagging as PATJobTransforms-00-05-03

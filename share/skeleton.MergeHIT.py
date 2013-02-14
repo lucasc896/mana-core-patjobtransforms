@@ -31,6 +31,83 @@ DetDescrVersion = runArgs.geometryVersion
 from AthenaCommon.GlobalFlags import globalflags
 globalflags.DetDescrVersion.set_Value_and_Lock( runArgs.geometryVersion )
 
+#--------------------------------------------------------------
+# Peek at input to configure DetFlags
+#--------------------------------------------------------------
+if not hasattr(runArgs,"inputHitsFile"):
+    raise RuntimeError("No inputHitsFile provided.")
+
+def hitColls2SimulatedDetectors(inputlist):
+    """Build a dictionary from the list of containers in the metadata"""
+    simulatedDetectors = []
+    simulatedDictionary = {'PixelHits': 'pixel', 'SCT_Hits': 'SCT', 'TRTUncompressedHits': 'TRT',
+                           'BCMHits': 'BCM', 'LucidSimHitsVector': 'Lucid', 'LArHitEMB': 'LAr',
+                           'LArHitEMEC': 'LAr', 'LArHitFCAL': 'LAr', 'LArHitHEC': 'LAr',
+                           'MBTSHits': 'Tile', 'TileHitVec': 'Tile', 'MDT_Hits': 'MDT',
+                           'CSC_Hits': 'CSC', 'TGC_Hits': 'TGC', 'RPC_Hits': 'RPC',
+                           'TruthEvent': 'Truth'} #'': 'ALFA', '': 'ZDC',
+    for entry in inputlist:
+        if entry[1] in simulatedDictionary.keys():
+            if simulatedDictionary[entry[1]] not in simulatedDetectors:
+                simulatedDetectors += [simulatedDictionary[entry[1]]]
+    return simulatedDetectors
+
+import PyUtils.AthFile as af
+try:
+    f = af.fopen(runArgs.inputHitsFile[0])
+except AssertionError:
+    merHitLog.error("Failed to open input file: %s", runArgs.inputHitsFile[0])
+#check evt_type of input file
+if 'evt_type' in f.infos.keys():
+    import re
+    if not re.match(str(f.infos['evt_type'][0]), 'IS_SIMULATION') :
+        merHitLog.error('This input file has incorrect evt_type: %s',str(f.infos['evt_type']))
+        merHitLog.info('Please make sure you have set input file metadata correctly.')
+        merHitLog.info('Consider using the job transforms for earlier steps if you aren\'t already.')
+        #then exit gracefully
+        raise SystemExit("Input file evt_type is incorrect, please check your g4sim and evgen jobs.")
+else :
+    merHitLog.warning('Could not find \'evt_type\' key in athfile.infos. Unable to that check evt_type is correct.')
+metadatadict = dict()
+if 'metadata' in f.infos.keys():
+    if '/Simulation/Parameters' in f.infos['metadata'].keys():
+        metadatadict = f.infos['metadata']['/Simulation/Parameters']
+        if isinstance(metadatadict, list):
+            merHitLog.warning("%s inputfile: %s contained %s sets of Simulation Metadata. Using the final set in the list.",inputtype,inputfile,len(metadatadict))
+            metadatadict=metadatadict[-1]
+else:
+    ##Patch for older hit files
+    if 'SimulatedDetectors' not in metadatadict.keys():
+        if 'eventdata_items' in f.infos.keys():
+            metadatadict['SimulatedDetectors'] = hitColls2SimulatedDetectors(f.infos['eventdata_items'])
+        else :
+            metadatadict['SimulatedDetectors'] = ['pixel','SCT','TRT','BCM','Lucid','LAr','Tile','MDT','CSC','TGC','RPC','Truth']
+
+if 'SimulatedDetectors' in metadatadict.keys():
+    from AthenaCommon.DetFlags import DetFlags
+    # by default everything is off
+    DetFlags.all_setOff()
+    merHitLog.debug("Switching on DetFlags for subdetectors which were simulated")
+    for subdet in metadatadict['SimulatedDetectors']:
+        cmd='DetFlags.%s_setOn()' % subdet
+        merHitLog.debug(cmd)
+        try:
+            exec cmd
+        except:
+            merHitLog.warning('Failed to switch on subdetector %s',subdet)
+    #hacks to reproduce the sub-set of DetFlags left on by RecExCond/AllDet_detDescr.py
+    DetFlags.digitize.all_setOff()
+    DetFlags.geometry.all_setOff()
+    DetFlags.pileup.all_setOff()
+    DetFlags.readRDOBS.all_setOff()
+    DetFlags.readRIOBS.all_setOff()
+    DetFlags.readRIOPool.all_setOff()
+    DetFlags.simulate.all_setOff()
+    DetFlags.simulateLVL1.all_setOff()
+    DetFlags.writeBS.all_setOff()
+    DetFlags.writeRDOPool.all_setOff()
+    DetFlags.writeRIOPool.all_setOff()
+
 #==============================================================
 # Job Configuration parameters:
 #==============================================================
@@ -45,7 +122,6 @@ if hasattr(runArgs,"preExec"):
 if hasattr(runArgs,"preInclude"): 
     for fragment in runArgs.preInclude:
         include(fragment)
-
 
 #--------------------------------------------------------------
 # Load POOL support
@@ -66,15 +142,14 @@ include( "PartPropSvc/PartPropSvc.py" )
 GeoModelSvc = Service( "GeoModelSvc" )
 GeoModelSvc.IgnoreTagDifference=True
 
-# set up all detector description stuff 
+# set up all detector description stuff + some voodoo
 include( "RecExCond/AllDet_detDescr.py" )
-
+from AthenaCommon.DetFlags import DetFlags
+DetFlags.Print()
 
 #--------------------------------------------------------------
 # Setup Input
 #--------------------------------------------------------------
-if not hasattr(runArgs,"inputHitsFile"):
-    raise RuntimeError("No inputHitsFile provided.")
 In = runArgs.inputHitsFile
 EventSelector = ServiceMgr.EventSelector
 EventSelector.InputCollections = In
