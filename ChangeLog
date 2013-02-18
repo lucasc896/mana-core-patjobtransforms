@@ -1,3 +1,7 @@
+2013-02-16 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * Reco_trf.py, MergingNTUP_trf.py Add NTUP_SMLIGHT to LODPK
+    * Tagging as PATJobTransforms-00-04-17-01
+
 2012-06-02 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Fix for hybrid POOL merger to get correct GUID for merged files and add it to the PFC (MergePool_trf.py)
     * Tagging as PATJobTransforms-00-04-17    
