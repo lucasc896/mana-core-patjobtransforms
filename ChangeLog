@@ -1,3 +1,8 @@
+2013-02-27 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * Reco_trf.py Add outputNTUP_FTKIPFile to LODPK
+    * Merging_trf.py Make the inputLogsFile optional for Hits merging
+    * tagging as PATJobTransforms-00-05-06
+
 2013-02-25 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Reco_trf.py Add outputDAODM_HSG1File to LODPK
     * tagging as PATJobTransforms-00-05-05

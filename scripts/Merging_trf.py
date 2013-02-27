@@ -140,8 +140,9 @@ class MergingTransform( BaseOfCompositeTrf ):
         #Check for potential misconfigurations...        
         if self.inDic.has_key('inputHitsFile') and ( self.inDic.has_key('outputESDFile') or self.inDic.has_key('outputTAGFile') or self.inDic.has_key('outputAODFile') ):
             raise RuntimeError("input HITS and output ESD/AOD/TAG is not supported.")
-        if self.inDic.has_key('inputHitsFile') and not self.inDic.has_key('inputLogsFile'):
-            raise RuntimeError("inputLogsFile must be provided to the HIT merging step.")
+        # Disable this - logfile merging is now optional for Hits merging step
+#        if self.inDic.has_key('inputHitsFile') and not self.inDic.has_key('inputLogsFile'):
+#            raise RuntimeError("inputLogsFile must be provided to the HIT merging step.")
         if self.inDic.has_key('inputAODFile') and self.inDic.has_key('outputESDFile'):
             raise RuntimeError("input AOD and output ESD is not supported.")
         if self.inDic.has_key('inputESDFile') and self.inDic.has_key('outputTAGFile'):
