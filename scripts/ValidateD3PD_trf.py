@@ -10,7 +10,7 @@ from PyJobTransformsCore.trf import Author
 ListOfDefaultPositionalKeys=['maxEvents','inputESDFile','inputAODFile','preInclude','postInclude','preExec','postExec','--ignoreerrors','d3pdVal','outputNTUP_PHYSVALFile']
 
 #List of root files created by the transform (for merging)
-rootfiles= [ 'PhysVal_InDetPerf.root', 'PhysVal_BackTracking.root', 'PhysVal_MissingET.root', 'PhysVal_Jets.root', 'PhysVal_Tau.root', 'PhysVal_Electrons.root','PhysVal_MUONSPLACEHOLDER.root','PhysVal_Btag.root', 'PhysVal_SUSY.root', 'PhysVal_MonTop.root', 'PhysVal_Zee.root', 'PhysVal_Exotics.root', 'PhysVal_HSG6.root'] 
+rootfiles= [ 'PhysVal_InDetPerf.root', 'PhysVal_BackTracking.root', 'PhysVal_MissingET.root', 'PhysVal_Jets.root', 'PhysVal_Tau.root', 'PhysVal_Electrons.root','PhysVal_MUONSPLACEHOLDER.root','PhysVal_Btag.root', 'PhysVal_SUSY.root', 'PhysVal_MonTop.root', 'PhysVal_Zee.root', 'PhysVal_Exotics.root', 'PhysVal_HSG6.root', 'PhysVal_Photons.root'] 
 
 class ValidationD3PDJobTransform( BaseOfBasicTrf ):
     def __init__(self,inDic):

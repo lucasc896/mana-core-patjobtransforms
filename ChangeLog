@@ -1,3 +1,13 @@
+2013-03-11 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * skeleton.AODtoDPD_trf.py 
+      - Remove the automated VOFinder set and lock from TOP DPDs
+    * ValidateD3PD_trf.py
+      - Add PhysVal_Photons.root to list of root files to merge
+    * skeleton.ValidateD3PD_trf.py
+      - Add JO fragment to activate in PhysVal_Photons.root
+      - Add hooks for {pre/post}{Exec/Include}
+    * tagging as PATJobTransforms-00-05-07
+
 2013-02-27 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Reco_trf.py Add outputNTUP_FTKIPFile to LODPK
     * Merging_trf.py Make the inputLogsFile optional for Hits merging

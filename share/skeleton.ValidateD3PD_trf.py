@@ -30,11 +30,12 @@ doPhysMuons         = False ## Need to be implemented
 doPhysBtag          = True
 doPhysSUSY          = True
 doPhysMonTop        = True
+doPhysPhotons       = False
 doZee               = False ## Tag update needed
 doExotics           = True
 doHSG6              = True
 
-Routines = ['PhysInDetPerf','PhysBackTrack','PhysMet','PhysJets','PhysTau','PhysElectrons','PhysMuons','PhysBtag','PhysSUSY','PhysMonTop','Zee','Exotics','HSG6']
+Routines = ['PhysInDetPerf','PhysBackTrack','PhysMet','PhysJets','PhysTau','PhysElectrons','PhysMuons','PhysBtag','PhysSUSY','PhysMonTop','Zee','Exotics','HSG6','PhysPhotons']
 
 #Switch on/off various validation routines:
 if hasattr(runArgs,"d3pdVal"):
@@ -173,6 +174,24 @@ if doExotics:
 if doHSG6:
     rec.DPDMakerScripts.append("RunPhysVal/PhysValHSG6_jobOptions.py")
 
+# ----------------------------------------------------------------------------------------------------
+## photons jobOptions
+# ----------------------------------------------------------------------------------------------------
+if doPhysPhotons:
+    rec.DPDMakerScripts.append("RunPhysVal/PhysValPhotons_jobOptions.py")
+
+
+## Pre-exec
+if hasattr(runArgs,"preExec"):
+    recoLog.info("transform pre-exec")
+    for cmd in runArgs.preExec:
+        recoLog.info(cmd)
+        exec(cmd)
+
+## Pre-include
+if hasattr(runArgs,"preInclude"): 
+    for fragment in runArgs.preInclude:
+        include(fragment)
     
 # ==============================================================================
 # Now, include the master top options from RecExCommon.
@@ -180,5 +199,18 @@ if doHSG6:
 # i.e., if RecExCommon doesn't work, the release is broken!
 # ==============================================================================
 include ("RecExCommon/RecExCommon_topOptions.py")
+
+
+## Post-include
+if hasattr(runArgs,"postInclude"): 
+    for fragment in runArgs.postInclude:
+        include(fragment)
+
+## Post-exec
+if hasattr(runArgs,"postExec"):
+    recoLog.info("transform post-exec")
+    for cmd in runArgs.postExec:
+        recoLog.info(cmd)
+        exec(cmd)
 
 
