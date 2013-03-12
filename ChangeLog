@@ -1,3 +1,7 @@
+2013-03-12 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * Configuration.py
+      - Add AddOutputNTUP_FTKIPFile argument definition function
+
 2013-03-11 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * skeleton.AODtoDPD_trf.py 
       - Remove the automated VOFinder set and lock from TOP DPDs

@@ -504,6 +504,13 @@ AddOutputTXT_FTKIPFile.subSteps=['r2e']
 AddOutputTXT_FTKIPFile.isOutput='txt.bz2'
 AddToConfigDic('outputTXT_FTKIPFile', AddOutputTXT_FTKIPFile)
 
+def AddOutputNTUP_FTKIPFile(trf, inDic):
+    trf.add(NtupleFileArg(name='outputNTUP_FTKIPFile'))
+    return
+AddOutputNTUP_FTKIPFile.subSteps=['r2e']
+AddOutputNTUP_FTKIPFile.isOutput='root'
+AddToConfigDic('outputNTUP_FTKIPFile', AddOutputNTUP_FTKIPFile)
+
 def AddOutputTXT_JIVEXMLTGZFile(trf, inDic):
     trf.add(OutputJiveXMLTGZFileArg(name='outputTXT_JIVEXMLTGZFile'))
 AddOutputTXT_JIVEXMLTGZFile.subSteps=['r2e', 'e2a']
