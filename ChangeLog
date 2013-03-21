@@ -1,3 +1,7 @@
+2013-03-21 Attila Krasznahorkay <Attila.Krasznahorkay@cern.ch>
+	* Adding the NTUP_COMMON definition to Reco_trf.py
+	* Tagging as PATJobTransforms-00-05-09
+
 2013-03-20  John Chapman  <John.Chapman@cern.ch>
 	* requires SimuJobTransforms-00-18-62 onwards or
 	SimuJobTransforms-00-18-38-11 onwards.
