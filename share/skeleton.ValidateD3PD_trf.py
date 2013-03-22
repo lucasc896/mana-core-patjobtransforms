@@ -10,6 +10,10 @@
 # ==============================================================================
 include("PATJobTransforms/CommonSkeletonJobOptions.py")
 
+from AthenaCommon.Logging import logging
+skelLog = logging.getLogger('ValidateD3PD')
+skelLog.info( '****************** Starting D3PD Validation *****************' )
+
 if hasattr(runArgs,"inputESDFile"):
     rec.readESD.set_Value_and_Lock( True )
     athenaCommonFlags.PoolESDInput.set_Value_and_Lock( runArgs.inputESDFile )
@@ -183,9 +187,9 @@ if doPhysPhotons:
 
 ## Pre-exec
 if hasattr(runArgs,"preExec"):
-    recoLog.info("transform pre-exec")
+    skelLog.info("transform pre-exec")
     for cmd in runArgs.preExec:
-        recoLog.info(cmd)
+        skelLog.info(cmd)
         exec(cmd)
 
 ## Pre-include
@@ -208,9 +212,9 @@ if hasattr(runArgs,"postInclude"):
 
 ## Post-exec
 if hasattr(runArgs,"postExec"):
-    recoLog.info("transform post-exec")
+    skelLog.info("transform post-exec")
     for cmd in runArgs.postExec:
-        recoLog.info(cmd)
+        skelLog.info(cmd)
         exec(cmd)
 
 
