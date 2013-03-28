@@ -1,3 +1,8 @@
+2013-03-28 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * Reco_trf.py Add embedded NTUP types to LODPK
+    * MergeNTUP_trf.py Add embedded NTUP types to LODPK
+    * tagging as PATJobTransforms-00-04-43-06
+
 2013-03-22 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * skeleton.ValidateD3PD_trf.py
       - Define a logging object for pre/postExec logging to act on
