@@ -105,7 +105,7 @@ class haddStep(object):
             fileCounter = len(self._inputFiles) * float(job+1) / nMerges
             # Add 0.5 to ensure that rounding errors don't lose a file off the back... (very unlikely!)
             lastFile = int(fileCounter + 0.5)
-            tempOutput = mkstemp(dir='.')
+            tempOutput = mkstemp(dir='.', prefix='tmp.')
             os.close(tempOutput[0])
             logging.debug('Intermediate merge job %d: %s -> %s' % (job, self._inputFiles[nextFile:lastFile], tempOutput[1]))
             self._haddJobArray.append(haddJob(self._inputFiles[nextFile:lastFile], tempOutput[1]))
