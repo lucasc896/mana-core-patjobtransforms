@@ -1,3 +1,7 @@
+2013-04-04 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * rhadd.py Generate temporary filenames with the prefix 'tmp.'
+    * tagging as PATJobTransforms-00-04-43-07
+
 2013-03-28 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Reco_trf.py Add embedded NTUP types to LODPK
     * MergeNTUP_trf.py Add embedded NTUP types to LODPK
