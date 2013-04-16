@@ -1,3 +1,6 @@
+2013-04-16 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * Reco_trf.py Rename DAODM_HSG1 to DAOD_HSG1 in LODPK
+
 2013-04-04 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * rhadd.py Generate temporary filenames with the prefix 'tmp.'
     * Tagging as PATJobTransforms-00-05-11
