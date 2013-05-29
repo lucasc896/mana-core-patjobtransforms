@@ -1,3 +1,11 @@
+2013-05-29 Attila Krasznahorkay <Attila.Krasznahorkay@cern.ch>
+	* Added the capability in ESDtoDPD and AODtoDPD jobs to specify
+	  pre/post-include scripts in the jobProperties of the DPD
+	  types.
+	* This needed some new functions in DPDUtils.py and some extension
+	  of skeleton.AODtoDPD_trf.py and skeleton.ESDtoDPD_trf.py.
+	* Tagging as PATJobTransforms-00-05-12
+
 2013-04-16 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Reco_trf.py Rename DAODM_HSG1 to DAOD_HSG1 in LODPK
 
