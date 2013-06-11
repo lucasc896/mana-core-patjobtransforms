@@ -4,6 +4,7 @@
 	* skeleton.AODtoDPD_trf.py New handling for NTUP_SUSYTRUTH
 	* Reco_trf.py Add NTUP_SUSYTRUTH to LODPK
 	* MergeNTUP_trf.py Add NTUP_SUSYTRUTH to LODPK
+    * Tagging as PATJobTransforms-00-05-13
 
 2013-05-29 Attila Krasznahorkay <Attila.Krasznahorkay@cern.ch>
 	* Added the capability in ESDtoDPD and AODtoDPD jobs to specify
