@@ -1,3 +1,21 @@
+2013-06-11 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * Merged trunk changes from Attila and Zach
+    * tagging as PATJobTransforms-00-04-43-09
+
+2013-06-11 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+	- Patches from Zachary Marshall
+	* Configuration.py Add "AddNTUP_SUSYTRUTH" NTUP type
+	* skeleton.AODtoDPD_trf.py New handling for NTUP_SUSYTRUTH
+	* Reco_trf.py Add NTUP_SUSYTRUTH to LODPK
+	* MergeNTUP_trf.py Add NTUP_SUSYTRUTH to LODPK
+
+2013-05-29 Attila Krasznahorkay <Attila.Krasznahorkay@cern.ch>
+	* Added the capability in ESDtoDPD and AODtoDPD jobs to specify
+	  pre/post-include scripts in the jobProperties of the DPD
+	  types.
+	* This needed some new functions in DPDUtils.py and some extension
+	  of skeleton.AODtoDPD_trf.py and skeleton.ESDtoDPD_trf.py.
+
 2013-04-16 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * Reco_trf.py Rename DAODM_HSG1 to DAOD_HSG1 in LODPK
     * tagging as PATJobTransforms-00-04-43-08

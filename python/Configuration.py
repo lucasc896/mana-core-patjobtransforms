@@ -618,6 +618,13 @@ AddNTUP_TRUTH.subSteps=['a2d']
 AddNTUP_TRUTH.isOutput='root'
 AddToConfigDic('outputNTUP_TRUTHFile',AddNTUP_TRUTH)
 
+def AddNTUP_SUSYTRUTH(trf,inDic):
+    trf.add( NtupleFileArg(name='outputNTUP_SUSYTRUTHFile',tree_names="susytruth") )
+    return
+AddNTUP_SUSYTRUTH.subSteps=['a2d']
+AddNTUP_SUSYTRUTH.isOutput='root'
+AddToConfigDic('outputNTUP_SUSYTRUTHFile',AddNTUP_SUSYTRUTH)
+
 def AddNTUP_HIGHMULT(trf, inDic):
     trf.add( NtupleFileArg(name='outputNTUP_HIGHMULTFile', tree_names="MinBiasTree") )
     return

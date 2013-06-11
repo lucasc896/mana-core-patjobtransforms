@@ -66,16 +66,21 @@ if hasattr(runArgs,"inputTAGFile") or hasattr(runArgs,"inputTAG_AODFile"):
     else:
         athenaCommonFlags.FilesInput.set_Value_and_Lock( runArgs.inputTAG_AODFile )
 
+# Keep track of whether an output format file is requested:
+outputRequested = False
+
 ## Outputs
 if hasattr(runArgs,"outputAODFile"):
     #for TAG->AOD->skimmedAOD
     rec.doWriteAOD.set_Value_and_Lock( True )
     athenaCommonFlags.PoolAODOutput.set_Value_and_Lock( runArgs.outputAODFile )
+    outputRequested = True
 
 if hasattr(runArgs,"outputNTUP_BTAGFile"):
     from BTagging.BTaggingFlags import BTaggingFlags
     BTaggingFlags.doJetTagNtuple = True
     BTaggingFlags.JetTagNtupleName = runArgs.outputNTUP_BTAGFile
+    outputRequested = True
 
 if hasattr(runArgs,"outputNTUP_PROMPTPHOTFile"):
     from PhotonAnalysisUtils.PhotonAnalysisUtilsFlags import PAUflags
@@ -83,6 +88,7 @@ if hasattr(runArgs,"outputNTUP_PROMPTPHOTFile"):
     #little hack while autoConfiguration=everything is still not the default...
     if hasattr(runArgs,"inputAODFile") and not hasattr(runArgs,"inputFile"):
         athenaCommonFlags.FilesInput.set_Value_and_Lock( runArgs.inputAODFile )
+    outputRequested = True
 
 if hasattr(runArgs,"outputNTUP_SMEWFile"):
     from WWAnalyze.WWD3PDFlags import WWD3PDFlags
@@ -90,29 +96,41 @@ if hasattr(runArgs,"outputNTUP_SMEWFile"):
     #little hack while autoConfiguration=everything is still not the default...
     if hasattr(runArgs,"inputAODFile") and not hasattr(runArgs,"inputFile"):
         athenaCommonFlags.FilesInput.set_Value_and_Lock( runArgs.inputAODFile )
+    outputRequested = True
 
+if hasattr(runArgs,"outputNTUP_SUSYTRUTHFile"):
+    from TruthD3PDMaker.TruthD3PDMakerFlags import TruthD3PDFlags
+    TruthD3PDFlags.TruthD3PDOutputFileName = runArgs.outputNTUP_SUSYTRUTHFile
+    include("TruthD3PDMaker/TruthSusyD3PDfromEVGEN_preInclude.py")
+    outputRequested = True
 if hasattr(runArgs,"outputNTUP_TRUTHFile"):
     from TruthD3PDMaker.TruthD3PDMakerFlags import TruthD3PDFlags
     TruthD3PDFlags.TruthD3PDOutputFileName = runArgs.outputNTUP_TRUTHFile
     include("TruthD3PDMaker/TruthD3PDfromEVGEN_preInclude.py")
+    outputRequested = True
 
 if hasattr(runArgs,"outputDAOD_2LHSG2File"):
     #FIXME: input/outputs should configured via job properties instead of directly using the runArgs object
     from HSG2DPDUtils import HSG2DPDFlags
+    outputRequested = True
 if hasattr(runArgs,"outputDAOD_HSG2File"):
     #FIXME: input/outputs should configured via job properties instead of directly using the runArgs object
     from HSG2DPDUtils import HSG2DPDFlags
+    outputRequested = True
 
 
 if hasattr(runArgs,"outputNTUP_1LHSG2File"):
     #FIXME: input/outputs should configured via job properties instead of directly using the runArgs object
     from HSG2DPDUtils import HSG2DPDFlags
+    outputRequested = True
 if hasattr(runArgs,"outputNTUP_2LHSG2File"):
     #FIXME: input/outputs should configured via job properties instead of directly using the runArgs object
     from HSG2DPDUtils import HSG2DPDFlags
+    outputRequested = True
 if hasattr(runArgs,"outputNTUP_HSG2File"):
     #FIXME: input/outputs should configured via job properties instead of directly using the runArgs object
     from HSG2DPDUtils import HSG2DPDFlags
+    outputRequested = True
 
 
  
@@ -121,11 +139,13 @@ if hasattr(runArgs,"outputNTUP_SCTFile"):
     TrackD3PDSCTFlags.outputFile = runArgs.outputNTUP_SCTFile
     if hasattr(runArgs,"inputESDFile") and not hasattr(runArgs,"inputFile"):
         athenaCommonFlags.FilesInput.set_Value_and_Lock( runArgs.inputESDFile )
+    outputRequested = True
 
 
 if hasattr(runArgs,"outputNTUP_FASTMONFile"):
     rec.doFastPhysMonitoring.set_Value_and_Lock(True)
     rec.RootFastPhysMonOutput.set_Value_and_Lock(runArgs.outputNTUP_FASTMONFile)
+    outputRequested = True
     
 
 
@@ -145,6 +165,14 @@ if hasattr(runArgs,"preExec"):
 if hasattr(runArgs,"preInclude"): 
     for fragment in runArgs.preInclude:
         include(fragment)
+
+## Pre-includes defined for the DPDs:
+from PATJobTransforms.DPDUtils import SetupDPDPreIncludes
+dpdPreIncludeUsed = SetupDPDPreIncludes(runArgs,listOfFlags)
+if outputRequested and dpdPreIncludeUsed:
+    recoLog.error( "Multiple output types requested with pre-includes present" )
+    recoLog.error( "This will most probably lead to weird output" )
+    pass
 
 #========================================================
 # Central topOptions (this is one is a string not a list)
@@ -175,6 +203,14 @@ if hasattr(runArgs,"prescales"):
 if hasattr(runArgs,"postInclude"): 
     for fragment in runArgs.postInclude:
         include(fragment)
+
+## Post-includes defined for the DPDs:
+from PATJobTransforms.DPDUtils import SetupDPDPostIncludes
+dpdPostIncludeUsed = SetupDPDPostIncludes(runArgs,listOfFlags)
+if outputRequested and dpdPostIncludeUsed:
+    recoLog.error( "Multiple output types requested with post-includes present" )
+    recoLog.error( "This will most probably lead to weird output" )
+    pass
 
 ## Post-exec
 if hasattr(runArgs,"postExec"):
