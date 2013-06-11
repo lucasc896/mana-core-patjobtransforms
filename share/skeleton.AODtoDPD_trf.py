@@ -98,6 +98,11 @@ if hasattr(runArgs,"outputNTUP_SMEWFile"):
         athenaCommonFlags.FilesInput.set_Value_and_Lock( runArgs.inputAODFile )
     outputRequested = True
 
+if hasattr(runArgs,"outputNTUP_SUSYTRUTHFile"):
+    from TruthD3PDMaker.TruthD3PDMakerFlags import TruthD3PDFlags
+    TruthD3PDFlags.TruthD3PDOutputFileName = runArgs.outputNTUP_SUSYTRUTHFile
+    include("TruthD3PDMaker/TruthSusyD3PDfromEVGEN_preInclude.py")
+    outputRequested = True
 if hasattr(runArgs,"outputNTUP_TRUTHFile"):
     from TruthD3PDMaker.TruthD3PDMakerFlags import TruthD3PDFlags
     TruthD3PDFlags.TruthD3PDOutputFileName = runArgs.outputNTUP_TRUTHFile
