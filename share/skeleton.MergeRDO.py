@@ -29,6 +29,19 @@ if hasattr(runArgs,"inputRDOFile"): athenaCommonFlags.FilesInput.set_Value_and_L
 from AthenaCommon.GlobalFlags import globalflags
 if hasattr(runArgs,"geometryVersion"): globalflags.DetDescrVersion.set_Value_and_Lock( runArgs.geometryVersion )
 if hasattr(runArgs,"conditionsTag"): globalflags.ConditionsTag.set_Value_and_Lock( runArgs.conditionsTag )
+
+## Pre-exec
+if hasattr(runArgs,"preExec"):
+    merHitLog.info("transform pre-exec")
+    for cmd in runArgs.preExec:
+        merHitLog.info(cmd)
+        exec(cmd)
+
+## Pre-include
+if hasattr(runArgs,"preInclude"): 
+    for fragment in runArgs.preInclude:
+        include(fragment)
+
 #--------------------------------------------------------------
 # Load POOL support
 #--------------------------------------------------------------
@@ -104,5 +117,18 @@ MessageSvc.OutputLevel = INFO
 StreamRDO.ExtendProvenanceRecord = False
 
 ServiceMgr.AthenaPoolCnvSvc.MaxFileSizes = [ "15000000000" ]
+
+## Post-include
+if hasattr(runArgs,"postInclude"): 
+    for fragment in runArgs.postInclude:
+        include(fragment)
+
+## Post-exec
+if hasattr(runArgs,"postExec"):
+    merHitLog.info("transform post-exec")
+    for cmd in runArgs.postExec:
+        merHitLog.info(cmd)
+        exec(cmd)
+
 
 #--------------------------------------------------------------

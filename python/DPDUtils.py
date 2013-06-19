@@ -186,12 +186,11 @@ def SetupDPDIncludes(runArgs,flagContainerList,includeType):
     """This function can be used to include all the pre-include scripts
        defined for the requested DPD types.
 
-       Returns a boolean specifying whether a pre/post-include was used."""
+       Returns a list of output types in which a pre/post-include was used."""
     # We must not produce multiple output types when pre/post-include
     # scripts are involved internally. This variable keeps track of
-    # whether a script was already defined:
-    scriptUsed = False
-    outputFound = False
+    # the output types which have used the pre/postInclude functionality
+    includeTypeList = []
     # Make a logger for the function:
     from AthenaCommon.Logging import logging
     logger = logging.getLogger( "SetupDPDIncludes" )
@@ -204,11 +203,13 @@ def SetupDPDIncludes(runArgs,flagContainerList,includeType):
                 dpdName=flag.StreamName.lstrip("Stream")
                 argName='output'+dpdName+'File'
                 if hasattr(runArgs,argName):
-                    # If there was already a script included, then
-                    # we are in trobule:
-                    if scriptUsed:
+                    # We found a match for an output, however if there was already a script 
+                    # included, then we may be in trouble (note that we print an error even when
+                    # the current output type does not itself have an include, because the include 
+                    # that already exists can even mess up this new output type).
+                    if len(includeTypeList) > 0:
                         logger.error( "Multiple output DPD types requested with "
-                                      "pre/post-includes present" )
+                                      "pre/post-includes present: {0} after includes from {1}".format(argName, includeTypeList) )
                         logger.error( "This will most probably lead to bad output" )
                         pass
                     # Update the internal flag. It's a bit weird of a logic,
@@ -217,35 +218,26 @@ def SetupDPDIncludes(runArgs,flagContainerList,includeType):
                     outputFound = True
                     # Only some DPD types define pre/post-include scripts.
                     # It's okay if this one doesn't define any,
-                    if not hasattr(flag,includeType): continue
-                    # Make sure that we have a list of scripts, not just
-                    # one:
+                    if not hasattr(flag,includeType): 
+                        continue
+                    includeTypeList.append(argName)
+                    # Make sure that we have a list of scripts, not just one:
                     includes = getattr(flag,includeType)
-                    if type(includes) != type([]):
+                    if type(includes) != list:
                         includes = [includes]
                         pass
                     # Now include all the specified scripts:
-                    printError = False
                     for incfile in includes:
-                        logger.warning( "Including script: %s" % incfile )
+                        logger.warning( "Including script: {0} for {1}".format(incfile, argName) )
                         from AthenaCommon.Include import include
                         include( incfile )
-                        scriptUsed = True
-                        # If there was already an output type defined, we
-                        # are in trouble:
-                        if previousOutputFound: printError = True
-                        pass
-                    if printError:
-                        logger.error( "Multiple output DPD types requested with "
-                                      "pre/post-includes present" )
-                        logger.error( "This will most probably lead to bad output" )
                         pass
                     pass
                 pass
             pass
         pass
-    # Tell the caller whether a script was pre/post-included:
-    return scriptUsed
+    # Tell the caller which types used pre/postIncludes:
+    return includeTypeList
 
 def SetupDPDPreIncludes(runArgs,flagContainerList):
     # Let the generic function do the work:
