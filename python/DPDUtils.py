@@ -212,10 +212,6 @@ def SetupDPDIncludes(runArgs,flagContainerList,includeType):
                                       "pre/post-includes present: {0} after includes from {1}".format(argName, includeTypeList) )
                         logger.error( "This will most probably lead to bad output" )
                         pass
-                    # Update the internal flag. It's a bit weird of a logic,
-                    # but the function has to deal with all kinds of setups:
-                    previousOutputFound = outputFound
-                    outputFound = True
                     # Only some DPD types define pre/post-include scripts.
                     # It's okay if this one doesn't define any,
                     if not hasattr(flag,includeType): 

@@ -1,10 +1,15 @@
+2013-06-20 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * DPDUtils.py
+      - Remove references to old internal variables in SetupDPDIncludes
+    * Tagging as PATJobTransforms-00-05-15
+
 2013-06-19 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * DPDUtils.py
       - Patch SetupDPDIncludes to return the list of output types for
         which a pre/postInclude was used, instead of just a boolean
     - Patch from Wolfgang Ehrenfeld
     * skeleton.MergeRDO.py Add support for {pre/post}{Exec/Include}
-    * Tagging as PATJobTransforms-00-05-14    
+    * Tagging as PATJobTransforms-00-05-14
 
 2013-06-11 Graeme Stewart <graeme.andrew.stewart@cern.ch>
 	- Patches from Zachary Marshall
