@@ -1,3 +1,7 @@
+2013-07-01 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * MergeNTUP_trf.py Add NTUP_COMMON to LODPK
+    * tagging as PATJobTransforms-00-05-16
+
 2013-06-20 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * DPDUtils.py
       - Remove references to old internal variables in SetupDPDIncludes
