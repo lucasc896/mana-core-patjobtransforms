@@ -1,3 +1,8 @@
+2013-07-11 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * skeleton.AODtoDPD_tf.py New transforms version of a2d skeleton (moved from PyJobTransforms)
+    * skeleton.ESDtoDPD_tf.py New transforms version of e2d skeleton (moved from PyJobTransforms)
+    * tagging as PATJobTransforms-00-05-17
+
 2013-07-01 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * MergeNTUP_trf.py Add NTUP_COMMON to LODPK
     * tagging as PATJobTransforms-00-05-16
