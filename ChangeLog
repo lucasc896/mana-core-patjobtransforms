@@ -1,3 +1,8 @@
+2013-08-09 Graeme Stewart <graeme.andrew.stewart@cern.ch>
+    * skeleton.NTUPtoRED_tf.py
+      - First (unvalidated) version of this skeleton
+    * Tagging PATJobTransforms-00-05-16-51 for TF2
+
 2013-08-01 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * skeleton.AODtoRED_tf.py
       - New skeleton for reducing AOD to DAOD_RED format
