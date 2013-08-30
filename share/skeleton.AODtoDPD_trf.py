@@ -132,7 +132,12 @@ if hasattr(runArgs,"outputNTUP_HSG2File"):
     from HSG2DPDUtils import HSG2DPDFlags
     outputRequested = True
 
-
+if hasattr(runArgs,"outputNTUP_PixelFile"):
+    from TrackD3PDMaker.TrackD3PDMakerPixelFlags import TrackD3PDPixelFlags
+    TrackD3PDPixelFlags.outputFile = runArgs.outputNTUP_PixelFile
+    if hasattr(runArgs,"inputESDFile") and not hasattr(runArgs,"inputFile"):
+        athenaCommonFlags.FilesInput.set_Value_and_Lock( runArgs.inputESDFile )
+    outputRequested = True
  
 if hasattr(runArgs,"outputNTUP_SCTFile"):
     from TrackD3PDMaker.TrackD3PDMakerSCTFlags import TrackD3PDSCTFlags

@@ -604,6 +604,13 @@ AddNTUP_HECNOISE.subSteps=['e2d']
 AddNTUP_HECNOISE.isOutput='root'
 AddToConfigDic('outputNTUP_HECNOISEFile',AddNTUP_HECNOISE)
 
+def AddOutputNTUP_PixelFile(trf,inDic):
+    trf.add( NtupleFileArg( name='outputNTUP_PixelFile',tree_names="InDetTrackTree" ) )
+    return
+AddOutputNTUP_PixelFile.subSteps=['r2e','e2d','a2d']
+AddOutputNTUP_PixelFile.isOutput='root'
+AddToConfigDic('outputNTUP_PixelFile',AddOutputNTUP_PixelFile)
+
 def AddOutputNTUP_SCTFile(trf,inDic):
     trf.add( NtupleFileArg( name='outputNTUP_SCTFile',tree_names="InDetTrackTree" ) )
     return
