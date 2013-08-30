@@ -1,3 +1,7 @@
+2013-08-30 Jamie Boyd <Jamie.Boyd@cern.ch>
+	* Add outputDESDM_ALLCELLSFile option to Reco_trf.py
+	* tagging as PATJobTransforms-00-05-18
+
 2013-07-11 Graeme Stewart <graeme.andrew.stewart@cern.ch>
     * skeleton.AODtoDPD_tf.py New transforms version of a2d skeleton (moved from PyJobTransforms)
     * skeleton.ESDtoDPD_tf.py New transforms version of e2d skeleton (moved from PyJobTransforms)
